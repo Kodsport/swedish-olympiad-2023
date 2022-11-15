@@ -1,0 +1,44 @@
+\problemname{Squash}
+Göran har börjat spela squash med sina vänner.
+Under en dag hinner han spela $N$ matcher.
+Görans mål är naturligtvis att vinna så många matcher och förlora så få matcher som möjligt.
+Hans \emph{nöjdhet} efter en dag av squashspelande är lika med antalet matcher han vunnit minus antalet matcher han förlorat.
+
+Förutom att bli bättre på squash och vinna fler matcher har Göran ett extra knep för att öka sin nöjdhet: han hävdar att det bara är under $K$ olika serier av sammanhängande matcher som han spelade \emph{seriöst}.
+Endast dessa matcher räknas in i uträkningen av hans nöjdhet.
+Göran väljer alltid dessa $K$ matchserier för att maximera sin nöjdhet.
+
+En matchserie består alltid av samtliga matcher mellan den $i$:te och den $j$:te för något valt $i$ och $j$, men Göran får låta en (eller alla!) matchserier vara tomma (t.ex. kanske han tog en väldigt seriös vattenpaus istället).
+De sammanhängande matchserierna han väljer får inte överlappa, d.v.s. varje spelad match får vara del av högst en vald matchserie.
+
+Givet matchhistoriken för en dag, vad blir Görans nöjdhet om han väljer matchserierna optimalt?
+
+\section*{Indata}
+Den första raden innehåller de två heltalen $N$ och $K$ ($1 \le K \le N \le 1\,000$).
+
+Nästa rad innehåller en sträng med $N$ tecken, resultaten av de matcher Göran spelade.
+Det $i$:te av dessa tecken är \texttt{V} om Göran vann matchen, och \texttt{F} om han förlorade den.
+
+\section*{Utdata}
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
+  $1$    & $25$      & $K = 1$ \\ \hline
+  $2$    & $26$      & $K = 2$ \\ \hline
+  $3$    & $27$      & $K = 3$ \\ \hline
+  $4$    & $22$      & Inga ytterligare begräsningar. \\ \hline
+\end{tabular}
+
+\section*{Förklaring av exempelfall}
+I det första exempelfallet är det optimalt att välja den enda sammanhängande serien till att bestå av samtliga matcher.
+Bland dessa vanns $4$ och $1$ förlorades, vilket ger nöjdheten $3$.
+
+I det andra exempelfallet spelade Göran seriöst under två matchserier.
+Han kan då välja de två första samt de två sista matcherna som sina serier, varav samtliga är vinster.
+Detta ger nöjdheten $4$.
