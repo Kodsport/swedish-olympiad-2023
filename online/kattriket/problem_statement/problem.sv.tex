@@ -1,0 +1,39 @@
+\problemname{Kattriket}
+En kontinent består av $N$ olika stadsstater.
+Exakt $N - 1$ par av stadsstater är direkt sammankopplade med en handelsväg, på ett sådant sätt att det går att färdas mellan alla par av stadsstater längs en sekvens av handelsvägar.
+
+Efter att stadsstaterna under århundraden levt i harmoni och fred råder det just nu starka spänningar mellan den största stadsstaten, \emph{Katen}, och ett konkurrerande rike, \emph{Kattago}.
+Katen planerar att snabbt erövra de övriga stadsstaterna för att förena dessa i sin kamp mot Kattago.
+
+Katen ska nu utföra sitt första fälttåg och erövra ett antal stadsstater för att bilda en union.
+Unionen måste bestå av en \emph{sammanhängande} mängd stadsstater och inkluderar alltid Katen.
+Med detta menas att det ska vara möjligt att färdas mellan varje stadsstat i unionen med hjälp av handelsvägarna utan att besöka en stadsstat utanför unionen.
+För att förenkla sin logistik i fälttåget vill de dock att antalet \emph{frontstater} i unionen blir så litet som möjligt.
+En frontstat är en stadsstat som är direkt sammankopplad med exakt en annan stadsstat inom unionen.
+\textbf{Katen räknas dock aldrig som en frontstat.}
+
+För varje antal stadsstater $1, 2, \dots, N-1$ som Katen kan erövra under ett fälttåg, kan du beräkna det minsta antalet frontstater i den resulterande unionen?
+
+\section*{Indata}
+Den första raden innehåller heltalet $N$ ($2 \le N \le 200\,000$), antalet stadsstater på kontinenten.
+
+De följande $N - 1$ raderna beskriver handelsvägarna.
+Låt alla stadsstater vara numrerade $0$, $1$, $\dots$, $N - 1$, där Katen är stadsstat $0$ .
+Varje rad innehåller två heltal $a$ och $b$ ($0 \le a \neq b < N$), namnen på två stadsstater som är direkt sammankopplade med en handelsväg..
+
+\section*{Utdata}
+Skriv ut en rad med det minsta antalet frontstater i en union med $1$, $2$, $\dots$, $N - 1$ \textbf{erövrade} stadsstater.
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
+  $1$    & $?$      & Inga ytterligare begräsningar. \\ \hline
+\end{tabular}
+
+\section*{Förklaring av exempelfall}
+TODO
