@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 N, K = map(int, input().split())
 R = input()
 R = [-1 if x == 'F' else 1 for x in R]
