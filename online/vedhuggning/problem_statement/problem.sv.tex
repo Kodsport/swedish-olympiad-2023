@@ -1,0 +1,45 @@
+\problemname{Vedhuggning}
+År 2022 har kantats av en rad sensationella nyhetsämnen, varav ett är de mycket höga elpriserna i södra Sverige.
+För Leah som bor i en villa i Skåne har detta tyvärr betytt att hennes bitcoin-mining just nu inte riktigt betalar sig på grund av elkostnaderna.
+Men, skam den som ger sig.
+Energi är ju i slutändan bara energi, och el kan ju lika gärna utvinnas av att elda ved!
+
+Leah har en skog med $N$ träd som hon tänker hugga ner för att göra ved.
+Det $i$:te av dessa träd växer med hastigheten $v_i$ nanometer per sekund och har just nu längd $l_i$ nanometer.
+Efter $t_i$ sekunder blir dessutom trädet för gammalt och slutar växa.
+
+Totalt behöver Leah ved från träd vars längd tillsammans är $S$ nanometer för att kunna driva sin bitcoin-mining under ett år, men hon är osäker på om träden hinner växa till den längden snabbt nog.
+Kan du beräkna hur många sekunder det tar innan längderna på Leahs träd har minst summan $S$ nanometer?
+
+\section*{Indata}
+Den första raden innehåller heltalen $N$ ($1 \le N \le 200\,000$), antalet träd i Leahs skog, och $S$ ($1 \le S \le 10^9$).
+
+De följande $N$ raderna beskriver hennes träd.
+Den $i$:te raden innehåller de tre heltalen $l_i$ ($0 \le l_i \le 10^9$), $v_i$ ($0 \le v_i \le 10^9$), och $t_i$ ($0 \le t_i \le 10^9$), beskrivna tidigare.
+
+Det är garanterat att skogen vid någon tidpunkt kommer ha en tillräcklig längd för Leah.
+
+\section*{Utdata}
+Skriv ut antalet sekunder det tar innan Leahs skog har en tillräcklig längd.
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
+  $1$    & $?$      & $N = 1$ \\ \hline
+  $2$    & $?$      & $N \le 1000$, $S \le 1000$ \\ \hline
+  $3$    & $?$      & $N \le 1000$. \\ \hline
+  $4$    & $?$      & Inga ytterligare begräsningar. \\ \hline
+\end{tabular}
+
+\section*{Förklaring av exempelfall}
+I det första exempelfallet har trädet ursprungligen höjden $2$ nanometer och växer med $1$ nanometer per sekund.
+Efter $3$ sekunder slutar trädet växa, men då har det redan fått höjden $2 + 3 \cdot 1 = 5$ som är vad Leah kräver.
+
+I det andra exempelfallet har träden efter $3$ sekunder höjderna $12 + 4 + 11 = 27$ vilket är för kort.
+Efter $4$ sekunderna är höjderna dock $12 + 5 + 13 = 30$, vilket räcker.
+Svaret är därför $4$ sekunder.
