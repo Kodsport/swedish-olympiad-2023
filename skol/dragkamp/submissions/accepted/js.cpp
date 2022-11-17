@@ -24,18 +24,20 @@ void solve() {
     int a, b, c, d;
     cin >> a >> b >> c >> d;
 
-    int cnt = (a + b + c + d) / 2;
-    int targ = (a + 2*b + 3*c + 4*d) / 2;
+    if ((a+b+c+d)%2 == 0 && (a+2*b+3*c+4*d)%2 == 0) {
+        int cnt = (a + b + c + d) / 2;
+        int targ = (a + 2*b + 3*c + 4*d) / 2;
 
-    rep(aa,max(a/2-1,0),min(a/2+2, a+1))
-    rep(bb,max(b/2-1,0),min(b/2+2, b+1))
-    rep(cc,max(c/2-1,0),min(c/2+2, c+1)) {
-        int dd = cnt - aa - bb - cc;
-        if (dd < 0) continue;
-        if (aa + 2*bb + 3*cc + 4*dd == targ) {
-            cout << aa << " " << bb << " " << cc << " " << dd << endl;
-            return;
-        }
+        rep(aa,max(a/2-1,0),min(a/2+2, a+1))
+            rep(bb,max(b/2-1,0),min(b/2+2, b+1))
+            rep(cc,max(c/2-1,0),min(c/2+2, c+1)) {
+                int dd = cnt - aa - bb - cc;
+                if (dd < 0) continue;
+                if (aa + 2*bb + 3*cc + 4*dd == targ) {
+                    cout << aa << " " << bb << " " << cc << " " << dd << endl;
+                    return;
+                }
+            }
     }
 
     cout << "nej" << endl;
