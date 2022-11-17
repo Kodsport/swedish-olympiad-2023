@@ -1,0 +1,31 @@
+\problemname{Dragkamp}
+Under en idrottslektion vill läraren dela in alla elever i två lag för att tävla i dragkamp.
+För att göra dragkampen intressant bör lagen vara exakt lika stora, samt exakt lika starka.
+Läraren har på förhand uppskattat varje elevs styrka till ett tal mellan $1$ och $4$.
+
+Givet hur många elever av varje styrketal som är med på lektionen, kan du berätta hur läraren ska dela upp lagen, om möjligt?
+
+\section*{Indata}
+Den första och enda raden innehåller de fyra heltalen $s_1, s_2, s_3, s_4$ ($0 \le s_i \le 10^{7}$), där $s_i$ är antalet elever som har styrkan $i$.
+
+\section*{Utdata}
+Om det inte är möjligt att dela in de två lagen, skriv ut en rad med texten ''\texttt{nej}''.
+
+Annars, skriv ut en rad med fyra heltal $a_1, a_2, a_3, a_4$, där $a_i$ är antalet elever med styrkan $i$ som ska vara med i det ena dragkampslaget.
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
+  $1$    & $20$      & $s_i \le 300$, en giltig indelning existerar. \\ \hline
+  $2$    & $20$      & Ingen elev har styrka $4$, en giltig indelning existerar. \\ \hline
+  $3$    & $20$      & En giltig indelning existerar. \\ \hline
+  $4$    & $40$      & Inga ytterligare begräsningar. \\ \hline
+\end{tabular}
+
+\section*{Förklaring av exempelfall}
+TODO
