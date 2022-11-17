@@ -11,6 +11,9 @@ typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 typedef vector<ll> vl;
 
+const ll inf = 1000000007;
+const ll maxx = 1000000;
+
 struct pt{
     int x,y;
 };
@@ -35,6 +38,10 @@ bool compx(int i, int j){
 
 bool compy(int i, int j){
     return houses[i].y < houses[j].y;
+}
+
+bool compmax(int i, int j){
+    return max(houses[i].x, houses[i].y) < max(houses[j].x, houses[j].y);
 }
 
 ll score(vi &P){
@@ -64,6 +71,74 @@ void try_to_swap(vi &P, int d){
     if(new_score >= old_score)swap(P[i], P[j]);
 }
 
+void hillclimb(vi &P, bool small){
+    int lim = 2000000;
+    if(small){
+        rep(c1,0,lim){
+            try_to_swap(P, n+1);
+        }
+    }
+    else{
+        rep(c1,0,lim){
+            int d = 100 - (99 * c1) / lim;
+            try_to_swap(P, d);
+        }
+    }
+    rep(c1,0,2*lim){
+        try_to_swap(P, 5);
+    }
+}
+
+vi solve1(){
+    vi ind;
+    rep(c1,0,n){
+        ind.push_back(c1);
+    }
+    sort(all(ind), compx);
+    ll mindist = inf;
+    int start = 0;
+    rep(c1,0,n/2+1){
+        int i = ind[c1];
+        int j = ind[c1+n/2-1];
+        ll d = houses[j].x - houses[i].x;
+        if(d < mindist){
+            mindist = d;
+            start = c1;
+        }
+    }
+    vi res;
+    rep(c1,0,n/2){
+        res.push_back(ind[start+c1]);
+    }
+    hillclimb(res, 0);
+    return res;
+}
+
+vi solve_random(int runs, int hc){
+    // Takes a random solution, and hillclimbs with 'try_to_swap'
+    vi res;
+    ll best_score = inf*inf;
+    vi ind;
+    rep(c1,0,n){
+        ind.push_back(c1);
+    }
+    rep(_,0,runs){
+        vi temp;
+        random_shuffle(all(ind));
+        rep(c1,0,n/2){
+            temp.push_back(ind[c1]);
+        }
+        rep(c1,0,hc){
+            try_to_swap(temp, n+1);
+        }
+        ll sc = score(temp);
+        if(sc < best_score){
+            best_score = sc;
+            res = temp;
+        }
+    }
+    return res;
+}
 
 vi solve_swap(){
     vi ind;
@@ -82,7 +157,99 @@ vi solve_swap(){
     return res;
 }
 
- 
+vi solve_mo(bool small){
+    vi ind;
+    rep(c1,0,n){
+        ind.push_back(c1);
+    }
+    sort(all(ind), compy);
+    vi res;
+    rep(c1,0,n/2){
+        res.push_back(ind[c1]);
+    }
+    sort(all(res), compx);
+
+    ll blocks = ll(sqrt(n/3)+1);
+    ll block_size = (n/2) / blocks;
+
+    vector<vi> B(blocks+1, vi());
+    rep(c1,0,n/2){
+        int b = c1 / block_size;
+        B[b].push_back(res[c1]);
+    }
+    res.clear();
+    rep(b,0,blocks){
+        sort(all(B[b]), compy);
+        if(b%2 == 1)reverse(all(B[b]));
+        trav(y, B[b]){
+            res.push_back(y);
+        }
+    }
+    hillclimb(res,small);
+    return res;
+}
+
+vi hilbert(vi &P, int start, int dir){
+
+    int mx = inf;
+    int MX = -inf;
+    int my = inf;
+    int MY = -inf;
+    trav(i, P){
+        mx = min(mx, houses[i].x);
+        MX = max(MX, houses[i].x);
+        my = min(my, houses[i].y);
+        MY = max(MY, houses[i].y);
+    }
+
+    int midx = (mx+MX)/2;
+    int midy = (my+MY)/2;
+    if(sz(P) == 0)return {};
+    if(MX-mx <= 3 && MY-my <= 3){
+        vi res;
+        trav(i, P){
+            res.push_back(i);
+        }
+        return res;
+    }
+    vector<vi> V(4, vi());
+    trav(i, P){
+        if(houses[i].x <= midx && houses[i].y < midy)V[0].push_back(i);
+        if(houses[i].x <= midx && houses[i].y >= midy)V[1].push_back(i);
+        if(houses[i].x > midx && houses[i].y >= midy)V[2].push_back(i);
+        if(houses[i].x > midx && houses[i].y < midy)V[3].push_back(i);
+    }
+    vi res;
+    rep(c1,0,4){
+        int i = (start + dir*c1 + 4)%4;
+        int start2 = start;
+        int dir2 = dir;
+        if(c1 == 3)start2 = (start+2)%4;
+        if(c1 == 0 || c1 == 3)dir2 = -dir;
+        vi V2 = hilbert(V[i], start2, dir2);
+        trav(y, V2){
+            res.push_back(y);
+        }
+    }
+    return res;
+}
+
+vi solve_hilbert(bool small){
+    vi ind;
+    rep(c1,0,n){
+        ind.push_back(c1);
+    }
+    sort(all(ind), compmax);
+    vi res;
+    rep(c1,0,n/2){
+        res.push_back(ind[c1]);
+    }
+    vi res2 = hilbert(res, 0, 1);
+    hillclimb(res2,small);
+    return res2;
+}
+
+
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
@@ -94,7 +261,18 @@ int main() {
         houses.push_back(p(x, y));
     }
 
-    vi ans = solve_swap();
+    vi ans;
+    if(T == 1)ans = solve1();
+    if(T == 2)ans = solve1();
+    if(T == 3)ans = solve_random(10000, 1000);
+    if(T == 4)ans = solve_mo(1);
+    if(T == 5)ans = solve_mo(1);
+    if(T == 6)ans = solve_hilbert(1);
+    if(T == 7)ans = solve_mo(0);
+    if(T == 8)ans = solve_mo(0);
+    if(T == 9)ans = solve_mo(0);
+    if(T == 10)ans = solve_mo(0);
+    if(T == 0)ans = solve_random(1000, 1000);
 
     rep(c1,0,n/2){
         cout << ans[c1]+1 << " ";

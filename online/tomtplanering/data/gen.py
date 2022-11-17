@@ -20,8 +20,13 @@ maxx = 10**6
 
 
 print(n)
+seen = set()
 for _ in range(n):
     x = random.randint(0, maxx)
     y = random.randint(0, maxy)
+    while x * maxx + y in seen:
+        x = random.randint(0, maxx)
+        y = random.randint(0, maxy)
+    seen.add(x * maxx + y)
     print(x, y)
 
