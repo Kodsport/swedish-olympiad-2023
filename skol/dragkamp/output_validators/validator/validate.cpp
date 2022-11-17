@@ -20,27 +20,8 @@ int main(int argc, char **argv) {
   int cnt = (a + b + c + d) / 2;
   int targ = (a + 2*b + 3*c + 4*d) / 2;
 
-  int dummy;
-  bool has_ans = bool(judge_ans >> dummy);
-
   int aa, bb, cc, dd;
-  string initial;
-  if (!(author_out >> initial)) {
-      wrong_answer("couldn't read a_1");
-  } else {
-      if (!has_ans) {
-          if (initial == "nej") accept();
-          else wrong_answer("judge lacked answer, team didn't respond 'nej'");
-      } else {
-          try {
-              aa = stoi(initial);
-          } catch(std::invalid_argument const& ex) {
-              wrong_answer("couldn't read a_1");
-          } catch(std::out_of_range const& ex) {
-              wrong_answer("couldn't read a_1");
-          }
-      }
-  }
+  if (!(author_out >> aa)) wrong_answer("couldn't read a_1");
   if (!(author_out >> bb)) wrong_answer("couldn't read a_2");
   if (!(author_out >> cc)) wrong_answer("couldn't read a_3");
   if (!(author_out >> dd)) wrong_answer("couldn't read a_4");
@@ -53,10 +34,6 @@ int main(int argc, char **argv) {
   if (aa + bb + cc + dd != cnt) wrong_answer("team is not half of students");
   if (aa + 2*bb + 3*cc + 4*dd != targ) wrong_answer("team power is not half");
 
-  if (!has_ans) {
-      judge_error("team found solution, judge did not");
-  }
-  
   string trailing;
   if(author_out >> trailing){
     wrong_answer("Trailing output");
