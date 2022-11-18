@@ -106,7 +106,7 @@ int main(int argc, char** argv) {
         //bestsc = double(n*m)/2.0;
 		long double ratio = bestsc / sc;
 		if (T == 0) accept(0);
-		else accept(10.0 * pow(ratio, 2));
+		else accept(10.0 * ratio);
     } catch(...) {
         die("IO failure");
     }

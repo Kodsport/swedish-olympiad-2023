@@ -31,6 +31,7 @@ ll dist(pt p1, pt p2){
 
 int T,n;
 vector<pt> houses;
+vi indx, invx;
 
 bool compx(int i, int j){
     return houses[i].x < houses[j].x;
@@ -48,6 +49,47 @@ ll score(vi &P){
     ll res = 0;
     rep(c1,1,sz(P)){
         res += dist(houses[P[c1]], houses[P[c1-1]]);
+    }
+    return res;
+}
+
+int find_closest(int i, vi &seen){
+    int j = invx[i];
+    int res = -1;
+    int d = inf;
+    for(int j2 = j-1; j2 >= 0; j2--){
+        int i2 = indx[j2];
+        if(seen[i2])continue;
+        if(abs(houses[i].x - houses[i2].x) >= d)break;
+        int d2 = dist(houses[i], houses[i2]);
+        if(d2 < d){
+            d = d2;
+            res = i2;
+        }
+    }
+    for(int j2 = j+1; j2 < n; j2++){
+        int i2 = indx[j2];
+        if(seen[i2])continue;
+        if(abs(houses[i].x - houses[i2].x) >= d)break;
+        int d2 = dist(houses[i], houses[i2]);
+        if(d2 < d){
+            d = d2;
+            res = i2;
+        }
+    }
+    return res;
+}
+
+vi get_k_closest(int i, vi &seen, int k){
+    vi res;
+    rep(c1,0,k){
+        int j = find_closest(i, seen);
+        if(j == -1)break;
+        res.push_back(j);
+        seen[j] = 1;
+    }
+    trav(y, res){
+        seen[y] = 0;
     }
     return res;
 }
@@ -87,31 +129,54 @@ void hillclimb(vi &P, bool small){
     rep(c1,0,2*lim){
         try_to_swap(P, 5);
     }
+    rep(c1,0,2*lim){
+        try_to_swap(P, 2);
+    }
 }
 
-vi solve1(){
-    vi ind;
-    rep(c1,0,n){
-        ind.push_back(c1);
-    }
-    sort(all(ind), compx);
-    ll mindist = inf;
-    int start = 0;
-    rep(c1,0,n/2+1){
-        int i = ind[c1];
-        int j = ind[c1+n/2-1];
-        ll d = houses[j].x - houses[i].x;
-        if(d < mindist){
-            mindist = d;
-            start = c1;
+
+vi solve1(int runs=1){
+    vi ans;
+    ll best = inf*inf;
+    rep(run,0,runs){
+        vi ind;
+        rep(c1,0,n){
+            ind.push_back(c1);
+        }
+        sort(all(ind), compx);
+        ll mindist = inf;
+        int start = 0;
+        rep(c1,0,n/2+1){
+            int i = ind[c1];
+            int j = ind[c1+n/2-1];
+            ll d = houses[j].x - houses[i].x;
+            if(d < mindist ||(d == mindist && rand()%2 == 0)){
+                mindist = d;
+                start = c1;
+            }
+        }
+
+        vi res;
+        rep(c1,0,n/2){
+            res.push_back(ind[start+c1]);
+        }
+
+        if(T == 2){
+            rep(c1,0,1000000){
+                try_to_swap(res, 8);
+            }
+            rep(c1,0,4000000){
+                try_to_swap(res, 3);
+            }
+        }
+        ll new_dist = score(res);
+        if(new_dist < best){
+            best = new_dist;
+            ans = res;
         }
     }
-    vi res;
-    rep(c1,0,n/2){
-        res.push_back(ind[start+c1]);
-    }
-    hillclimb(res, 0);
-    return res;
+
+    return ans;
 }
 
 vi solve_random(int runs, int hc){
@@ -140,113 +205,76 @@ vi solve_random(int runs, int hc){
     return res;
 }
 
-vi solve_swap(){
-    vi ind;
-    rep(c1,0,n){
-        ind.push_back(c1);
+vi greedy(vi taken){
+    vi seen(n, 0);
+    trav(y, taken){
+        seen[y] = 1;
     }
-    sort(all(ind), compx);
-    vi res;
-    rep(c1,0,n/2){
-        res.push_back(ind[c1]);
+    while(sz(taken) < n/2){
+        int now = taken.back();
+        int nex = find_closest(now, seen);
+        seen[nex] = 1;
+        taken.push_back(nex);
     }
-    sort(all(res), compy);
-    rep(c1,0,1000000){
-        try_to_swap(res, n+1);
-    }
-    return res;
+    return taken;
 }
 
-vi solve_mo(bool small){
-    vi ind;
-    rep(c1,0,n){
-        ind.push_back(c1);
+vi tree_search(vi &taken, int branch, int depth){
+    if(depth == 0)return greedy(taken);
+    vi seen(n, 0);
+    trav(y, taken){
+        seen[y] = 1;
     }
-    sort(all(ind), compy);
-    vi res;
-    rep(c1,0,n/2){
-        res.push_back(ind[c1]);
-    }
-    sort(all(res), compx);
-
-    ll blocks = ll(sqrt(n/3)+1);
-    ll block_size = (n/2) / blocks;
-
-    vector<vi> B(blocks+1, vi());
-    rep(c1,0,n/2){
-        int b = c1 / block_size;
-        B[b].push_back(res[c1]);
-    }
-    res.clear();
-    rep(b,0,blocks){
-        sort(all(B[b]), compy);
-        if(b%2 == 1)reverse(all(B[b]));
-        trav(y, B[b]){
-            res.push_back(y);
+    int i = taken.back();
+    vi res = get_k_closest(i, seen, branch);
+    ll best_score = inf*inf;
+    vi ans;
+    trav(j, res){
+        taken.push_back(j);
+        vi temp = tree_search(taken, branch, depth-1);
+        ll new_score = score(temp);
+        if(new_score < best_score){
+            best_score = new_score;
+            ans = temp;
         }
+        taken.pop_back();
     }
-    hillclimb(res,small);
-    return res;
+
+    return ans;
 }
 
-vi hilbert(vi &P, int start, int dir){
-
-    int mx = inf;
-    int MX = -inf;
-    int my = inf;
-    int MY = -inf;
-    trav(i, P){
-        mx = min(mx, houses[i].x);
-        MX = max(MX, houses[i].x);
-        my = min(my, houses[i].y);
-        MY = max(MY, houses[i].y);
-    }
-
-    int midx = (mx+MX)/2;
-    int midy = (my+MY)/2;
-    if(sz(P) == 0)return {};
-    if(MX-mx <= 3 && MY-my <= 3){
-        vi res;
-        trav(i, P){
-            res.push_back(i);
-        }
-        return res;
-    }
-    vector<vi> V(4, vi());
-    trav(i, P){
-        if(houses[i].x <= midx && houses[i].y < midy)V[0].push_back(i);
-        if(houses[i].x <= midx && houses[i].y >= midy)V[1].push_back(i);
-        if(houses[i].x > midx && houses[i].y >= midy)V[2].push_back(i);
-        if(houses[i].x > midx && houses[i].y < midy)V[3].push_back(i);
-    }
-    vi res;
-    rep(c1,0,4){
-        int i = (start + dir*c1 + 4)%4;
-        int start2 = start;
-        int dir2 = dir;
-        if(c1 == 3)start2 = (start+2)%4;
-        if(c1 == 0 || c1 == 3)dir2 = -dir;
-        vi V2 = hilbert(V[i], start2, dir2);
-        trav(y, V2){
-            res.push_back(y);
+vi solve_tree_search(int runs, int branch, int depth){
+    vi ans;
+    ll best_score = inf*inf;
+    rep(c1,0,runs){
+        int start = c1%n;
+        vi taken = {start};
+        vi temp = tree_search(taken, branch, depth);
+        ll new_score = score(temp);
+        if(new_score < best_score){
+            best_score = new_score;
+            ans = temp;
         }
     }
-    return res;
+    hillclimb(ans, 1);
+    return ans;
 }
 
-vi solve_hilbert(bool small){
-    vi ind;
-    rep(c1,0,n){
-        ind.push_back(c1);
-    }
-    sort(all(ind), compmax);
+vi solve_greedy(int runs, int hc){
     vi res;
-    rep(c1,0,n/2){
-        res.push_back(ind[c1]);
+    ll best_score = inf*inf;
+    vi seen(n, 1);
+    rep(run,0,runs){
+        int start = rand()%n;
+        vi temp = greedy({start});
+        ll new_score = score(temp);
+        if(new_score < best_score){
+            best_score = new_score;
+            res = temp;
+        }
     }
-    vi res2 = hilbert(res, 0, 1);
-    hillclimb(res2,small);
-    return res2;
+    hillclimb(res, 0);
+    return res;
 }
 
 
@@ -259,20 +287,27 @@ int main() {
         int x,y;
         cin >> x >> y;
         houses.push_back(p(x, y));
+        indx.push_back(c1);
+        invx.push_back(0);
+    }
+    sort(all(indx), compx);
+    rep(c1,0,n){
+        invx[indx[c1]] = c1;
     }
 
     vi ans;
     if(T == 1)ans = solve1();
-    if(T == 2)ans = solve1();
+    if(T == 2)ans = solve1(5);
     if(T == 3)ans = solve_random(10000, 1000);
-    if(T == 4)ans = solve_mo(1);
-    if(T == 5)ans = solve_mo(1);
-    if(T == 6)ans = solve_hilbert(1);
-    if(T == 7)ans = solve_mo(0);
-    if(T == 8)ans = solve_mo(0);
-    if(T == 9)ans = solve_mo(0);
-    if(T == 10)ans = solve_mo(0);
+    if(T == 4)ans = solve_tree_search(n, 2, 10);
+    if(T == 5)ans = solve_tree_search(n, 3, 7);
+    if(T == 6)ans = solve_greedy(2000, 1000000);
+    if(T == 7)ans = solve_greedy(1000, 1000000);
+    if(T == 8)ans = solve_greedy(80, 1000000);
+    if(T == 9)ans = solve_greedy(40, 1000000);
+    if(T == 10)ans = solve_greedy(25, 1000000);
     if(T == 0)ans = solve_random(1000, 1000);
+
 
     rep(c1,0,n/2){
         cout << ans[c1]+1 << " ";
@@ -280,8 +315,5 @@ int main() {
 
     cerr << "TC " << T << ": " << score(ans) << "\n";
 
-
-
- 
     return 0;
 }
