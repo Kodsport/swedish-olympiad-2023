@@ -36,8 +36,7 @@ int32_t main()
 
     vi frequency(n * m + 1);
 
-    random_device rd;
-    mt19937 rng(rd());
+    mt19937 rng(1234);
     uniform_int_distribution<int> dist(1, m);
 
     int i = 0;
@@ -48,7 +47,7 @@ int32_t main()
         frequency[roll]++;
 
         i++;
-        if (i % 10000 == 0 && elapsedmillis() > 990) break;
+        if (i % 10000 == 0 && elapsedmillis() > 2900) break;
     }
 
     sort(rall(frequency));

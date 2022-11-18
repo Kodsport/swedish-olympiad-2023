@@ -13,6 +13,7 @@ sample 1
 sample 2
 sample 3
 
+
 group g1 20
 limits n=2 m=100
 tc_manual g1
@@ -22,14 +23,15 @@ limits n=6 m=6
 tc_manual g2
 
 group g3 20
-limits n=12 m=12
+limits n=50 m=4
 tc_manual g3
 
 group g4 20
-limits n=20 m=100
+limits n=40 m=40
 tc_manual g4
 
+
 group g5 20
-limits n=25 m=10000
+limits n=30 m=5000
 tc_manual g5
 

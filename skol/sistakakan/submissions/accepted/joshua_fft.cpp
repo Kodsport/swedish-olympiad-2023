@@ -1,4 +1,4 @@
-// I can't be bothered to slim my template, since this is not a solution we test for. It's slower than m2n on all testcases due to larger FFT constant factor
+// I can't be bothered to slim my template, since this is not a solution we test for. It's slower than m2n on all testcases due to larger FFT constant factor, but can handle n=m=1000
 
 #undef _GLIBCXX_DEBUG                // disable run-time bound checking, etc
 #pragma GCC optimize("Ofast,inline") // Ofast = O3,fast-math,allow-store-data-races,no-protect-parens

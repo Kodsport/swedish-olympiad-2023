@@ -59,7 +59,7 @@ int32_t main()
         rep(i, (t - n) / m + 1)
         {
             long double a = choose(n, i) + choose(t - i * m - 1, n - 1) - tot;
-            ans += expl(a) * ((i % 2 == 0) ? 1 : -1);
+            ans += exp(a) * ((i % 2 == 0) ? 1 : -1);
         }
         v.push_back(ans);
     }

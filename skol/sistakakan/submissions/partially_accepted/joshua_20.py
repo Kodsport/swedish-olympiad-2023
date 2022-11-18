@@ -14,4 +14,4 @@ freq = sorted(freq, reverse=True)
 ans = 0
 for i in range(k):
     ans += freq[i]
-print(ans)
+print(f'{ans:.15f}')
