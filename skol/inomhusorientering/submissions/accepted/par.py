@@ -1,5 +1,5 @@
+#!/usr/bin/env python3
 import sys
-import numpy as np
 import string
 from itertools import combinations
 
@@ -13,18 +13,18 @@ for i in range(N):
 	for s in tokens[i*2+2]: con[s].append(i)
 
 INF=1000000
-d=INF*np.ones((N,N),'int')
-for i in range(N): d[i,i]=0
+d=[[INF] * N for _ in range(N)]
+for i in range(N): d[i][i]=0
 for s in con:
 	for (i,j) in combinations(con[s],2):
-		d[i,j]=d[j,i]=abs(level[i]-level[j])
+		d[i][j]=d[j][i]=abs(level[i]-level[j])
 
 for k in range(N):
 	for i in range(N):
 		for j in range(N):
-			if d[i,k]+d[k,j]<d[i,j]:
-				d[i,j] = d[i,k]+d[k,j]
+			if d[i][k]+d[k][j]<d[i][j]:
+				d[i][j] = d[i][k]+d[k][j]
 
-dist=[d[i,i+1] for i in range(N-1)]
+dist=[d[i][i+1] for i in range(N-1)]
 #print(dist)
 print(sum(dist))
