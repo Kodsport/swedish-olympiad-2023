@@ -32,7 +32,7 @@ void solve() {
             rep(bb,max(b/2-1,0),min(b/2+2, b+1))
             rep(cc,max(c/2-1,0),min(c/2+2, c+1)) {
                 int dd = cnt - aa - bb - cc;
-                if (dd < 0) continue;
+                if (dd < 0 || dd > d) continue;
                 if (aa + 2*bb + 3*cc + 4*dd == targ) {
                     cout << aa << " " << bb << " " << cc << " " << dd << endl;
                     return;
