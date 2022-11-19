@@ -32,6 +32,6 @@ tc_manual g4
 
 
 group g5 20
-limits n=30 m=5000
+limits n=20 m=5000
 tc_manual g5
 

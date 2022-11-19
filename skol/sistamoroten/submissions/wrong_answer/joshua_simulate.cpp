@@ -47,7 +47,7 @@ int32_t main()
         frequency[roll]++;
 
         i++;
-        if (i % 10000 == 0 && elapsedmillis() > 2900) break;
+        if (i % 10000 == 0 && elapsedmillis() > 980) break;
     }
 
     sort(rall(frequency));
