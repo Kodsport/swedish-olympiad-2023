@@ -26,16 +26,18 @@ void solve() {
     int cnt = (a + b + c + d) / 2;
     int targ = (a + 2*b + 3*c + 4*d) / 2;
 
+    vi sol;
     rep(aa,0,a+1)
         rep(bb,0,b+1)
             rep(cc,0,c+1) {
                 int dd = cnt - aa - bb - cc;
                 if (dd < 0 || dd > d) continue;
                 if (aa + 2*bb + 3*cc + 4*dd == targ) {
-                    cout << aa << " " << bb << " " << cc << " " << dd << endl;
-                    return;
+                    sol = {aa, bb, cc, dd};
                 }
             }
+
+    cout << sol;
 }
 
 int main() {
