@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-
+#!/usr/bin/env python3
 def get():
     n = int(input())
     inp = ["" for i in range(n)]

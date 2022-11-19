@@ -1,56 +1,47 @@
 \problemname{Tomtplanering}
+Enligt FN uppnådde jordens befolkning 8 miljarder människor i november 2022.
+En som tydligt märker av detta är tomten. Han måste nämligen dela ut presenter till flera miljarder barn.
 
-Enligt FN uppnådde jordens befolkning 8 miljarder människor i november 2022. En som tydligt märker
-av detta är Tomten. Han måste nämligen dela ut presenter till flera miljarder barn.
-
-
-Men Tomten kommer tyvärr inte hinna dela ut presenter till alla barn i år.
-Istället behöver han välja ut en grupp barn som får presenter. Men för att det ska bli rättvist
-tänker han att exakt hälften av alla barn ska få presenter, medan andra hälften blir utan. På så sätt
-får de två grupperna exakt lika många barn, och då blir ingen grupp avundsjuk på den andra. ``Perfekt
-balanserat'', som Tomten brukar säga.
+Tyvärr kommer tomten inte hinna dela ut presenter till alla barn i år.
+Istället behöver han välja ut en grupp barn som får presenter.
+För att det ska bli rättvist tänker han att exakt hälften av alla barn ska få presenter, medan andra hälften blir utan.
+På så sätt innehåller de två grupperna exakt lika många barn, och då blir ingen grupp avundsjuk på den andra.
+``Perfekt balanserat'', som tomten brukar säga.
 
 
-Du är ansvarig för att planera vilka hus som Tomten ska besöka. Det finns
+Du är ansvarig för att planera vilka hus som tomten ska besöka. Det finns
 $N$ hus numrerade från $1$ till $N$, där hus nummer $i$ har koordinater $(x_i, y_i)$. Att färdas mellan
 två punkter $(x_i, y_i)$ och $(x_j, y_j)$ tar $|x_i-x_j| + |y_i-y_j|$ sekunder. Din uppgift är 
-att hitta en ordnad lista med $N/2$ olika hus ($N$ är alltid jämnt), så att totala tiden att besöka husen
+att hitta en ordnad lista med $N/2$ olika hus ($N$ är alltid jämnt), så att den totala tiden att besöka husen
 i den ordningen är så liten som möjligt.
 
 \section*{Indata}
 Indatan består av $10$ testfall.
 
-\begin{itemize}
-  \item 
     Den första raden innehåller ett heltal $T$ ($0 \leq T \leq 10$), numret på testfallet ($0$ är exempelfallet nedan).
-  \item
+
     Den andra raden innehåller ett heltal: $N$ ($1 \le N \le 10^5$), antalet hus.
-  \item
+
     De följande $N$ raderna innehåller två heltal $x_i$ och $y_i$ ($0 \le x_i, y_i \le 10^6$), koordinaterna
-    på det $i$:te huset. Alla dessa punkter är olika.
-\end{itemize}
+    som det $i$:te huset ligger på. 
+    Inga två hus ligger på samma koordinater.
 
 \section*{Utdata}
 Skriv ut en rad med $N/2$ heltal, listan med hus som ska besökas.
 
 \section*{Poängsättning}
-Ditt program kommer att testas på $10$ testfall, och poängsättas baserat på hur det står sig relativt domarnas lösning.
+Ditt program kommer att testas på $10$ testfall och poängsättas baserat på hur det står sig relativt domarnas lösning.
 
-Låt $P_1$ vara totala avståndet Tomten behöver åka i din lösning, och låt $P_2$ vara motsvarande
+Låt $P_1$ vara det totala avståndet tomten behöver åka i din lösning, och låt $P_2$ vara motsvarande
 för domarnas lösning. Du får då $10 \cdot \frac{P_2}{P_1}$ poäng på testfallet, avrundat till två decimaler.
 
 Din poäng för en inskickning är summan av poängen för testfallen, och din totala poäng är poängen för den bästa inskickningen.
 Det går alltså inte att kombinera testfall mellan olika inskickningar, utan du måste skicka in ett enda program som
 maximerar din poäng på alla testfall samtidigt.
 
-Din lösning kan maximalt få $100$ poäng, även om den är bättre än den domarna skrivit.
+Din lösning kan som mest få $100$ poäng, även om den är bättre än den domarna skrivit.
 
 Exempeltestfallet kommer alltid att ge $0$ poäng.
-
-\section*{Förklaring av exampelfall 1}
-I exempelfallet så uppnår exempellösningen totala avståndet $40$ eftersom avståndet mellan hus $2$ och hus $4$
-är $5$, och avståndet mellan hus $4$ och hus $1$ är $35$. Det finns flera sätt att uppnå ett bättre svar,
-till exempel genom att besöka husen i ordningen \verb|4 2 1|. Då blir totala avståndet $35$ istället.
 
 \section*{Testfall}
 Här är beskrivningar av de $10$ testfallen som förekommer. I alla testfall så har koordinaterna
@@ -72,3 +63,9 @@ $8$       & $N = 40000$                                   &   \\ \hline
 $9$       & $N = 80000$                                   &    \\ \hline
 $10$      & $N = 10^5$                                   &    \\ \hline
 \end{tabular}
+
+\section*{Förklaring av exampelfall 1}
+I exempelfallet så uppnår exempellösningen det totala avståndet $40$ eftersom avståndet mellan hus $2$ och hus $4$
+är $5$, och avståndet mellan hus $4$ och hus $1$ är $35$. Det finns flera sätt att uppnå ett bättre svar,
+till exempel genom att besöka husen i ordningen \verb|4 2 1|. Då blir det totala avståndet $35$ istället.
+
