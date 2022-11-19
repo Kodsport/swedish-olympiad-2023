@@ -10,6 +10,6 @@ int main() {
 		if(i%m==0) {nm++; n--;}
 	}
 	if(n==-1) {nt--; nm--;}
-	else printf("%d %d", nt, nm);
+	printf("%d %d", nt, nm);
 	return 0;
 }
