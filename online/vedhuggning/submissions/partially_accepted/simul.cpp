@@ -21,7 +21,7 @@ template<typename A, typename B> auto smin(A& a, const B& b) { if (b < a) a = b;
 bool within(int r, int c, int R, int C) { return 0 <= r && r < R && 0 <= c && c < C; }
 
 void solve() {
-    int N, S;
+    ll N, S;
     cin >> N >> S;
 
     vector<pair<int, int>> ts(N);

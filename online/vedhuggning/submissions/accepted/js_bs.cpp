@@ -42,6 +42,7 @@ void solve() {
         for (auto [l, v, t] : trees) {
             sum += l;
             sum += v * min(t, mid);
+            sum = min(sum, (ll)S);
         }
         if (sum >= S) hi = mid;
         else lo = mid;

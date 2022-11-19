@@ -21,33 +21,38 @@ template<typename A, typename B> auto smin(A& a, const B& b) { if (b < a) a = b;
 bool within(int r, int c, int R, int C) { return 0 <= r && r < R && 0 <= c && c < C; }
 
 void solve() {
-    int N, S;
+    long long N, S;
     cin >> N >> S;
 
     vector<pair<int, int>> ts(N);
-    int vv = 0;
     rep(i,0,N) {
         int l, v, t;
         cin >> l >> v >> t;
         S -= l;
         ts[i] = make_pair(t, v);
-        vv += v;
     }
 
     sort(all(ts));
-    int lt = 0;
-    trav(it, ts) {
-        int td = it.first - lt;
-        if (vv * td < S) {
-            S -= vv * td;
-            vv -= it.second;
-            lt = td;
-        } else {
-            lt += (S + vv - 1) / vv;
+    for (int i = 0; i < N; i++) {
+        ll ns = S;
+        int ltime = i ? ts[i - 1].first : 0;
+        for (int j = 0; j < N && ns > 0; j++) {
+            ns -= (long long)min(ts[j].first, ltime) * ts[j].second;
+        }
+        ns = max(ns, 0LL);
+
+        ll vv = 0;
+        for (int j = i; j < N; j++) {
+            vv += ts[j].second;
+        }
+        ll needtime = (ns + vv - 1) / vv;
+
+        int dt = ts[i].first - ltime;
+        if (needtime <= dt) {
+            cout << ltime + needtime << endl;
             break;
         }
     }
-    cout << lt << endl;
 }
 
 int main() {

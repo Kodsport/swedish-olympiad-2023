@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+
+import sys
+import random
+import math
+
+def cmdlinearg(name, default=None):
+    for arg in sys.argv:
+        if arg.startswith(name + "="):
+            return arg.split("=")[1]
+    if default is None:
+        print("missing parameter", name)
+        sys.exit(1)
+    return default
+
+random.seed(int(cmdlinearg('seed', sys.argv[-1])))
+N = int(cmdlinearg('N'))
+maxS = int(cmdlinearg('maxS', 10**9))
+
+trees = []
+for _ in range(N - 1):
+    trees.append((0, 0, 0))
+trees.append((0, 1, maxS))
+
+S = maxS
+
+print(N, S)
+for l, v, t in trees:
+    print(l, v, t)
