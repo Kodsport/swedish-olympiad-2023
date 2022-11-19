@@ -10,6 +10,6 @@ void run() {
 	Space();
 	Int(1, m);
 	Space();
-	Int(1, n*m);
+	Int(1, n*m - 1);
 	Endl();
 }
