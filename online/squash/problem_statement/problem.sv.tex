@@ -8,18 +8,19 @@ Förutom att bli bättre på squash och vinna fler matcher har Göran ett extra 
 Endast dessa matcher räknas in i uträkningen av hans nöjdhet.
 Göran väljer alltid dessa $K$ matchserier för att maximera sin nöjdhet.
 
-En matchserie består alltid av samtliga matcher mellan den $i$:te och den $j$:te för något valt $i$ och $j$, men Göran får låta en (eller alla!) matchserier vara tomma (t.ex. kanske han tog en väldigt seriös vattenpaus istället).
+En matchserie består alltid av samtliga matcher mellan den $i$:te och den $j$:te matchen för något valt $i$ och $j$, men Göran får låta en (eller alla!) matchserier vara tomma (t.ex. kanske han tog en väldigt seriös vattenpaus istället).
 De sammanhängande matchserierna han väljer får inte överlappa, d.v.s. varje spelad match får vara del av högst en vald matchserie.
 
 Givet matchhistoriken för en dag, vad blir Görans nöjdhet om han väljer matchserierna optimalt?
 
 \section*{Indata}
-Den första raden innehåller de två heltalen $N$ och $K$ ($1 \le K \le N \le 1\,000$).
+Den första raden innehåller de två heltalen $N$ och $K$ ($1 \le K \le N \le 1\,000$), antalet matcher och antalet seriösa matchserier.
 
 Nästa rad innehåller en sträng med $N$ tecken, resultaten av de matcher Göran spelade.
-Det $i$:te av dessa tecken är \texttt{V} om Göran vann matchen, och \texttt{F} om han förlorade den.
+Det $i$:te av dessa tecken är \texttt{V} om Göran vann den $i$:te matchen, och \texttt{F} om han förlorade den.
 
 \section*{Utdata}
+Skriv ut ett enda heltal: den maximala nöjdheten Göran kan uppnå.
 
 \section*{Poängsättning}
 Din lösning kommer att testas på en mängd testfallsgrupper.
