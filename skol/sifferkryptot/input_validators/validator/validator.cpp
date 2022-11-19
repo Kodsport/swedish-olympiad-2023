@@ -12,8 +12,8 @@ void run() {
     for (char c : S) assert(isdigit(c));
 
     if (noconsec12) {
-        for (int i = 0; i < (int)S.size() - 1; i++) {
-            assert(!is12(S[i]) || !is12(S[i + 1]));
+        for (int i = 0; i < (int)S.size() - 2; i++) {
+            assert(!is12(S[i]) || !is12(S[i + 1]) || !is12(S[i + 2]));
         }
     }
 }
