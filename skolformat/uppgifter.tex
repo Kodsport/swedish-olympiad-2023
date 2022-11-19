@@ -226,16 +226,16 @@ Det är garanterat att elevernas styrkor är valda så att detta alltid är möj
 
 Programmet ska läsa in de fyra heltalen $s_1, s_2, s_3, s_4$ ($0 \le s_i \le 10^{7}$), där $s_i$ är antalet elever som har styrkan $i$. 
 
-%Om det inte är möjligt att dela in de två lagen ska programmet skriva ut en rad med texten ''\texttt{nej}''.
-%Annars, skriv ut 
 Programmet ska skriva ut en rad med fyra heltal $a_1, a_2, a_3, a_4$, där $a_i$ är antalet elever med styrkan $i$ som ska vara med i det ena dragkampslaget.
 
 \fe{Poängsättning:}\\
-För testfall värda $1$ poäng gäller $s_i \le 300$.\\
-För testfall värda ytterligare $1$ poäng gäller $s_i \le 3000$.\\
-För testfall värda $1$ poäng gäller att $s_4=0$, alltså att ingen elev har styrka $4$.\\
-För de sista $2$ poängen gäller inga av dessa begränsningar. \\
-%Testfallen är indelade i grupper och för att få poäng för en grupp så måste du klara alla testfall i gruppen.
+De fem testfallen som vardera ger $1$ poäng har följande begränsningar utöver de som redan nämnts:
+\begin{itemize}
+    \item[1] $s_i \le 300$    
+    \item[2] $s_i \le 2000$ 
+    \item[3] ingen elev har styrka $4$.
+    \item[4-5] inga ytterligare begränsningar.
+\end{itemize}
 
 
 \fe{Körningsexempel 1}\\
@@ -258,8 +258,9 @@ Antal fyror ? 8
 Svar: 1 2 3 4
 \end{verbatim}
 
-%\fe{Förklaring:}
-
+\fe{Förklaring:}
+I det första exemplet har det ena laget en elev med styrka $1$ och en med styrka $4$, medan det andra har en med styrka $2$ och en med styrka $3$.
+Båda lag har då samma styrka, nämligen $5$, och är lika stora, då de består av $2$ elever.
 
 \newpage
 \specialsection*{Uppgift 5 -- Sista moroten}
