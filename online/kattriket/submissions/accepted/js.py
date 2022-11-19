@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import sys
 import heapq
+import sys
+
+sys.setrecursionlimit(300000)
 
 N = int(input())
 

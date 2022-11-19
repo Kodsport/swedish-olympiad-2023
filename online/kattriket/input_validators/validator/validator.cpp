@@ -7,7 +7,7 @@ void dfs(int at, const vector<vector<int>>& G, vector<bool>& seen) {
 }
 
 void run() {
-    int maxN = Arg("maxN", 200'000);
+    int maxN = Arg("maxN", 100'000);
     bool isstar = Arg("isstar", 0);
 
     int N = Int(1, maxN); Endl();
