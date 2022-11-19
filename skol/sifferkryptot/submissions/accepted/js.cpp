@@ -27,7 +27,7 @@ void solve() {
     vector<ll> sol(sz(S) + 1);
     sol[0] = 1;
     for (int i = 0; i < sz(S); i++) {
-        sol[i + 1] = sol[i];
+        sol[i + 1] = S[i] == '0' ? 0 : sol[i];
         if (i && (S[i - 1] == '1' || S[i - 1] == '2')) sol[i + 1] += sol[i - 1];
     }
 
