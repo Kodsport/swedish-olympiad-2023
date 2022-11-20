@@ -43,7 +43,7 @@ tävling.
 \item Deltagandet är individuellt vilket bland annat innebär att inget utbyte av idéer eller 
 filer får ske under tävlingen.  
 \item Hjälpmedel: Valfritt skriftligt material, material som finns installerat på datorn samt material som finns tillgängligt på internet. Det är \ku{inte} tillåtet att aktivt kommunicera på internet (t.ex. chatta eller ställa frågor till ett forum) utan endast att söka efter information. Räknedosa är tillåten.
-\item Tävlingsbidraget ska lämnas in i form av källkodsfiler (uppg1...uppg6 med passande filtillägg) som läggs på överenskommen plats. Ingen hänsyn tas till andra filer. Var noga 
+\item Tävlingsbidraget ska lämnas in i form av källkodsfiler (uppg1...uppg1 med passande filtillägg) som läggs på överenskommen plats. Ingen hänsyn tas till andra filer. Var noga 
 med att lämna in den korrekta versionen av ditt program.  
 \end{lista}
 
@@ -234,10 +234,10 @@ Programmet ska skriva ut en rad med fyra heltal $a_1, a_2, a_3, a_4$, där $a_i$
 \fe{Poängsättning:}\\
 De fem testfallen som vardera ger $1$ poäng har följande begränsningar utöver de som redan nämnts:
 \begin{itemize}
-    \item[1] $\;\;\;\;s_i \le 300$    
-    \item[2] $\;\;\;\;s_i \le 2000$ 
-    \item[3] $\;\;\;\;s_4=0$, d.v.s.\ ingen elev har styrka $4$.
-    \item[4-5] $\;\;\;\;$ Inga särskilda begränsningar.
+    \item[(1)] $s_i \le 300$    
+    \item[(2)] $s_i \le 2000$ 
+    \item[(3)] $s_4=0$, d.v.s.\ ingen elev har styrka $4$.
+    \item[(4-5)] Inga särskilda begränsningar.
 \end{itemize}
 
 \vspace{1cm}
@@ -251,6 +251,10 @@ Antal fyror ? 1
 Svar: 1 0 0 1
 \end{verbatim}
 
+\fe{Förklaring:}
+Det ena laget har en elev med styrka $1$ och en med styrka $4$, medan det andra har en med styrka $2$ och en med styrka $3$.
+Båda lag har då samma styrka, nämligen $5$, och är lika stora, då de består av $2$ elever.
+
 \fe{Körningsexempel 2}\\
 \begin{verbatim}
 Antal ettor ? 2
@@ -261,9 +265,6 @@ Antal fyror ? 8
 Svar: 1 2 3 4
 \end{verbatim}
 
-\fe{Förklaring:}
-I det första exemplet har det ena laget en elev med styrka $1$ och en med styrka $4$, medan det andra har en med styrka $2$ och en med styrka $3$.
-Båda lag har då samma styrka, nämligen $5$, och är lika stora, då de består av $2$ elever.
 
 \newpage
 \specialsection*{Uppgift 5 -- Sista moroten}
@@ -284,8 +285,7 @@ Mor vill nu ha din hjälp att skriva ett program för att avgöra hennes chans a
 %\section*{Indata}
 %Den första raden innehåller de tre heltalen $N, M, K$ ($1 \le N \le 20, 1 \le M, K \le 10000$), antalet tärningar, hur många sidor vardera tärning har och hur många utfall Olle får välja.
 
-Programmet ska läsa in de tre heltalen $N, M, K$ ($1 \le N \le 20$, $1 \le M \le 10000$, \\
-$1 \le K < N \cdot M$): antalet tärningar, hur många sidor vardera tärning har och hur många utfall mor får välja.
+Programmet ska läsa in de tre heltalen $N, M, K$ ($1 \le N, M$, $1 \le K < N \cdot M$): antalet tärningar, hur många sidor vardera tärning har och hur många utfall mor får välja.
 
 Programmet ska skriva ut ett decimaltal -- den största sannolikheten mor kan ha att vinna om hon väljer sina utfall rätt. 
 Svaret kommer accepteras om det har ett absolut fel om högst $10^{-5}$.
