@@ -1,40 +1,48 @@
 \problemname{Brailleaddition}
 För att spara på elräkningarna har Göran bestämt sig för att räkna matematik utan belysning. 
-Utan belysning är det svårt att urskilja vanlig text, så därför har Göran bestämt sig för att övergå till Braille (Blindskrift). 
-Han behöver nu din hjälp med att verifiera sina uträkningar. 
-Skriv ett program som hittar summan av två tal på Brailleform, där asterisk ('*') menar på svart plupp och punkt ('.') menar på vit.
+Utan belysning är det svårt att urskilja vanlig text, så därför har Göran bestämt sig för att övergå till Braille (blindskrift). 
+I Braille skrivs varje tecken som ett rutnät av $3 \times 2$ pluppar, där vissa är förhöjda.
+I Figur~\ref{fig:braille} kan du se hur de tio siffrorna skrivs i Braille.
 
 \begin{figure}[h]
     \centering
   \includegraphics[width=0.75\textwidth]{braille.png}
-\caption{Braillesiffrorna 0 till 9.}
+    \caption{Braillesiffrorna 0 till 9. De förhöjda plupparna indikeras med en ifylld cirkel.}
+    \label{fig:braille}
 \end{figure}
 
+Han behöver nu din hjälp med att verifiera sina uträkningar. 
+Skriv ett program som hittar summan av två tal på Brailleform.
+
 \section*{Indata}
-Den första raden innehåller ett heltalen $N$ ($1 \le N \le 9$).
+Den första raden innehåller ett heltal $N$ ($1 \le N \le 9$), antalet siffror i det första talet.
 
 De följande tre raderna innehåller $N$ stycken Braillesiffror som representerar det första talet.
 
-På raden efter kommer ett heltal $M$ ($1 \le M \le 9$). 
+Nästa rad innehåller ett heltal $M$ ($1 \le M \le 9$), antalet siffror i det andra talet. 
 
 De följande tre raderna innehåller $M$ stycken Braillesiffror som representerar det andra talet.
 
+Braillesiffrorna ges som en matris av $3 \times 2$ tecken, där asterisk ('\texttt{*}') indikerar en förhöjd plupp och punkt ('\texttt{.}') indikerar en som inte är förhöjd.
+
+Siffrorna ges i samma ordning som ett vanligt decimaltal, så att den sista siffran motsvarar entalssiffran i talet.
+
 \section*{Utdata}
-Mata ut summan av de två talen. Summan ska skrivas med Braillesiffror.
+Skriv ut summan av de två talen med Braillesiffror.
 
 \section*{Poängsättning}
-Din lösning kommer att testas på två testfallsgrupper.
+Din lösning kommer att testas på en mängd testfallsgrupper.
 För att få poäng för en grupp så måste du klara alla testfall i gruppen.
 
 \noindent
 \begin{tabular}{| l | l | p{12cm} |}
   \hline
   \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
-  $1$    & $50$      & Enbart braillesiffran ett förekommer. \\ \hline
-  $2$    & $50$      & Inga ytterligare begräsningar. \\ \hline
+  $1$    & $31$      & Enbart braillesiffran ett förekommer. \\ \hline
+  $2$    & $69$      & Inga ytterligare begräsningar. \\ \hline
 \end{tabular}
 
-\section*{Förklaring av exempelfall}
+\section*{Förklaring av exempelfall 1}
 Det första talet består av Braillesiffrorna $1$, $6$ och $0$ som tillsamman ger talet $160$.
 Det andra talet består av Braillesiffrorna $1$ och $6$ som tillsammans ger talet $16$.
-Summan ges av $160+16=176$. Summan matas sedan ut med Braillesiffror.
+Summan är $160+16=176$.

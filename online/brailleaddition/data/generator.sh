@@ -11,7 +11,8 @@ compile gen_random.py
 sample 1
 sample 2
 
-group ff 50
+group g1 31
+limits only1=1
 tc exact01 gen_random n=1 m=1 flag=1
 tc exact02 gen_random n=2 m=2 flag=1
 tc exact03 gen_random n=3 m=3 flag=1
@@ -23,7 +24,7 @@ tc exact08 gen_random n=8 m=5 flag=1
 tc exact09 gen_random n=9 m=9 flag=1
 
 
-group gg 50
+group g2 69
 tc exact1 gen_random n=1 m=1
 tc exact2 gen_random n=2 m=2
 tc exact3 gen_random n=3 m=3
