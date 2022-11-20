@@ -13,7 +13,8 @@
 \specialsection*{Tävlingsregler för skolkvalet}
 \begin{lista}
 \item Tävlingen äger rum på av skolan bestämt datum under {\bf fyra
-    timmar. Ingen förlängning ges för lunch eller raster.} Eleven ska i förväg komma överens med läraren om att använda egen dator eller en som skolan tillhandahåller. I vilket fall som helst måste eleven befinna sig i avtalad lokal på skolan. {\bf På grund av pandemin kan i undantagsfall tävling ske från annan plats godkänd av läraren, givet tillräcklig övervakning.}
+    timmar. Ingen förlängning ges för lunch eller raster.} Eleven ska i förväg komma överens med läraren om att använda egen dator eller en som skolan tillhandahåller. I vilket fall som helst måste eleven befinna sig i avtalad lokal på skolan. 
+    %{\bf På grund av pandemin kan i undantagsfall tävling ske från annan plats godkänd av läraren, givet tillräcklig övervakning.}
 \item Tävlingen består av fem uppgifter som vardera ska lösas genom ett
   datorprogram i valfritt programmeringsspråk.
 \item {\bf Indata kan läsas in i programmet på valfritt sätt}, t.ex. genom att programmet för en dialog med användaren (som i körningsexemplena i uppgifterna), att de skrivs in i ett grafiskt gränssnitt eller att datafiler skickas till {\em standard input}. Kom bara överens med din lärare om hur programmet ska testas.
@@ -56,9 +57,9 @@ med att lämna in den korrekta versionen av ditt program.
 \newpage
 \specialsection*{Uppgift 1 -- Morötter}
 
-Tor och hans mor älskar morötter. Varje dag ställer de fram en skål med 40 morötter och äter sedan morötter oavbrutet tills skålen är tom. Om de båda är redo att ta en morot när det bara finns en kvar, så tar ingen av dem den sista.
+Tor och hans mor älskar morötter. Varje dag ställer de fram en skål med exakt $40$ morötter och äter sedan morötter oavbrutet tills skålen är tom. Om de båda är redo att ta en morot när det bara finns en kvar, så tar ingen av dem den sista.
 
-Skriv ett program som, givet antal sekunder det tar för Tor respektive hans mor att äta varje morot (båda heltal mellan 1 och 100), beräknar hur många morötter var och en får.
+Skriv ett program som, givet antal sekunder det tar för Tor respektive hans mor att äta varje morot (heltal mellan 1 och 100), beräknar hur många morötter var och en får.
 
 \fe{Poängsättning:} För testfall värda $2$ poäng (utav $5$ möjliga) gäller att Tor och mor aldrig är redo att äta en morot samtidigt, utöver den första moroten de båda äter.
 
@@ -98,7 +99,7 @@ Svar: Tor 19,   Mor 21
 
 
 \newpage
-\specialsection*{Uppgift 2 -- Sifferkrypto}
+\specialsection*{Uppgift 2 -- Sifferkryptot}
 
 
 \begin{center}
@@ -206,7 +207,7 @@ Svar: 195
 ~\\
 ~\\
 
-Figuren ovan: Genomskärning av byggnaden i exempel 2. De stora siffrorna visar våningsnummer, de små numreringen av områdena. En möjlig kortaste väg genom hela banan är:\\
+\ku{Figuren ovan:} Genomskärning av byggnaden i exempel 2. De stora siffrorna visar våningsnummer, de små numreringen av områdena. En möjlig snabbaste väg genom hela banan är:\\
 %(1) AAD (2) EEE (3) CBAA (4) DEE (5) EEDD (6) DAAB (7) CFF (8)\\
 AAD -- EEE -- CBAA -- DEE -- EEDD -- DAAB -- CFF \\
 Notera att kontrollerna måste tas i ordning. %, så även om område 4 besökts redan på väg till område 2 så måste det besökas igen efter område 3.
@@ -234,10 +235,10 @@ Programmet ska skriva ut en rad med fyra heltal $a_1, a_2, a_3, a_4$, där $a_i$
 \fe{Poängsättning:}\\
 De fem testfallen som vardera ger $1$ poäng har följande begränsningar utöver de som redan nämnts:
 \begin{itemize}
-    \item[(1)] $s_i \le 300$    
-    \item[(2)] $s_i \le 2000$ 
-    \item[(3)] $s_4=0$, d.v.s.\ ingen elev har styrka $4$.
-    \item[(4-5)] Inga särskilda begränsningar.
+    \item[(1)] $\;\;\;\;s_i \le 300$    
+    \item[(2)] $\;\;\;\;s_i \le 2000$ 
+    \item[(3)] $\;\;\;\;s_4=0$, d.v.s.\ ingen elev har styrka $4$.
+    \item[(4-5)] $\;\;\;\; $Inga särskilda begränsningar.
 \end{itemize}
 
 \vspace{1cm}
