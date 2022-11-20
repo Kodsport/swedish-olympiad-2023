@@ -14,9 +14,11 @@ sample 3
 
 # TODO: merge these two cases after qualifiers
 group g1 20
+limits nosame=1
 tc_manual g1
 
 group g2 20
+limits nosame=1
 tc_manual g2
 
 group g3 20
