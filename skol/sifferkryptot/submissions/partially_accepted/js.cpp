@@ -24,14 +24,26 @@ void solve() {
     string S;
     cin >> S;
 
-    vector<ll> sol(sz(S) + 1);
-    sol[0] = 1;
+    ll res = 1;
     for (int i = 0; i < sz(S); i++) {
-        sol[i + 1] = sol[i];
-        if (i && (S[i - 1] == '1' || S[i - 1] == '2')) sol[i + 1] += sol[i - 1];
+        bool is12 = S[i] == '1' || S[i] == '2';
+        bool nextis12 = (i + 1 != sz(S)) && (S[i + 1] == '1' || S[i + 1] == '2');
+        bool nextis39 = i + 1 < sz(S) && '3' <= S[i + 1];
+        bool nextnextis39 = i + 2 < sz(S) && '3' <= S[i + 2];
+        bool nextnextisend = i + 2 >= sz(S);
+
+        if (is12 && nextis39) {
+            res *= 2;
+        } else if (is12 && nextis12 && nextnextis39) {
+            res *= 3;
+            i++;
+        } else if (is12 && nextis12 && nextnextisend) {
+            res *= 2;
+            i++;
+        }
     }
 
-    cout << sol.back() << endl;
+    cout << res << endl;
 }
 
 int main() {
