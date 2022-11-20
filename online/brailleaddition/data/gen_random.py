@@ -28,6 +28,7 @@ class bnum:
 random.seed(int(cmdlinearg('seed', sys.argv[-1])))
 n = int(cmdlinearg('n'))
 m = int(cmdlinearg('m'))
+flag = int(cmdlinearg('flag',0))
 l1 = ".."
 l2 = "*."
 l3 = ".*"
@@ -52,8 +53,13 @@ for el in nums:
     print()
 '''
 
-ar1 = [random.randint(0, 9) for _ in range(n)]
-ar2 = [random.randint(0, 9) for _ in range(m)]
+lower = 0
+upper = 9
+if flag == 1:
+    lower = 1
+    upper = 1
+ar1 = [random.randint(lower, upper) for _ in range(n)]
+ar2 = [random.randint(lower, upper) for _ in range(m)]
 
 if ar1[0] == 0:
     ar1[0] = 1
