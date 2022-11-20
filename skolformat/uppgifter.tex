@@ -58,13 +58,15 @@ med att lämna in den korrekta versionen av ditt program.
 
 Tor och hans mor älskar morötter. Varje dag ställer de fram en skål med 40 morötter och äter sedan morötter oavbrutet tills skålen är tom. Om de båda är redo att ta en morot när det bara finns en kvar, så tar ingen av dem den sista.
 
-Skriv ett program som, givet antal sekunder det tar för Tor respektive hans mor att äta varje morot (båda heltal), beräknar hur många morötter var och en får.
+Skriv ett program som, givet antal sekunder det tar för Tor respektive hans mor att äta varje morot (båda heltal mellan 1 och 100), beräknar hur många morötter var och en får.
 
+\vspace{1cm}
 \begin{center}
   \includegraphics[width=17cm]{morot.pdf}
 \end{center}
-\ku{Tidsschema för morotsätningen i exempel 1 (överst) och exempel 2 (underst). I det andra exemplet kommer ingen att ta den sista moroten.}
+\ku{Tidsschema för morotsätningen i exempel 1 (överst) och exempel 2 (underst). Varje ruta motsvarar en sekund, och en morot i rutan betyder att personen börjar äta en morot då. I det andra exemplet kommer ingen att ta den sista moroten, vilket visas med ett kryss i den tidsrutan då båda två skulle vilja ta den sista.}
 
+\vspace{1cm}
 \fe{Körningsexempel 1}
 \begin{verbatim}
 Tors tid ? 5
@@ -73,7 +75,7 @@ Mors tid ? 3
 Svar: Tor 15,   Mor 25
 \end{verbatim}
 
-
+\vspace{1cm}
 \fe{Körningsexempel 2}
 \begin{verbatim}
 Tors tid ? 2
@@ -82,6 +84,7 @@ Mors tid ? 4
 Svar: Tor 26,   Mor 13
 \end{verbatim}
 
+\vspace{1cm}
 \fe{Körningsexempel 3}
 \begin{verbatim}
 Tors tid ? 19
@@ -97,8 +100,8 @@ Svar: Tor 19,   Mor 21
 
 
 \begin{center}
-  \includegraphics[width=12cm]{sifferkrypto.pdf} \\
-  \ku{Exempel på missuppfattning som kan ske med Alice nya krypto.}
+  \includegraphics[width=12cm]{sifferkrypto.pdf} \\ ~\\
+  \ku{Exempel på missuppfattning som kan ske med Alice nya chiffer.}
 \end{center}
 
 \vspace{1cm}
@@ -138,13 +141,11 @@ Svar: 68
 
 En snabbt växande sport är \ku{inomhusorientering}, där de största tävlingarna lockar tusentals deltagare som springer runt på t.ex.\ ett Campus. Genom arrangörens noga uttänkta avspärrningar blir det en labyrintliknande utmaning att ta sig mellan kontrollerna. Ofta gäller det att optimera användandet av trappor, och det är det vi ska titta på i den här uppgiften. Givet en karta som indelats i $N$ \ku{områden} ska du beräkna det minimala antalet trapplöpningar som orienteraren behöver göra för att besöka de $N$ områdena i tur och ordning (för att ta en kontroll i varje).
 
-Byggnaden innehåller ett antal lodräta trapphus betecknade med bokstäver. Varje område ligger på en viss våning och är kopplat till ett eller flera av trapphusen. Ett trapphus behöver inte vara kopplat till något område på varje våning. Exempelvis kan trappa B förbinda ett område på våning 1 med ett annat område på våning 3, utan att vara kopplad till något område på den mellanliggande våning 2. Att förflytta sig en våning upp eller ner i en trappa kostar en tidsenhet. Däremot bryr vi oss inte om tiden det tar att röra sig inom ett område och hitta kontrollen.
+Byggnaden innehåller ett antal lodräta trapphus betecknade med bokstäver. Varje område ligger på en viss våning och är kopplat till ett eller flera av trapphusen. Ett trapphus behöver inte vara kopplat till något område på varje våning. Exempelvis kan trappa A gå mellan våning 1 och våning 3 utan att vara kopplad till något område på våning 2, som i figuren nedan. Att förflytta sig en våning upp eller ner i en trappa tar en tidsenhet. Däremot bryr vi oss inte om tiden det tar att röra sig inom ett område.
 
-Programmet ska först läsa in antalet områden $3\le N \le 15$. För varje område ska programmet läsa in den våning som området befinner sig på (ett heltal mellan 1 och 100) och en sträng som innehåller ett eller flera tecken, valda bland A--Z, och som anger vilket eller vilka trapphus området är kopplat till. Programmet ska skriva ut ett tal: den minimala tiden det tar att besöka de $N$ områdena i precis den ordning de angavs i indata, med starten i område $1$ och målet i område $N$. 
+Programmet ska först läsa in antalet områden $N$, där $3\le N \le 15$. För varje område ska programmet läsa in den våning som området befinner sig på (ett heltal mellan 1 och 100) och en sträng som innehåller ett eller flera tecken, valda bland versalerna A--Z, och som anger vilket eller vilka trapphus området är kopplat till. Programmet ska skriva ut ett tal: den minimala tiden det tar att besöka de $N$ områdena i precis den ordning de angavs i indata, med starten i område $1$ och målet i område $N$. 
 
-%\begin{center}
-%  
-%\end{center}
+\fe{Poängsättning:} I testfall värda $1$ poäng (av $5$ möjliga) kommer alla strängar vara \cu{A}.\\
 
 \begin{multicols*}{3}
 
@@ -169,7 +170,6 @@ Omr 8, vån ? 3
 Omr 8, tr  ? F
 
 Svar: 24 
-
 \end{verbatim}
 \vfill
 \columnbreak
@@ -185,12 +185,12 @@ Svar: 24
 N ? 3
 Omr 1, vån ? 2
 Omr 1, tr  ? A
-Omr 2, vån ? 4
-Omr 2, tr  ? B
-Omr 3, vån ? 7
-Omr 3, tr  ? AB
+Omr 2, vån ? 100
+Omr 2, tr  ? A
+Omr 3, vån ? 3
+Omr 3, tr  ? A
 
-Svar: 11
+Svar: 195
 \end{verbatim}
 \columnbreak
 %\vspace{8cm}
@@ -224,20 +224,21 @@ Läraren har på förhand uppskattat varje elevs styrka till ett tal mellan $1$ 
 Givet hur många elever av varje styrketal som är med på lektionen, kan du berätta hur läraren ska dela upp lagen?
 Det är garanterat att elevernas styrkor är valda så att detta alltid är möjligt.
 
-Programmet ska läsa in de fyra heltalen $s_1, s_2, s_3, s_4$ ($0 \le s_i \le 10^{7}$), där $s_i$ är antalet elever som har styrkan $i$. 
+Programmet ska läsa in de fyra heltalen $s_1, s_2, s_3, s_4$ ($0 \le s_i \le 10\,000\,000$), där $s_i$ är antalet elever som har styrkan $i$. 
 
 Programmet ska skriva ut en rad med fyra heltal $a_1, a_2, a_3, a_4$, där $a_i$ är antalet elever med styrkan $i$ som ska vara med i det ena dragkampslaget.
 
+\vspace{0.5cm}
 \fe{Poängsättning:}\\
 De fem testfallen som vardera ger $1$ poäng har följande begränsningar utöver de som redan nämnts:
 \begin{itemize}
-    \item[1] $s_i \le 300$    
-    \item[2] $s_i \le 2000$ 
-    \item[3] ingen elev har styrka $4$.
-    \item[4-5] inga ytterligare begränsningar.
+    \item[1] $\;\;\;\;s_i \le 300$    
+    \item[2] $\;\;\;\;s_i \le 2000$ 
+    \item[3] $\;\;\;\;s_4=0$, d.v.s.\ ingen elev har styrka $4$.
+    \item[4-5] $\;\;\;\;$ Inga särskilda begränsningar.
 \end{itemize}
 
-
+\vspace{1cm}
 \fe{Körningsexempel 1}\\
 \begin{verbatim}
 Antal ettor ? 1
@@ -281,7 +282,8 @@ Mor vill nu ha din hjälp att skriva ett program för att avgöra hennes chans a
 %\section*{Indata}
 %Den första raden innehåller de tre heltalen $N, M, K$ ($1 \le N \le 20, 1 \le M, K \le 10000$), antalet tärningar, hur många sidor vardera tärning har och hur många utfall Olle får välja.
 
-Programmet ska läsa in de tre heltalen $N, M, K$ ($1 \le N \le 20$, $1 \le M \le 10000$, $1 \le K < N \cdot M$), antalet tärningar, hur många sidor vardera tärning har och hur många utfall mor får välja.
+Programmet ska läsa in de tre heltalen $N, M, K$ ($1 \le N \le 20$, $1 \le M \le 10000$, \\
+$1 \le K < N \cdot M$): antalet tärningar, hur många sidor vardera tärning har och hur många utfall mor får välja.
 
 Programmet ska skriva ut ett decimaltal -- den största sannolikheten mor kan ha att vinna om hon väljer sina utfall rätt. 
 Svaret kommer accepteras om det har ett absolut fel om högst $10^{-5}$.
