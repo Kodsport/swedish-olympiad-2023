@@ -3,7 +3,7 @@
 void run() {
     bool nosame = Arg("nosame", 0);
 
-    int maxtime = Arg("maxtime", 1000);
+    int maxtime = Arg("maxtime", 100);
     int M = Int(1, maxtime); Space();
     int T = Int(1, maxtime); Endl();
 
