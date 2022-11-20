@@ -446,7 +446,7 @@ int32_t main()
     }
 #endif
 
-    cerr << "\nJoshua: tc " << t << ": " << evaluate(besthouses) << endl;
+    cerr << evaluate(besthouses) << endl;
 
     quit;
 }

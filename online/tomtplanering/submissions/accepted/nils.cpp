@@ -313,7 +313,7 @@ int main() {
         cout << ans[c1]+1 << " ";
     }cout << "\n";
 
-    cerr << "TC " << T << ": " << score(ans) << "\n";
+    cerr << score(ans) << "\n";
 
     return 0;
 }

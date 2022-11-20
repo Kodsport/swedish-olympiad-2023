@@ -33,6 +33,8 @@ testcase 10 gen n=100000
 
 
 # Clamp final scores to 100
-echo 'grading: custom' >> testdata.yaml
-echo 'grading: default' >> secret/testdata.yaml
-echo 'grading: default' >> sample/testdata.yaml
+echo 'grading: custom' >> secret/testdata.yaml
+for x in 01 02 03 04 05 06 07 08 09 10
+do
+    echo 'grading: default' >> secret/group$x/testdata.yaml
+done
