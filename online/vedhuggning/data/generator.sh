@@ -14,7 +14,7 @@ samplegroup
 sample 1
 sample 2
 
-group group1 1
+group group1 16
 limits maxN=1
 tc 1
 
@@ -28,7 +28,7 @@ tc rand-n1-02 gen_random N=1
 tc rand-n1-03 gen_random N=1
 tc rand-n1-04 gen_random N=1
 
-group group2 2
+group group2 17
 limits maxN=1000 maxS=1000
 tc 2
 
@@ -44,7 +44,7 @@ tc rand-n1000s-01 gen_random N=1000 maxS=1000
 tc rand-n1000s-02 gen_random N=1000 maxS=1000
 tc rand-n1000s-03 gen_random N=1000 maxS=1000
 
-group group3 4
+group group3 17
 limits maxN=1000
 include_group group1
 include_group group2
@@ -61,7 +61,7 @@ tc rand-n1000-04 gen_random N=1000
 tc rand-n1000-05 gen_random N=1000
 tc rand-n1000-06 gen_random N=1000
 
-group group4 8
+group group4 50
 include_group group3
 
 tc immediate gen_immediate N=200000

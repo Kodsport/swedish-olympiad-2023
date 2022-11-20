@@ -33,13 +33,12 @@ Skriv ut en rad med $N/2$ heltal, listan med hus som ska besökas.
 Ditt program kommer att testas på $10$ testfall och poängsättas baserat på hur det står sig relativt domarnas lösning.
 
 Låt $P_1$ vara det totala avståndet tomten behöver åka i din lösning, och låt $P_2$ vara motsvarande
-för domarnas lösning. Du får då $10 \cdot \frac{P_2}{P_1}$ poäng på testfallet, avrundat till två decimaler.
+för domarnas lösning. Du får då $\min(10 \cdot \frac{P_2}{P_1}, 10)$ poäng på testfallet, avrundat till två decimaler.
+Du kan alltså aldrig få mer än $10$ poäng på ett testfall, även om din lösning är bättre än den domarna skrivit.
 
 Din poäng för en inskickning är summan av poängen för testfallen, och din totala poäng är poängen för den bästa inskickningen.
 Det går alltså inte att kombinera testfall mellan olika inskickningar, utan du måste skicka in ett enda program som
 maximerar din poäng på alla testfall samtidigt.
-
-Din lösning kan som mest få $100$ poäng, även om den är bättre än den domarna skrivit.
 
 Exempeltestfallet kommer alltid att ge $0$ poäng.
 

@@ -15,7 +15,7 @@ sample_manual 1
 sample_manual 2
 sample_manual 3
 
-group group1 10
+group group1 9
 limits max_n=100 min_k=1 max_k=1 increasing=0
 tc g1-1 gen_random n=1 k=1 min_height=1 max_height=1000000000 mode="normal" seed=0
 tc g1-2 gen_random n=99 k=1 min_height=1 max_height=1000000000 mode="normal" seed=1
@@ -28,7 +28,7 @@ tc g1-8 gen_random n=100 k=1 min_height=100 max_height=10000 mode="derivative" s
 tc g1-9 gen_random n=100 k=1 min_height=1000000 max_height=100000000 mode="normal" seed=8
 
 
-group group2 10
+group group2 22
 limits max_n=50000 min_k=0 max_k=20 increasing=1
 tc g2-1 gen_random n=49999 k=0 min_height=1 max_height=1000000000 mode="increasing" seed=9
 tc g2-2 gen_random n=15 k=20 min_height=1000 max_height=1000000000 mode="increasing" seed=10
@@ -38,7 +38,7 @@ tc g2-5 gen_random n=50000 k=20 min_height=1000 max_height=100000000 mode="incre
 tc g2-6 gen_random n=50000 k=7 min_height=1000 max_height=100000000 mode="increasing-even-rect-distribution" seed=14
 
 
-group group3 15
+group group3 25
 limits max_n=50000 min_k=0 max_k=0 increasing=0
 tc g3-1 gen_random n=49999 k=0 min_height=10 max_height=100 mode="normal" seed=15
 tc g3-2 gen_random n=1 k=0 min_height=1 max_height=1000000000 mode="normal" seed=16
@@ -50,7 +50,7 @@ tc g3-7 gen_random n=50000 k=0 min_height=1000 max_height=1000000000 mode="deriv
 tc g3-8 gen_random n=50000 k=0 min_height=100 max_height=1000000 mode="normal" seed=21
 
 
-group group4 25
+group group4 16
 include_group sample
 include_group group1
 limits max_n=2000 min_k=0 max_k=20 increasing=0
@@ -63,7 +63,7 @@ tc g4-6 gen_random n=2000 k=8 min_height=1 max_height=1000000000 mode="normal" s
 tc g4-7 gen_random n=2000 k=10 min_height=1 max_height=1000000000 mode="derivative" seed=27
 
 
-group group5 40
+group group5 28
 include_group group2
 include_group group3
 include_group group4

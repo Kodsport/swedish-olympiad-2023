@@ -15,7 +15,7 @@ samplegroup
 sample 1
 sample 2
 
-group group1 1
+group group1 21
 limits isstar=1
 tc 1
 tc d1 gen_d1 N=100000
@@ -26,7 +26,7 @@ tc randline-1000 gen_random_lines N=100000 K=1000
 tc randline-10000 gen_random_lines N=100000 K=10000
 tc randline-100000 gen_random_lines N=100000 K=100000
 
-group group2 2
+group group2 28
 limits maxN=1000
 tc 2
 
@@ -41,7 +41,7 @@ tc randline-small-10 gen_random_lines N=1000 K=10
 tc randline-small-100 gen_random_lines N=1000 K=50
 tc randline-small-1000 gen_random_lines N=1000 K=100
 
-group group3 4
+group group3 51
 include_group group1
 include_group group2
 

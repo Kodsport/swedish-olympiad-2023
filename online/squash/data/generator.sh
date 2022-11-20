@@ -15,7 +15,7 @@ sample 1
 sample 2
 sample 3
 
-group group1 1
+group group1 10
 limits K=1
 
 tc 1
@@ -32,7 +32,7 @@ tc k1-singlewin gen_singlewin N=1000 K=1
 tc k1-singletwowin gen_singletwowin N=1000 K=1
 tc k1-twotwowin gen_twotwowin N=1000 K=1
 
-group group2 2
+group group2 20
 limits K=2
 
 tc 2
@@ -49,7 +49,7 @@ tc k2-singlewin gen_singlewin N=1000 K=2
 tc k2-twotwowin gen_twotwowin N=1000 K=2
 tc k2-threetwowin gen_threetwowin N=1000 K=2
 
-group group3 4
+group group3 30
 limits K=3
 
 tc 3
@@ -65,7 +65,7 @@ tc k3-v-75 gen_random N=1000 K=3 dens=75
 tc k3-singlewin gen_singlewin N=1000 K=3
 tc k3-threetwowin gen_threetwowin N=1000 K=3
 
-group group4 8
+group group4 40
 include_group group1
 include_group group2
 include_group group3
