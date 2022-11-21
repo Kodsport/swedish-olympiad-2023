@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+    <body>
+        Fyll i utdatan på formen <code>s1 s2 s3 s4</code> i textfältet
+        för test testfall du rättar och klicka "Rätta".
+        <hr> 
+
+        <template id="testcase">
+            <div>
+                Testfall <span class="tcNum"></span>:
+                <button>Rätta</button>
+                <br>
+                <textarea></textarea>
+                <br>
+                <pre class="answer"></pre>
+                <hr>
+            </div>
+        </template>
+
+        <script lang="text/javascript">
+            const input = [
+                "299 297 295 293",
+                "1802 1999 1888 1777",
+                "1234567 2345678 7654321 0",
+                "4949494 8383838 6767676 2525252",
+                "0 7777777 4444444 3333333",
+            ];
+            const body = document.querySelector("body");
+            const template = document.querySelector("#testcase");
+            for (let tc = 1; tc <= 5; ++tc) {
+                const tcNode = template.content.firstElementChild.cloneNode(true);
+                body.appendChild(tcNode);
+                tcNode.querySelector(".tcNum").textContent = tc;
+                tcNode.querySelector("button").addEventListener("click", () => {
+                    const answer = tcNode.querySelector(".answer");
+                    answer.textContent = ""
+                    const inp = input[tc - 1].split(' ').map((val) => parseInt(val));
+                    let output = tcNode.querySelector("textarea").value;
+                    output = output.replace(/(\r\n|\n|\r)/gm, "").split(' ').filter(x => x !== "");
+            
+                    answer.textContent += "Läste svaret " + output.join(' ') + "\n";
+                    if (output.length !== 4) {
+                        answer.textContent += "Svaret är inte 4 blankstegsseparerade tal!";
+                        return;
+                    }
+
+                    const nums = output.map(v => parseInt(v, 10));
+                    for (let i = 0; i < 4; i++) {
+                        if (isNaN(nums[i])) {
+                            answer.textContent += output[i] + " är inte ett giltigt heltal!";
+                            return;
+                        }
+                    }
+                    for (let i = 0; i < 4; i++) {
+                        if (nums[i] < 0) {
+                            answer.textContent += nums[i] + " är negativt!";
+                            return;
+                        }
+                        if (nums[i] > inp[i]) {
+                            answer.textContent += nums[i] + " är fler än antalet elever " + inp[i];
+                            return;
+                        }
+                    }
+
+                    const sum = nums[0] + nums[1] + nums[2] + nums[3];
+                    const wantedSum = (inp[0] + inp[1] + inp[2] + inp[3]) / 2;
+                    if (sum != wantedSum) {
+                        answer.textContent += "Laget har storlek " + sum + " men hälften av eleverna är " + wantedSum;
+                        return;
+                    }
+
+                    const strength = nums[0] + 2*nums[1] + 3*nums[2] + 4*nums[3];
+                    const wantedStrength = (inp[0] + 2*inp[1] + 3*inp[2] + 4*inp[3]) / 2;
+                    if (strength != wantedStrength) {
+                        answer.textContent += "Laget har styrkan " + strength + " men hälften av totala styrkan är " + wantedStrength;
+                        return;
+                    }
+                    answer.textContent += "Korrekt!";
+                });
+            }
+        </script>
+    </body>
+</html>
