@@ -34,13 +34,12 @@ if mode == 'increasing-even-rect-distribution':
             heights.append(new)
             added.add(new)
     heights.sort()
-    heights = list(map(str, heights))
 
 elif mode == 'increasing' or mode == 'unique':
     prev = 0
     for i in range(n):
-        heights.append(str(random.randint(prev + 1, random.randint(prev + 1, max_height - (n - i - 1)))))
-        prev = int(heights[-1])
+        heights.append(random.randint(prev + 1, random.randint(prev + 1, max_height - (n - i - 1))))
+        prev = heights[-1]
 
     if mode == 'unique':
         random.shuffle(heights)
@@ -82,11 +81,12 @@ elif mode == 'derivative': # good for large n ≥ 10000
         delta2 = round( (random.random() ** 2) * delta)
         heights[i] = min(max_height, max(min_height, heights[i] + random.randint(-delta2, delta2)))
     
-    heights = list(map(str, heights))
-        
-else:
+elif mode == "normal":
     for i in range(n):
-        heights.append(str(random.randint(min_height, max_height)))
+        heights.append(random.randint(min_height, max_height))
+
+else:
+    assert False, f"bad mode {mode}"
 
 """
 # modifier
@@ -100,4 +100,4 @@ if same:
     for i in range(n):
         heights[i] = str(h[bisect_left(h, int(heights[i]))])        
 """
-print(' '.join(heights))
+print(*heights)

@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-# Example generator, prints n and then n numbers in the range 1 to 1000.
-
 import sys
 import random
 
