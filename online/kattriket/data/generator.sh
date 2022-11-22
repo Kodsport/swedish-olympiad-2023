@@ -18,6 +18,7 @@ sample 2
 group group1 21
 limits isstar=1
 tc 1
+tc line-minimal gen_line N=2
 tc d1 gen_d1 N=100000
 tc line gen_line N=100000
 tc randline-10 gen_random_lines N=100000 K=10
@@ -30,6 +31,7 @@ group group2 28
 limits maxN=1000
 tc 2
 
+tc line-minimal
 tc line-small gen_line N=1000
 tc d1-small gen_d1 N=1000
 tc deepleaves-small gen_deepleaves N=1000

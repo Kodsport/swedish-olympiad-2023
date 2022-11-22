@@ -10,7 +10,7 @@ void run() {
     int maxN = Arg("maxN", 100'000);
     bool isstar = Arg("isstar", 0);
 
-    int N = Int(1, maxN); Endl();
+    int N = Int(2, maxN); Endl();
 
     vector<vector<int>> G(N);
     for (int i = 0; i < N - 1; i++) {
