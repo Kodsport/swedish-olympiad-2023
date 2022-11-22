@@ -70,6 +70,7 @@ void readDigs(int N, bool only1) {
             A[j][i].push_back(l[3 * j + 1]);
         }
     }
+    assert(A[0] != braille[0] || N == 1);
     for (vector<string> dig : A) {
         if (only1) assert(dig == braille[1]);
         assert(exists(dig));

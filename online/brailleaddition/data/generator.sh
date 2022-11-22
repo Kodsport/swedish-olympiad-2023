@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
 PPATH=$(realpath ..)
-REQUIRE_SAMPLE_REUSE=0
 . ../../testdata_tools/gen.sh
 
 use_solution js.cpp lk.py
 
 compile gen_random.py
+compile gen_zero.py
 
 sample 1
 sample 2
+sample 3
 
 group g1 31
 limits only1=1
@@ -25,6 +26,14 @@ tc exact09 gen_random n=9 m=9 flag=1
 
 
 group g2 69
+include_group g1
+tc 1
+tc 2
+tc 3
+tc zero01 gen_zero n=1 m=0
+tc zero02 gen_zero n=0 m=1
+tc zero03 gen_zero n=0 m=9
+tc zero04 gen_zero n=9 m=0
 tc exact1 gen_random n=1 m=1
 tc exact2 gen_random n=2 m=2
 tc exact3 gen_random n=3 m=3

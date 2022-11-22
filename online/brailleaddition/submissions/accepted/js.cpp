@@ -84,6 +84,7 @@ int decode(vector<vector<string>> s) {
 
 void output(int sum) {
     vector<vector<string>> nums;
+    if (sum == 0) nums.push_back(braille[0]);
     while(sum != 0) {
         nums.push_back(braille[sum % 10]);
         sum /= 10;

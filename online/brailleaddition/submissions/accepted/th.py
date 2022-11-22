@@ -20,6 +20,7 @@ DIGIT = {s: i for (i, s) in enumerate(REPRESENTATION)}
 
 def i2ss(number):
     res = []
+    if not number: res = [REPRESENTATION[0]]
     while number:
         res.append(REPRESENTATION[number % 10])
         number //= 10
