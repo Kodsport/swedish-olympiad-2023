@@ -26,7 +26,8 @@ void solve() {
     int l, v, t;
     cin >> l >> v >> t;
     S -= l;
-    cout << (S + v - 1) / v << endl;
+    if (S <= 0) cout << 0 << endl;
+    else cout << (S + v - 1) / v << endl;
 }
 
 int main() {

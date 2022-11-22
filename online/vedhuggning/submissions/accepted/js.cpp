@@ -43,7 +43,7 @@ void solve() {
         ll diff = event.first - T;
         ll newsum = sum + derivative * diff;
         if (newsum >= S) {
-            ll needTime = (S - sum + derivative - 1) / derivative;
+            ll needTime = max(0LL, (S - sum + derivative - 1) / derivative);
             cout << T + needTime << endl;
             return;
         }

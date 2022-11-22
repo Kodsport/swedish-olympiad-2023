@@ -33,6 +33,7 @@ tc rand-n1-04 gen_random N=1
 group group2 17
 limits maxN=1000 maxS=1000
 tc 2
+tc 3
 
 tc immediate-n1000s gen_immediate N=1000 maxS=1000
 tc onemore-n1000s gen_onemore N=1000 maxS=1000
