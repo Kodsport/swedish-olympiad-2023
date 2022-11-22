@@ -32,13 +32,18 @@ auto Start = chrono::high_resolution_clock::now();
 void resettimer() { Start = chrono::high_resolution_clock::now(); }
 int elapsedmillis() { return chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - Start).count(); }
 
-__int128 evaluate(vector<p3>& trees, __int128 time)
+
+bool evaluate(vector<p3>& trees, ll time, int t)
 {
-	__int128 height = 0;
+	ll height = -t;
 
-	rep(i, trees.size()) height += get<0>(trees[i]) + get<1>(trees[i]) * (__int128)min(time, (__int128)get<2>(trees[i]));
+	rep(i, trees.size())
+	{
+		height += get<0>(trees[i]) + get<1>(trees[i]) * (ll)min(time, (ll)get<2>(trees[i]));
+		if (height >= 0) return true;
+	}
 
-	return height;
+	return false;
 }
 
 int32_t main()
@@ -46,6 +51,7 @@ int32_t main()
 	// Our function is basically gonna be a line with slope decreasing at a coupleo of points.
 	// However, it is monotonically increasing => binary search
 	// You could also find every point where the slope changes and solve it using math in the interval, but that would still be nlogn due to sorting (although radix sort exists)
+
 
 	dread2(int, n, s);
 	vector<p3> trees;
@@ -56,32 +62,16 @@ int32_t main()
 	}
 
 
-	ll lo = 0;
-	__int128 hi = __int128(1e18);
+	ll lo = -1;
+	ll hi = ll(1e9)+10;
 
-	while (true)
+	while (hi - lo > 1)
 	{
-		__int128 mid = (lo + hi) / 2;
-		__int128 v = evaluate(trees, mid);
-		if (v < s)
-		{
-			lo = mid;
-		}
-		else
-		{
-			hi = mid;
-		}
-
-		if (lo + 1 == hi)
-		{
-			for (int i = lo - 2; i < hi + 3; i++)
-			{
-				if (evaluate(trees, i) < s && evaluate(trees, i + 1) >= s)
-				{
-					cout << i + 1 << endl;
-					return 0;
-				}
-			}
-		}
+		ll mid = (lo + hi) / 2;
+		bool works = evaluate(trees, mid, s);
+		if (works) hi = mid;
+		else lo = mid;
 	}
+
+	cout << hi;
 }
