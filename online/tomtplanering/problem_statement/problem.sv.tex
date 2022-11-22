@@ -11,7 +11,8 @@ På så sätt innehåller de två grupperna exakt lika många barn, och då blir
 
 Du är ansvarig för att planera vilka hus som tomten ska besöka. Det finns
 $N$ hus numrerade från $1$ till $N$, där hus nummer $i$ har koordinater $(x_i, y_i)$. Att färdas mellan
-två punkter $(x_i, y_i)$ och $(x_j, y_j)$ tar $|x_i-x_j| + |y_i-y_j|$ sekunder. Din uppgift är 
+två punkter $(x_i, y_i)$ och $(x_j, y_j)$ tar $|x_i-x_j| + |y_i-y_j|$ sekunder\footnote{$|a|$ är den matematiska notationen för \emph{absolutbeloppet} av talet $a$,
+definerat som $a$ om $a \ge 0$ och $-a$ om $a < 0$.}. Din uppgift är 
 att hitta en ordnad lista med $N/2$ olika hus ($N$ är alltid jämnt), så att den totala tiden att besöka husen
 i den ordningen är så liten som möjligt.
 Tomten börjar sin resa vid det första huset i din lista, och avslutar den vid det sista huset i din lista.
@@ -21,21 +22,22 @@ Indatan består av $10$ testfall.
 
     Den första raden innehåller ett heltal $T$ ($0 \leq T \leq 10$), numret på testfallet ($0$ är exempelfallet nedan).
 
-    Den andra raden innehåller ett heltal: $N$ ($1 \le N \le 10^5$), antalet hus.
+    Den andra raden innehåller ett heltal $N$ ($1 \le N \le 10^5$), antalet hus.
 
     De följande $N$ raderna innehåller två heltal $x_i$ och $y_i$ ($0 \le x_i, y_i \le 10^6$), koordinaterna
     som det $i$:te huset ligger på. 
     Inga två hus ligger på samma koordinater.
 
 \section*{Utdata}
-Skriv ut en rad med $N/2$ heltal, listan med hus som ska besökas.
+Skriv ut en rad med $N/2$ heltal, numren på de hus som ska besökas i ordning.
 
 \section*{Poängsättning}
-Ditt program kommer att testas på $10$ testfall och poängsättas baserat på hur det står sig relativt domarnas lösning.
+Ditt program kommer att testas på $10$ testfall och poängsättas baserat på hur den står sig relativt domarnas lösning.
 
 Låt $P_1$ vara det totala avståndet tomten behöver åka i din lösning, och låt $P_2$ vara motsvarande
 för domarnas lösning. Du får då $\min(10 \cdot \frac{P_2}{P_1}, 10)$ poäng på testfallet.
 Du kan alltså aldrig få mer än $10$ poäng på ett testfall, även om din lösning är bättre än den domarna skrivit.
+Domaren kan dock visa en större poäng per testfall i användargränssnittet för inskickningsdetaljer, så att du kan se exakt hur bra din lösning är.
 
 Din poäng för en inskickning är summan av poängen för testfallen, och din totala poäng är poängen för den bästa inskickningen.
 Det går alltså inte att kombinera testfall mellan olika inskickningar, utan du måste skicka in ett enda program som
@@ -51,7 +53,7 @@ genererats likformigt slumpmässigt mellan $0$ och $10^6$, såvida inte något a
 \noindent
 \begin{tabular}{| l | l | l |}
 \hline
-Testfall & Gränser                                     & Beskrivning  \\ \hline
+    \textbf{Testfall} & \textbf{Gränser}                                     & \textbf{Beskrivning}  \\ \hline
 $1$       & $N = 10^5$                                 & $y_i = 0$ för alla $i$  \\ \hline
 $2$       & $N = 10^5$                                 & $0 \leq y_i \leq 20$ för alla $i$   \\ \hline
 $3$       & $N = 10$                                   &    \\ \hline
