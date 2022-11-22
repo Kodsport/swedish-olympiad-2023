@@ -621,7 +621,7 @@ int32_t main()
     if (t == 2 || t > 4)
     {
         // Hillclimb seems to be buggy on smaller instances
-        while (elapsedmillis() < 5000)
+        while (elapsedmillis() < 3000)
         {
             hillclimb(besthouses, true);
         }
