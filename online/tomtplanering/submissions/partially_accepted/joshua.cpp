@@ -72,7 +72,8 @@ typedef __gnu_pbds::gp_hash_table<int, int, chash> fast_map;
 #define FILE_TC 1
 #if FILE_TC && _LOCAL
 //ifstream filein("C:\\Users\\Matis\\source\\repos\\Comp prog\\x64\\Debug\\in.txt");
-ifstream filein("E:\\desktop\\po-repos\\swedish-olympiad-2023\\online\\tomtplanering\\data\\secret\\group02\\002-case02.in");
+//ifstream filein("E:\\desktop\\po-repos\\swedish-olympiad-2023\\online\\tomtplanering\\data\\secret\\group09\\009-case09.in");
+ifstream filein("E:\\desktop\\po-repos\\swedish-olympiad-2023\\online\\tomtplanering\\data\\secret\\group10\\010-case10.in");
 
 #define cin filein
 //ifstream cin("C:\\Users\\Matis\\desktop\\po-two\\swedish-olympiad-2014\\");
@@ -145,6 +146,7 @@ ll binpow(ll a, ll b, ll m) { a %= m; long long res = 1; while (b > 0) { if (b &
 
 #if 1
 auto Start = chrono::high_resolution_clock::now();
+void resettimer() { Start = chrono::high_resolution_clock::now(); }
 #define elapsedmillis() (chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - Start).count())
 #define rununtil(time) if (elapsedmillis() >= time) break;
 random_device rd;
@@ -201,7 +203,7 @@ inline int local_dist(int i, vi& houses)
 uniform_real_distribution<double> dist01(0, 1);
 double temp = 10000;
 
-void hillclimb(vi& houses)
+void hillclimb(vi& houses, bool usetemp = false)
 {
     ll sc = evaluate(houses);
     int hi_d = 8;
@@ -220,9 +222,17 @@ void hillclimb(vi& houses)
 
         int change = newcost - oldcost;
 
-        if (exp(change / temp) > dist01(rng)) swap(houses[a], houses[b]);
+        if (usetemp)
+        {
+            if (exp(change / temp) > dist01(rng)) swap(houses[a], houses[b]);
+
+        }
+        else
+        {
+            if (newcost > oldcost) swap(houses[a], houses[b]);
+        }
     }
-    temp /= 2;
+    if (usetemp) temp /= 2;
 
     rep(i, 100)
     {
@@ -272,7 +282,7 @@ void sol()
     while (true)
     {
         vi houses = generatehouses_dumb();
-        hillclimb(houses);
+        hillclimb(houses, true);
         ll score = evaluate(houses);
         if (score < bestscore)
         {
@@ -408,12 +418,188 @@ void solveoone()
     besthouses = houses;
 }
 
+typedef pair<p2, int> point;
+
+vp2 getdirs(int n)
+{
+    vp2 ret;
+    p2 pos = { 0, 0 };
+    int d = 2;
+    ret.push_back(pos);
+    rep(i, n)
+    {
+        pos = pos + mp(1, 0);
+        ret.push_back(pos);
+
+        rep(i, d - 1)
+        {
+            pos = pos + mp(0, -1);
+            ret.push_back(pos);
+        }
+
+        rep(i, d)
+        {
+            pos = pos + mp(-1, 0);
+            ret.push_back(pos);
+        }
+
+        rep(i, d)
+        {
+            pos = pos + mp(0, 1);
+            ret.push_back(pos);
+        }
+
+        rep(i, d)
+        {
+            pos = pos + mp(1, 0);
+            ret.push_back(pos);
+        }
+
+        d += 2;
+    }
+
+    return ret;
+}
+
+void solve_greedy()
+{
+    int start = -1;
+    int d = inf;
+    p2 target = inpind[randint(0,sz(inpind)-1)].first;
+    rep(i, inpind.size())
+    {
+        pair<p2, int> p = inpind[i];
+        if (dist(target, p.first) < d)
+        {
+            d = dist(target, p.first);
+            start = i;
+        }
+    }
+
+
+    const int num_strips = 20;
+    vector<vector<point>> strips(num_strips);
+
+    const int strip_sidelen = 1e6 / (num_strips - 1);
+
+    rep(i, n)
+    {
+        pair<p2, int> p = inpind[i];
+        strips[p.first.first / strip_sidelen].push_back(mp(p.first, i));
+    }
+
+    vector<vector<pair<vb, vector<point>>>> squares(num_strips, vector<pair<vb, vector<point>>>(num_strips));
+
+    rep(i, strips.size())
+    {
+        vector<point>& strip = strips[i];
+        sort(all(strip), [](const point& lhs, const point& rhs)
+            {
+                return lhs.first.second < rhs.first.second;
+            });
+
+        repe(p, strip)
+        {
+            squares[i][p.first.second / strip_sidelen].second.push_back(p);
+        }
+    }
+
+    repe(col, squares) repe(square, col) square.first = vb(square.second.size());
+
+    p3 startsquare = { -1,-1,-1 };
+    d = inf;
+
+    rep(i, squares.size())
+    {
+        rep(j, squares.size())
+        {
+            rep(k, squares[i][j].second.size())
+            {
+                p2 p = squares[i][j].second[k].first;
+                if (dist(p, inpind[start].first) < d)
+                {
+                    d = dist(p, inpind[start].first);
+                    startsquare = { i,j,k };
+                }
+            }
+        }
+    }
+    
+    squares[get<0>(startsquare)][get<1>(startsquare)].first[get<2>(startsquare)] = 1;
+
+    vvp2 dirdirs = { getdirs(1) };
+    set<p2> olddirs(all(dirdirs.back()));
+    rep(i, 20)
+    {
+        vp2 newdirs = getdirs(i+2);
+        
+
+        vp2 toadd;
+        repe(d, newdirs)
+        {
+            if (!setcontains(olddirs, d))
+            {
+                toadd.push_back(d);
+                olddirs.insert(d);
+            }
+        }
+        dirdirs.push_back(toadd);
+    }
+
+    vi indices = { start };
+
+
+    while (indices.size() < n2)
+    {
+        p2 p = squares[get<0>(startsquare)][get<1>(startsquare)].second[get<2>(startsquare)].first;
+        p3 sel = { -1,-1,-1 };
+        int d = inf;
+        
+        int dird = 0;
+
+        while (get<0>(sel) == -1)
+        {
+            repe(dir, dirdirs[dird])
+            {
+                p2 sq = mp(get<0>(startsquare), get<1>(startsquare)) + dir;
+                if (sq.first < 0 || sq.second < 0 || sq.first >= squares.size() || sq.second >= squares[0].size()) continue;
+
+                rep(i, squares[sq.first][sq.second].second.size())
+                {
+                    if (squares[sq.first][sq.second].first[i]) continue; // If vis
+                    if (dist(squares[sq.first][sq.second].second[i].first, p) < d)
+                    {
+                        d = dist(squares[sq.first][sq.second].second[i].first, p);
+                        sel = { sq.first,sq.second,i };
+                    }
+                }
+            }
+            dird++;
+        }
+
+        
+
+        squares[get<0>(sel)][get<1>(sel)].first[get<2>(sel)] = 1;
+        indices.push_back(squares[get<0>(sel)][get<1>(sel)].second[get<2>(sel)].second);
+        startsquare = sel;
+    }
+
+    ll score = evaluate(besthouses);
+    if (score<bestscore)
+    {
+        besthouses = indices;
+        bestscore = score;
+    }
+
+    
+}
+
 int32_t main()
 {
     fast();
 
     read(t, n);
-    if (t > 7) return 0;
+
     n2 = n / 2;
     inp.resize(n);
     rep(i, n)
@@ -425,27 +611,36 @@ int32_t main()
     }
     sort(all(inpind));
 
+    rng.seed(1234);
+
     if (t == 1) solveoone();
     else if (t == 2) solveoone();
-    else ants();
-    //else sol();
+    else if (true && t <= 7) ants();
+    else rep(i,10) solve_greedy();
 
     if (t == 2 || t > 4)
     {
-        while (elapsedmillis() < 3000)
+        // Hillclimb seems to be buggy on smaller instances
+        while (elapsedmillis() < 5000)
         {
-            hillclimb(besthouses);
+            hillclimb(besthouses, true);
         }
     }
 
 
 #if 0||(!_LOCAL)
+
+
     repe(h, besthouses)
     {
         cout << inpind[h].second + 1 << " ";
     }
+
+
+
 #endif
 
+    //cerr << "joshua tc " << t << ": " << evaluate(besthouses) << " " << log10(evaluate(besthouses)) << endl;
     cerr << evaluate(besthouses) << endl;
 
     quit;
