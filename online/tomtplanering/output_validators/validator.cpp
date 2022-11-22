@@ -104,7 +104,7 @@ int main(int argc, char** argv) {
 		long double sc = score(cin, houses, die);
 		long double bestsc = score(fans, houses, judge_error);
         //bestsc = double(n*m)/2.0;
-		long double ratio = min(1.0l, bestsc / sc);
+		long double ratio = bestsc / sc;
 		if (T == 0) accept(0);
 		else accept(10.0 * ratio);
     } catch(...) {
