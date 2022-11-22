@@ -13,10 +13,12 @@ compile gen_random.py
 samplegroup
 sample 1
 sample 2
+sample 3
 
 group group1 16
 limits maxN=1
 tc 1
+tc 3
 
 tc immediate-n1 gen_immediate N=1
 tc onemore-n1 gen_onemore N=1
