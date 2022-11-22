@@ -11,12 +11,9 @@ typedef vector<vvi> vvvi;
 typedef pair<int, int> p2;
 typedef tuple<int, int, int> p3;
 
-template <typename T> inline void read(T& a) { cin >> a; }
-template <typename T> inline void read(T& a, T& b) { cin >> a >> b; }
-template <typename T> inline void read(T& a, T& b, T& c) { cin >> a >> b >> c; }
-#define dread(type, a) type a; read(a)
-#define dread2(type, a, b) dread(type, a); dread(type, b)
-#define dread3(type, a, b, c) dread2(type, a, b); dread(type, c)
+#define dread(type, a) type a; cin >> a
+#define dread2(type, a, b) dread(type, a); cin >> b
+#define dread3(type, a, b, c) dread2(type, a, b); cin >> c
 #define readvector(type, name, size) vector<type> name(size); rep(i,size) {dread(type,temp); name[i]=temp;}
 
 #define rep(i, high) for (int i = 0; i < high; i++)
@@ -28,11 +25,6 @@ template <typename T> inline void read(T& a, T& b, T& c) { cin >> a >> b >> c; }
 #define all(a) a.begin(),a.end()
 #define rall(a) a.rbegin(),a.rend()
 #define setcontains(set, x) (set.find(x) != set.end())
-
-
-auto Start = chrono::high_resolution_clock::now();
-void resettimer() { Start = chrono::high_resolution_clock::now(); }
-int elapsedmillis() { return chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - Start).count(); }
 
 int best(int i, int left, bool active, vi& won, vvvi& dp)
 {
@@ -58,10 +50,6 @@ int best(int i, int left, bool active, vi& won, vvvi& dp)
 
 int32_t main()
 {
-	// This problem is basically k largest subarrays
-	// Similar to one of the problems Nils presented in last year's po-camp, also similar to https://po.kattis.com/problems/snokaos
-	// May be solvable in nlogn using lagrangian relaxation (alien dp)?
-
 	dread2(int, n, k);
 	vi won(n);
 	rep(i, n)
