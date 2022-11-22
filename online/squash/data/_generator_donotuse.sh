@@ -14,6 +14,7 @@ samplegroup
 sample 1
 sample 2
 sample 3
+sample 4
 
 group group1 10
 limits K=1
@@ -21,6 +22,7 @@ limits K=1
 tc 1
 tc k1-101 gen_pat N=999 K=1 pat=VF
 tc k1-single-v gen_pat N=1 K=1 pat=F
+tc 4
 tc k1-single-f gen_pat N=1 K=1 pat=V
 tc k1-all-v gen_random N=1000 K=1 dens=100
 tc k1-all-f gen_random N=1000 K=1 dens=-1
