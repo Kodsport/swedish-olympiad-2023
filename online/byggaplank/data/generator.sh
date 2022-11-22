@@ -40,6 +40,8 @@ tc g2-6 gen_random n=50000 k=7 min_height=1000 max_height=100000000 mode="increa
 
 group group3 25
 limits max_n=50000 max_k=0
+tc 1
+tc g2-1 
 tc g3-1 gen_random n=49999 k=0 min_height=10 max_height=100 mode="normal" seed=15
 tc g3-2 gen_random n=1 k=0 min_height=1 max_height=1000000000 mode="normal" seed=16
 tc g3-3 gen_random n=49999 k=0 min_height=1000000000 max_height=1000000000 mode="normal" seed=17
@@ -51,9 +53,11 @@ tc g3-8 gen_random n=50000 k=0 min_height=100 max_height=1000000 mode="normal" s
 
 
 group group4 16
-include_group sample
-include_group group1
 limits max_n=2000
+include_group group1
+tc 1
+tc 2
+tc 3
 tc g4-1 gen_random n=1 k=2 min_height=1 max_height=1000000000 mode="normal" seed=21
 tc g4-2 gen_random n=1999 k=15 min_height=1 max_height=1000000000 mode="normal" seed=22
 tc g4-3 gen_random n=1999 k=20 min_height=1 max_height=1000000000 mode="normal" seed=23
