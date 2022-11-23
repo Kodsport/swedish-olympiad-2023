@@ -50,7 +50,8 @@ int best(int i, int left, bool active, vi& won, vvvi& dp)
 
 int32_t main()
 {
-	dread2(int, n, k);
+    int n, k;
+    cin >> n >> k;
 	vi won(n);
 	rep(i, n)
 	{
