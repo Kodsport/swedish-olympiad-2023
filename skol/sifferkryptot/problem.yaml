@@ -2,5 +2,7 @@ author: Fredrik Ekholm
 source: Programmeringsolympidens skolkval 2023
 license: cc by-sa
 type: scoring
+limits:
+  time_multiplier: 60
 grading:
   show_test_data_groups: true
