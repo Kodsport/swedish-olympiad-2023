@@ -23,9 +23,6 @@ group g3 20
 limits no4=1
 tc_manual g3
 
-# TODO: merge these two cases after qualifiers
-group g4 20
+group g4 40
 tc_manual g4
-
-group g5 20
 tc_manual g5
