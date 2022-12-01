@@ -1,3 +1,4 @@
+// Intended to solve TC 3. Is usually linear, but worst case O(bc)
 #include <bits/stdc++.h>
 using namespace std;
 
