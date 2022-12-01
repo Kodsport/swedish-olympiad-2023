@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Should get 80
+# Should get 100
 
 n,m,k=[int(i) for i in input().split()]
 

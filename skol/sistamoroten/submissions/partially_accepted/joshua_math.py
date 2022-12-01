@@ -5,29 +5,13 @@ import math
 
 n,m,k=[int(i) for i in input().split()]
 
-def choose(n, k):
-    """
-    A fast way to calculate binomial coefficients by Andrew Dalke (contrib).
-    """
-    if 0 <= k <= n:
-        ntok = 1
-        ktok = 1
-        for t in range(1, min(k, n - k) + 1):
-            ntok *= n
-            ktok *= t
-            n -= 1
-        return ntok // ktok
-    else:
-        return 0
-
-
 freq = []
 
 tot = pow(m,n)
 for t in range(n, n * m + 1):
     s = 0
     for i in range((t - n) // m + 1):
-        s += choose(n,i)*choose(t - i * m - 1, n - 1)/tot*(1 if i%2==0 else -1)
+        s += math.comb(n,i)*math.comb(t - i * m - 1, n - 1)*(1 if i%2==0 else -1)
     freq.append(s)
 
 
@@ -35,4 +19,4 @@ freq = sorted(freq, reverse=True)
 ans = 0
 for i in range(k):
     ans += freq[i]
-print(f'{ans:.15f}')
+print(f'{ans/tot:.15f}')
