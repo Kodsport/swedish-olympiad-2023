@@ -17,7 +17,7 @@ sample 3
 sample 4
 sample 5
 
-group small 1
+group small 15
 include_group sample
 limits maxtiles=1000 maxn=1000
 tc 1
@@ -34,7 +34,7 @@ tc smallcycle1 gen_cycle tiles=1000 r=30 n=1000 p_within=0.1 cycle_rows=14 p_rot
 tc smallcycle2 gen_cycle tiles=1000 r=30 n=1000 p_within=0.1 cycle_rows=14 p_rot=0.1
 
 
-group medium 10
+group medium 25
 include_group small
 limits maxtiles=1000000 maxn=1000
 tc mediumrand1 gen_random tiles=1000000 r=1000  n=1000
@@ -54,7 +54,7 @@ tc mediumtree2  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=1000
 tc mediumtree3  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=100000
 tc mediumtree4  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=1000000
 
-group linetrees 100
+group linetrees 10
 limits maxtiles=1000000 maxn=100000
 tc linetree1 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.1 cycle_rows=500 p_rot=0.0
 tc linetree2 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.5 cycle_rows=500 p_rot=0.0
@@ -64,7 +64,7 @@ tc linetree5 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.9 cycle_rows=90
 tc linetree6 gen_cycle tiles=1000000 r=100   n=100000 p_within=0.5 cycle_rows=50  p_rot=0.0
 tc linetree7 gen_cycle tiles=1000000 r=100   n=100000 p_within=0.8 cycle_rows=50  p_rot=0.0
 
-group noup 1000
+group noup 35
 limits maxtiles=1000000 maxn=100000 noup=1
 tc nouprand1 gen_noup tiles=1000000 r=10000 n=100000
 tc nouprand2 gen_noup tiles=1000000 r=1000  n=100000
@@ -81,7 +81,7 @@ tc noupalldown2 gen_cycle tiles=1000000 r=500000 n=100000 p_within=1 cycle_rows=
 tc noupalldown3 gen_cycle tiles=1000000 r=500000 n=100000 p_within=1 cycle_rows=0 p_rot=0.15 noup=1
 
 
-group large 10000
+group large 15
 include_group small
 include_group medium
 include_group noup
