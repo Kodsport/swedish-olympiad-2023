@@ -1,0 +1,11 @@
+author: Nils Gustafsson
+source: Programmeringsolympiadens final 2023
+rights_owner: Programmeringsolympiaden
+license: cc by-sa
+type: scoring
+validation: custom interactive
+grading:
+    show_test_data_groups: yes
+limits:
+    time_multiplier: 3
+    

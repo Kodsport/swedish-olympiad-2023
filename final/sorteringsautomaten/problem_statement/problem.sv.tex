@@ -1,0 +1,48 @@
+\problemname{Sorteringsautomaten}
+Det finns $N$ hemliga heltal $x_1 < x_2 < \dots < x_N$ mellan $1$ och $10^9$. 
+Notera att alla dessa tal är olika. Ditt mål är att hitta talen. Du får ställa frågor till sorteringsautomaten. 
+Sorteringsautomaten tar ett heltal $y$ som input ($1 \leq y \leq 10^9$), och gör följande:
+
+\begin{enumerate}
+  \item Skapa listan $L = [x_1, x_2, \dots, x_N, y]$.
+  \item Sortera $L$.
+  \item Skapa listan $D$, där $D_i = L_{i+1}-L_i$ för alla $i = 1, 2, \dots, N$.
+  \item Sortera $D$, och returnera de $N$ talen i $D$.
+\end{enumerate}
+
+Du får ställa högst $N$ frågor, förutom i testgrupp $4$ där du får ställa $N+1$ frågor.
+
+\section*{Interaktion}
+Ditt program ska först läsa in två heltal $N$ och $T$ ($1 \leq N \leq 1000$, $1 \leq T \leq 5$).
+$N$ är antalet hemliga tal du ska hitta, och $T$ är numret på testgruppen. Anledningen till att $T$ 
+är givet i input är för att göra det lättare att ta delpoäng.
+
+Därefter får du börja ställa frågor. Skriv ut en rad med ``\verb|? y|'' för att stoppa in talet
+$y$ i sorteringsautomaten. Talet $y$ måste uppfylla $1 \leq y \leq 10^9$. Efter varje fråga ska
+ditt program läsa in $N$ heltal på en rad, talen $D_1, D_2, \dots, D_N$. 
+
+När du har hittat talen $x_1, x_2, \dots, x_N$ ska du skriva ut en rad på formen 
+$$! \; x_1 \; x_2 \; x_3 \; \dots \; x_N$$
+Denna rad räknas inte som en fråga till sorteringsautomaten. Därefter ska ditt program avsluta och 
+inte skriva ut något mer.
+
+\textbf{Se till att flusha outputen efter varje query}, annars kan du få \textit{Time Limit Exceeded}.
+I C++ kan detta göras med exempelvis \texttt{cout << flush}
+eller \texttt{fflush(stdout)};
+i Python med \texttt{stdout.flush()};
+och i Java med \texttt{System.out.flush()}.
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  Grupp & Poängvärde & Gränser \\ \hline
+  $1$   & $15$       & $N = 1$\\ \hline
+  $2$   & $15$       & $N = 2$  \\ \hline
+  $3$   & $11$       & $x_i \leq N+1$ \\ \hline
+  $4$   & $37$       & $N \leq 100$, $x_i \leq 10^4$, du får ställa högst $N+1$ frågor. \\ \hline
+  $5$   & $22$       & Inga ytterligare begränsningar \\ \hline
+\end{tabular}
