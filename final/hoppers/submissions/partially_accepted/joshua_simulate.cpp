@@ -1,4 +1,4 @@
-// O(r*c*n)
+// Should solve O(rcn)
 #undef _GLIBCXX_DEBUG                // disable run-time bound checking, etc
 #pragma GCC optimize("Ofast,inline") // Ofast = O3,fast-math,allow-store-data-races,no-protect-parens
 #pragma GCC optimize ("unroll-loops")

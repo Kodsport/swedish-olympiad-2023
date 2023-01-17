@@ -10,6 +10,7 @@ compile gen_noup.py
 compile gen_tree.py
 
 samplegroup
+limits maxn=100 maxtiles=100
 sample 1
 sample 2
 sample 3
@@ -17,6 +18,7 @@ sample 4
 sample 5
 
 group small 1
+include_group sample
 limits maxtiles=1000 maxn=1000
 tc 1
 tc 2
@@ -28,20 +30,62 @@ tc smallrand2 gen_random tiles=1000 r=200 n=1000
 tc smallrand3 gen_random tiles=1000 r=400 n=1000
 tc smallrand4 gen_random tiles=1000 r=10  n=1000
 tc smallrand5 gen_random tiles=1000 r=100 n=1000
-tc smallcycle1 gen_cycle tiles=1000 r=30 n=1000 p_within=0.1 cycle_rows=15 p_rot=0.1
-tc smallcycle2 gen_cycle tiles=1000 r=30 n=1000 p_within=0.1 cycle_rows=15 p_rot=0.1
+tc smallcycle1 gen_cycle tiles=1000 r=30 n=1000 p_within=0.1 cycle_rows=14 p_rot=0.1
+tc smallcycle2 gen_cycle tiles=1000 r=30 n=1000 p_within=0.1 cycle_rows=14 p_rot=0.1
 
-group noup 10
+
+group medium 10
+include_group small
+limits maxtiles=1000000 maxn=1000
+tc mediumrand1 gen_random tiles=1000000 r=1000  n=1000
+tc mediumrand2 gen_random tiles=1000000 r=10000 n=1000
+tc mediumrand3 gen_random tiles=1000000 r=400   n=1000
+tc mediumrand4 gen_random tiles=1000000 r=10    n=1000
+tc mediumrand5 gen_random tiles=1000000 r=100   n=1000
+tc mediumcycle1 gen_cycle tiles=1000000 r=1000  n=1000 p_within=0.1 cycle_rows=500 p_rot=0.1
+tc mediumcycle2 gen_cycle tiles=1000000 r=1000  n=1000 p_within=0.5 cycle_rows=500 p_rot=0.1
+tc mediumcycle3 gen_cycle tiles=1000000 r=1000  n=1000 p_within=0.1 cycle_rows=500 p_rot=0.6
+tc mediumcycle4 gen_cycle tiles=1000000 r=1000  n=1000 p_within=0.8 cycle_rows=500 p_rot=0.2
+tc mediumcycle5 gen_cycle tiles=1000000 r=1000  n=1000 p_within=0.9 cycle_rows=900 p_rot=0.1
+tc mediumcycle6 gen_cycle tiles=1000000 r=100   n=1000 p_within=0.5 cycle_rows=50 p_rot=0.1
+tc mediumcycle7 gen_cycle tiles=1000000 r=100   n=1000 p_within=0.8 cycle_rows=50 p_rot=0.1
+tc mediumtree1  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=20
+tc mediumtree2  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=1000
+tc mediumtree3  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=100000
+tc mediumtree4  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=1000000
+
+group linetrees 100
 limits maxtiles=1000000 maxn=100000
+tc linetree1 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.1 cycle_rows=500 p_rot=0.0
+tc linetree2 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.5 cycle_rows=500 p_rot=0.0
+tc linetree3 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.1 cycle_rows=500 p_rot=0.0
+tc linetree4 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.8 cycle_rows=500 p_rot=0.0
+tc linetree5 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.9 cycle_rows=900 p_rot=0.0
+tc linetree6 gen_cycle tiles=1000000 r=100   n=100000 p_within=0.5 cycle_rows=50  p_rot=0.0
+tc linetree7 gen_cycle tiles=1000000 r=100   n=100000 p_within=0.8 cycle_rows=50  p_rot=0.0
+
+group noup 1000
+limits maxtiles=1000000 maxn=100000 noup=1
 tc nouprand1 gen_noup tiles=1000000 r=10000 n=100000
 tc nouprand2 gen_noup tiles=1000000 r=1000  n=100000
 tc nouprand3 gen_noup tiles=1000000 r=400   n=100000
 tc nouprand4 gen_noup tiles=1000000 r=10    n=100000
 tc nouprand5 gen_noup tiles=1000000 r=100   n=100000
+tc nouptree1 gen_tree tiles=1000000 r=1000  n=100000 noup=1 max_depth=20
+tc nouptree2 gen_tree tiles=1000000 r=1000  n=100000 noup=1 max_depth=100000
+tc nouptree3 gen_tree tiles=1000000 r=1000  n=100000 noup=1 max_depth=1000000
+tc nouptree4 gen_tree tiles=1000000 r=1000  n=100000 noup=1 max_depth=100000 branching=1
+tc nouptree5 gen_tree tiles=1000000 r=1000  n=100000 noup=1 max_depth=500000 branching=2
+tc noupalldown1 gen_cycle tiles=1000000 r=100000 n=100000 p_within=1 cycle_rows=0 p_rot=0.05 noup=1
+tc noupalldown2 gen_cycle tiles=1000000 r=500000 n=100000 p_within=1 cycle_rows=0 p_rot=0.1  noup=1
+tc noupalldown3 gen_cycle tiles=1000000 r=500000 n=100000 p_within=1 cycle_rows=0 p_rot=0.15 noup=1
 
 
-group large 100
+group large 10000
 include_group small
+include_group medium
+include_group noup
+include_group linetrees
 limits maxtiles=1000000 maxn=100000
 tc largerand1 gen_random tiles=1000000 r=1000  n=100000
 tc largerand2 gen_random tiles=1000000 r=10000 n=100000
@@ -58,3 +102,4 @@ tc largecycle7 gen_cycle tiles=1000000 r=100  n=100000 p_within=0.8 cycle_rows=5
 tc largetree1  gen_tree  tiles=1000000 r=1000 n=100000 max_depth=20
 tc largetree2  gen_tree  tiles=1000000 r=1000 n=100000 max_depth=1000
 tc largetree3  gen_tree  tiles=1000000 r=1000 n=100000 max_depth=100000
+tc largetree4  gen_tree  tiles=1000000 r=1000 n=100000 max_depth=1000000

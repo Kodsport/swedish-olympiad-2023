@@ -1,4 +1,4 @@
-// Performs poorly foor deep trees or cycles with lots of things in them with lots of things being added
+// Should solve O(rcn) and O(n^2)
 #undef _GLIBCXX_DEBUG                // disable run-time bound checking, etc
 #pragma GCC optimize("Ofast,inline") // Ofast = O3,fast-math,allow-store-data-races,no-protect-parens
 #pragma GCC optimize ("unroll-loops")

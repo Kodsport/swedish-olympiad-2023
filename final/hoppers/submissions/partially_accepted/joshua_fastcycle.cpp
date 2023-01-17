@@ -1,4 +1,4 @@
-// Performs poorly foor deep trees or cycles with lots of things in them with lots of things being added
+// Should solve "no collisions outside of cycles"
 #undef _GLIBCXX_DEBUG                // disable run-time bound checking, etc
 #pragma GCC optimize("Ofast,inline") // Ofast = O3,fast-math,allow-store-data-races,no-protect-parens
 #pragma GCC optimize ("unroll-loops")
@@ -205,44 +205,14 @@ int finddepth(p2 u, vvvp2& redges)
 }
 
 
-unordered_map<int, int> findcollisions(p2 u, vvvp2& redges)
+void findcollisions(p2 u, vvvp2& redges, vp2& ret, int depth)
 {
-    unordered_map<int, int> ancestors;
-    if (inputIndex[u.first][u.second] != -1) ancestors.insert(p2(0, inputIndex[u.first][u.second]));
+    if (inputIndex[u.first][u.second] != -1) ret.emplace_back(p2(depth, inputIndex[u.first][u.second]));
 
-    set<int> killist;
     repe(e, redges[u.first][u.second])
     {
-        unordered_map<int, int> r_temp = findcollisions(e, redges);
-        unordered_map<int, int> r;
-        repe(item, r_temp) r[item.first + 1] = item.second;
-
-
-        repe(e, r)
-        {
-            int t = e.first;
-            if (setcontains(killist, t))
-            {
-                ans[e.second] = u;
-                continue;
-            }
-
-            if (setcontains(ancestors, t))
-            {
-                ans[e.second] = u;
-                ans[ancestors[t]] = u;
-                ancestors.erase(t);
-
-                killist.insert(t);
-            }
-            else
-            {
-                ancestors[t] = e.second;
-            }
-        }
+        findcollisions(e, redges, ret, depth + 1);
     }
-
-    return ancestors;
 }
 
 void solvesmart(int r, int c, int n, vector<string>& boardin, vp2& starting)
@@ -323,9 +293,10 @@ void solvesmart(int r, int c, int n, vector<string>& boardin, vp2& starting)
     set<p4> enteringcycle;
     repe(root, roots)
     {
-        unordered_map<int,int> cycleenter = findcollisions(root, redges);
+        vp2 ret;
+        findcollisions(root, redges, ret, 1);
         p2 r = moveonce(root);
-        repe(c, cycleenter) enteringcycle.emplace(c.first + 1, c.second, r.first, r.second);
+        repe(c, ret) enteringcycle.emplace(c.first, c.second, r.first, r.second);
     }
 
     vector<unordered_map<int, int>> cycles(cycleind);
