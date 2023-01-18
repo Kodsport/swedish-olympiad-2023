@@ -1,0 +1,33 @@
+\problemname{Brobygge}
+Rut, som inte har lärt sig simma, vill ta sig över en flod. Som tur är ska en bro byggas på en yta som kan representeras med ett $N \cdot M$, stort rutnät.
+Varje timme byggs ett brosegment på en ruta som tidigare var täckt av vatten, så till exempel har det byggts fem brosegment efter fem timmar.
+Rut har fått tag på en lista med positionerna för de första brosegmenten, och vet att hon kan ta sig över floden när man kan gå på bron från ena sidan av floden till den andra utan att nudda vattnet.
+Mer specifikt finns det land på rad $1$ och rad $N$, och hon kan gå från land till brygga eller brygga till brygga längs med de 4 kardinala riktningarna.
+Hon vill nu veta hur länge hon behöver vänta innan hon kan ta sig över.
+
+\section*{Indata}
+Den första raden innehåller tre heltal $N, M$ ($3 \le N, M \le 10^9$), och $T$ ($1 \le T \le 10^5$), antalet rader respektive kolumner i rutnätet
+och antalet brosegment som ska byggas.
+
+Därefter följer $T$, där den $i:te$ raden innehåller två tal $R$ ($2 \le R-1$) och $C$ ($1 \le C \le M$), raden och kolumnen som en bro kommer byggas vid den $i:te$ timmen.
+
+\section*{Utdata}
+Skriv ut ett heltal: minsta antalet timmar rut behöver vänta för att kunna gå över bron.
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
+  $1$    & $10$      & $N \le 4$ \\ \hline
+  $2$    & $20$      & $N, M \le 50$ \\ \hline
+  $3$    & $30$      & $N, M \le 1000$ \\ \hline
+  $4$    & $15$      & $T \le 2000$ \\ \hline
+  $5$    & $25$      & Inga ytterligare begräsningar. \\ \hline
+\end{tabular}
+
+\section*{Förklaring av exempelfall 1}
+TODO (behövs bättre samples + eventuell grafik?)
