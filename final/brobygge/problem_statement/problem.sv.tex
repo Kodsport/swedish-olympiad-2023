@@ -2,17 +2,18 @@
 Rut, som inte har lärt sig simma, vill ta sig över en flod. Som tur är ska en bro byggas på en yta som kan representeras med ett $N \cdot M$, stort rutnät.
 Varje timme byggs ett brosegment på en ruta som tidigare var täckt av vatten, så till exempel har det byggts fem brosegment efter fem timmar.
 Rut har fått tag på en lista med positionerna för de första brosegmenten, och vet att hon kan ta sig över floden när man kan gå på bron från ena sidan av floden till den andra utan att nudda vattnet.
-Mer specifikt finns det land på rad $1$ och rad $N$, och hon kan gå från land till brygga eller brygga till brygga längs med de 4 kardinala riktningarna.
-Hon vill nu veta hur länge hon behöver vänta innan hon kan ta sig över.
+Hon börjar på ruta $(0,0)$ (längst nere till vänster) och vill ta sig till vilken kolumn som helst på rad $N-1$. Det finns en landmassa som man kan gå på längs med hela rad $0$ och rad $N-1$.
+Hon kan gå mellan rutor som inte är täckta av vatten genom att gå upp, ner, höger eller vänster.
+Hon vill nu veta om de givna brosegmenten räcker för att ta sig över, och isåfall hur länge hon behöver vänta innan bron är tillräckligt färdigt för att kunna ta sig till andra sidan. 
 
 \section*{Indata}
 Den första raden innehåller tre heltal $N, M$ ($3 \le N, M \le 10^9$), och $T$ ($1 \le T \le 10^5$), antalet rader respektive kolumner i rutnätet
 och antalet brosegment som ska byggas.
 
-Därefter följer $T$, där den $i:te$ raden innehåller två tal $R$ ($2 \le R-1$) och $C$ ($1 \le C \le M$), raden och kolumnen som en bro kommer byggas vid den $i:te$ timmen.
+Därefter följer $T$, där den $i$:te raden innehåller två tal $R$ ($1 \le R \le N-2$) och $C$ ($0 \le C \le M-1$), raden och kolumnen som ett brosegment kommer byggas vid den $i$:te timmen.
 
 \section*{Utdata}
-Skriv ut ett heltal: minsta antalet timmar rut behöver vänta för att kunna gå över bron.
+Om Rut kan passera över floden, skriv ut ett heltal: minsta antalet timmar rut behöver vänta för att bron ska bli tillräckligt färdig för att kunna gå till andra sidan. Annars, skriv ut "nej".
 
 \section*{Poängsättning}
 Din lösning kommer att testas på en mängd testfallsgrupper.
