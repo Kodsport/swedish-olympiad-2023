@@ -17,8 +17,12 @@ n = int(cmdlinearg('n'))
 t = int(cmdlinearg('t'))
 min_x = int(cmdlinearg('min_x', 1))
 max_x = int(cmdlinearg('max_x', 10**9))
+one = int(cmdlinearg('one', 0))
+    
 
 X = random.sample(range(min_x, max_x+1), n)
 X.sort()
+if one == 1:
+    X[0] = 1
 print(n,t)
 print(*X)
