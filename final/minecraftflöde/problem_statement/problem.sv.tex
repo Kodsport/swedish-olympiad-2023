@@ -1,0 +1,36 @@
+\problemname{Hoppers}
+Joshua har byggt en fabrik i minecraft som består av en tvådimensionell plattform med en massa hoppers. En hopper kan förvara en sak i sig.
+En gång per sekund puttar varje hopper saken de har i sig till hoppern de pekar på om de har något i sig. Ibland kan detta leda till att en hopper har mer än en sak i sig samtidigt.
+Detta funkar självklart inte, därför förstörs alla sakerna som puttades in i hoppern den sekunden. Joshua vill ha en stabil fabrik utan en massa krockar. 
+Han ger därför ett förslag till dig om hur sakerna ska placeras och hur fabriken ska se ut, och vill nu veta för varje sak om den kommer krocka eller åka runt i fabriken för all oändlighet.
+Om någonting krockar vill han dessutom veta var krocken skedde så han sedan kan uppdatera sin design. Skriv ett program för att hjälpa honom!
+
+\section*{Indata}
+Den första raden innehåller tre heltal $R, C$ ($2 \le R \cdot C \le 10^6$), $N$ ($1 \le N \le 10^5$), antalet rader respektive kolumner i fabriken
+och antalet saker som ska stoppas in i förslaget.
+
+Därefter följer $R$ rader, som innehåller en sträng $S$ ($|S| = C$). Varje bokstav i denna sträng representerar vilken riktning hoppern på den givna positionen pekar åt.
+Varje tecken kommer antingen vara '\texttt{v}' (ner), '\texttt{<}' (vänster), '\texttt{\^}' (upp) eller '\texttt{>}' (höger). Det är garanterat att varje hopper pekar på en annan hopper.
+
+Därefter följer $N$ rader, med två heltal $P_r$ ($0 \le P_r \le R-1$) och $P_c$ ($0 \le P_c \le C-1$), raden och kolumnen som den $i:te$ saken börjar på. 
+
+\section*{Utdata}
+Skriv ut $N$ heltal. På den $i:te$ raden, om den $i:te$ saken aldrig krockar, skriv ut "Ingen krock". Annars, skriv ut "Krock vid $r, c$" ($0 \le r \le R-1$, $0 \le c \le C-1$), där 
+$r$ och $c$ är raden respektive kolumnen där krocken skedde.
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
+  $1$    & $25$      & $R \cdot C \le 1000$, en sten kan inte vara i en av de $8$ inilligande rutorna av en sten \\ \hline
+  $2$    & $40$      & En sten kan inte vara i en av de $8$ inilligande rutorna av en sten \\ \hline
+  $3$    & $10$      & $R \cdot C \le 1000$ \\ \hline
+  $4$    & $20$      & Inga ytterligare begräsningar. \\ \hline
+\end{tabular}
+
+\section*{Förklaring av exempelfall 1}
+TODO (behövs bättre samples + skapa en i minecraft sen)
