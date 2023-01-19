@@ -3,7 +3,7 @@
 import sys
 import random
 import math
-sys.setrecursionlimit(int(1e6))
+sys.setrecursionlimit(int(1e6)+10)
 
 def cmdlinearg(name, default=None):
     for arg in sys.argv:
@@ -45,28 +45,34 @@ directions = [[0,1,'<'],[0,-1,'>'],[-1,0,'v'],[1,0,'^']]
 if noup:
     directions.pop()
 
-placed = 0
 placements = []
 
 def dfsplace(i,j,depth, dir):
-    if i < 0 or i >= r or j < 0 or j >= c:
-        return
+    if i < 1 or i >= r-1 or j < 1 or j >= c-1:
+        return -1
     if grid[i][j]!='-':
-        return
+        return -1
     if depth>max_depth:
         return
 
+    #for _ in range(r):
+    #    print("".join(grid[_]))
+    #print("\n\n")
     grid[i][j] = dir
+
     random.shuffle(directions)
-    for i in range(branching_factor):
-        dir_ = directions[i]
-        dfsplace(i+dir_[0],j+dir_[1],depth+1,dir_[2])
+    hi = branching_factor
+    its = 0
+    while its < hi:
+        dir_ = directions[its]
+        if dfsplace(i+dir_[0],j+dir_[1],depth+1,dir_[2]) == -1:
+            hi+=1
+            hi = min(hi, 3)
+        its+=1
 
     # Try to place nodes as deep as possible in the tree
-    global placed
-    if placed<n:
+    if len(placements)<n:
         placements.append([i,j])
-        placed+=1
 
 for pos in positions:
     if grid[pos[0]][pos[1]] != '-':
@@ -75,16 +81,16 @@ for pos in positions:
     dfsplace(pos[0],pos[1], 0, random.choice(choices))
 
 for i in range(r):
-    if grid[i][0] == '<':
-        grid[i][0] = '>'
-    if grid[i][c-1] == '>':
-        grid[i][c-1] = '<'
+    #if grid[i][0] == '<':
+    grid[i][0] = '>'
+    #if grid[i][c-1] == '>':
+    grid[i][c-1] = '<'
 
 for i in range(c):
-    if grid[0][i] == '^':
-        grid[0][i] = 'v'
-    if grid[r-1][i] == 'v':
-        if noup:
+    #if grid[0][i] == '^':
+    grid[0][i] = 'v'
+    if True or grid[r-1][i] == 'v':
+        if True or noup:
             if i == 0:
                 grid[r-1][i] = '>'
             else:
@@ -98,6 +104,7 @@ for i in range(r):
 for placement in placements:
     print(placement[0], placement[1])
 
+placed = len(placements)
 while placed < n:
     print(random.randint(0,r-1), random.randint(0,c-1))
     placed += 1
