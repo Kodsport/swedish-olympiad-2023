@@ -1,0 +1,43 @@
+\problemname{Synonymer}
+Ibland när man kopierar text från Wikipedia till sina uppsatser kan texten fångas i ett program för plagiatkontroll.
+Då måste man först skriva om texten med egna ord, för att undvika att den fastnar i kontrollen.
+Det finns många olika sätt att göra det, men ett av dessa är att köra texten genom ett översättningsprogram till ett annat språk, och sedan tillbaka.
+Har man otur kommer texten tillbaka alldeles för lik den ursprungliga trots det.
+
+Man skulle kunna undvika det problemet genom att se till att ett ord aldrig översätts tillbaka till samma ord om det finns en annan möjlighet.
+Rent formellt, anta att vi har ett lexikon med $N$ par av ord $(a, b)$, där $a$ är ordet på svenska och $b$ ordet på det andra språket.
+Ett visst ord $x$ kan då översättas till ordet $y$, om det finns två par $(x, z)$ och$(y, z)$ i lexikonet för något ord $z$.
+
+Givet en text, skriv om den genom att ersätta så många ord som möjligt genom att översätta det till det andra språket och tillbaka.
+
+\section*{Indata}
+Den första raden innehåller heltalet $N$ ($1 \le N \le 5000$), antalet ordpar i ordboken.
+
+De följande $N$ raderna innehåller alla ordpar, en per rad, först med ordet på svenska följt av ordet på det andra språket.
+Samma ord förekommer aldrig på båda språk.
+
+Detta följs av ett heltal $M$ ($1 \le M \le 1000$), antalet ordet i texten.
+Nästa rad innehåller $M$ ord, texten du ska översätta.
+Alla ord förekommer minst en gång som ett svenskt ord i ordboken.
+
+Alla ord är mellan $1$ och $20$ bokstäver långa och består bara av bokstäver från $a$ till och med $z$.
+Det är inte garanterat att orden faktiskt är riktiga ord.
+
+\section*{Utdata}
+Skriv ut en rad med $M$ ord, texten där så många ord som möjligt ersatts med en synonym genom processen beskriven i uppgiften.
+Om det finns flera möjliga synonymer för ett ord kan du välja vilken som helst, så länge det inte är samma ord.
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
+  $1$    & $56$      & Alla ord på det andra språket har minst två översättningar till svenska. \\ \hline
+  $2$    & $44$      & Inga ytterligare begräsningar. \\ \hline
+\end{tabular}
+
+\section*{Förklaring av exempelfall}
+TODO
