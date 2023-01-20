@@ -20,9 +20,11 @@ random.seed(seed)
 rows = int(cmdlinearg("r"))
 cols = int(cmdlinearg("c"))
 nsize = int(cmdlinearg("nsize"))
-t = int(cmdlinearg("t"))
+t = int(cmdlinearg("tc"))
+maxv = int(cmdlinearg("maxv", 1000))
 
-n = math.ceil(rows*cols / nsize)
+n = nsize
+#n = math.ceil(rows*cols / nsize)
 
 class NoiseData:
     i = 0
@@ -41,9 +43,9 @@ class NoiseData:
 base_noise = eval(cmdlinearg("base_noise")) # type: tuple[int, list[NoiseData]]
 
 print(t)
-print(rows, cols)
-print(n)
+print(rows, cols, n)
 
+# TODO: scale noise
 def query_noise(r: int, c: int) -> int:
     global base_noise
 
@@ -62,7 +64,9 @@ def query_noise(r: int, c: int) -> int:
 
 heights = [[query_noise(r, c) for c in range(cols)] for r in range(rows)]
 for row in heights:
-    print(*row, sep=" ")
+    for j in row:
+        print(j,end=" ")
+    print("")
 
 plt.imshow(heights, cmap='gray')
-plt.savefig(f"noise/{t}noise.png")
+plt.savefig(f"../noise/{t}noise.png")

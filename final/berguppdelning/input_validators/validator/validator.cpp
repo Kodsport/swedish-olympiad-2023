@@ -2,21 +2,25 @@
 #include <set>
 
 void run() {
-    int maxN = Arg("maxn", int(1e9));
-    int maxM = Arg("maxm", int(1e9));
-    int maxT = Arg("maxt", int(1e5));
+    int maxR = Arg("r");
+    int maxC = Arg("c");
+    int maxN = Arg("nsize");
+    int maxV = Arg("maxv", 1000);
+    string ignore = Arg("base_noise");
+    int ignore_ = Arg("t");
+    
+    int t = Int(0, 10); Endl();
+    int r = Int(1, maxR); Space(); int c = Int(1, maxC); Space(); int n = Int(1, maxN); Endl();
 
-    int n = Int(1, maxN); Space(); int m = Int(1, maxM); Space(); int t = Int(1, maxT); Endl();
-
-    assert(n>=3);
-
-    std::set<std::pair<int,int>> seen;
-    for (int i = 0; i < t; i++)
+    // TODO: check not too close to average
+    for (int i = 0; i < r; i++) 
     {
-        int r = Int(1, n-2); Space(); int c = Int(0, m-1); Endl();
-        std::pair<int,int> p = {r,c};
-        assert(seen.find(p)==seen.end());
-        seen.insert(p);
+        for (int j = 0; j < c; j++)
+        {
+            Int(0, maxV); 
+            Space();
+        }
+        Endl();
     }
 
     Eof();
