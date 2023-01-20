@@ -168,7 +168,7 @@ int main(int argc, char** argv) {
         //bestsc = double(n*m)/2.0;
         long double ratio = bestsc / sc;
         ratio = min(ratio, 1.0l);
-        ofstream("../debug" + to_string(tc) + ".txt") << " " << tc << "contestant" << bestsc << " " << sc << " " << 10.0 * ratio;
+        //ofstream("../debug" + to_string(tc) + ".txt") << " " << tc << "contestant" << bestsc << " " << sc << " " << 10.0 * ratio;
 
         if (tc == 0) accept(0);
         else
