@@ -172,6 +172,9 @@ int32_t main()
 
     vvi grid(r+2, vi(c, AIR));
     
+    rep(i, n) grid[obstacles[i].first][obstacles[i].second] = STONE;
+
+
     rep(i, k)
     {
         queue<p2> q;

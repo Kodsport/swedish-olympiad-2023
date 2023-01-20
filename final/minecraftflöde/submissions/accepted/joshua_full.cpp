@@ -155,7 +155,7 @@ template<typename T> inline T randel(vector<T>& v) { return v[uniform_int_distri
 #endif
 const ll mod = 1e9 + 7;
 
-
+// Don't read this code. It was written with too much stress and too little sleep. Changed slightly over and over until gave AC
 int32_t main()
 {
     fast();
@@ -175,29 +175,48 @@ int32_t main()
     repe(row, rows)
     {
         auto it = row.second.begin();
-        while (it!=row.second.end())
+        while (it != row.second.end())
         {
+            int rownr = row.first;
             if (setcontains(haswater, *it))
             {
                 haswater.erase(*it);
-                if (*it - 1 >= 0)
-                {
-                    if (setcontains(rows, row.first-1)&&setcontains(rows[row.first-1], *it-1))
-                    {
-                        // nope
-                    }
-                    else
-                    {
-                        haswater.insert(*it - 1); // Will never be something on [-1,-1], since we always go to the far right of a line
-                    }
-                }
-                
-
+                auto itl = it;
                 bool works = 1;
-                while (it!=prev(row.second.end()) && *it+1 == *next(it))
+                while (1)
                 {
-                    haswater.erase(*it+1);
-                    if (setcontains(rows, row.first - 1) && setcontains(rows[row.first - 1], *it + 1))
+                    if (*itl - 1 < 0)
+                    {
+                        works = 0;
+                        break;
+                    }
+                    if (setcontains(rows, rownr - 1) && setcontains(rows[rownr - 1], *itl - 1))
+                    {
+                        works = 0;
+                        break;
+                    }
+                    if (setcontains(haswater, *itl)) break;
+
+
+                    if ((itl == row.second.begin() || *itl - 1 != *prev(itl)))
+                    {
+                        break;
+                    }
+                    itl = prev(itl);
+                }
+
+                if (works && *itl - 1 >= 0)
+                {
+                    haswater.insert(*itl - 1);
+                }
+
+
+
+                works = 1;
+                while (it != prev(row.second.end()) && *it + 1 == *next(it))
+                {
+                    haswater.erase(*it + 1);
+                    if (setcontains(rows, rownr - 1) && setcontains(rows[rownr - 1], *it + 1))
                     {
                         works = 0;
                         break;
@@ -210,13 +229,14 @@ int32_t main()
                     if (it == row.second.end()) v = *prev(it);
                     else v = *it;
 
-                    if (v + 1 < c && !(setcontains(rows, row.first - 1) && setcontains(rows[row.first - 1], v+1))) haswater.insert(v + 1);
+                    if (v + 1 < c && !(setcontains(rows, rownr - 1) && setcontains(rows[rownr - 1], v + 1))) haswater.insert(v + 1);
                 }
-                
+
             }
             it++;
         }
     }
+
 
     cout << haswater.size();
 
