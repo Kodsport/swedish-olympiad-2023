@@ -1,0 +1,43 @@
+\problemname{Inflation}
+En stor del av ekonomin styrs av den rådande inflationen, d.v.s. hur snabbt priserna på varor i samhället stiger.
+T.ex. påverkar hur stor inflationen är hur Riksbanken sätter sin styrränta, vilket i sin tur har en inverkan på aktiemarknaden, bolåneräntor, o.s.v.
+Inflationen mäts i procent, och anger hur mycket priserna ökat jämfört med samma tidpunkt föregående år.
+
+I Sverige är det myndigheten Statistiska centralbyrån (SCB) som mäter inflationstakten i samhället.
+De beräknar varje månad hur stor inflationen var, genom att mäta hur inflationstakten \emph{ändras varje dag} under månaden och sedan slår samman alla dagsökningar.
+Du vill gärna använda dessa siffror för att veta om du borde köpa eller sälja alla dina aktier innan SCB släpper siffrorna officiellt.
+Som tur är har du en kompis som gärna läcker siffrorna till dig.
+
+Ett problem är att din kompis varit rätt så inkonsekvent med sina anteckningar.
+Ibland har han antecknat dagsändringen i inflationstakten i procentenheter och ibland i procent.
+Om inflationstakten var $20\%$ och den antecknade ökningen var "$50$" vet du alltså inte om den nya inflationstakten är $70\%$ ($+50$ procentenheter) eller $30\%$ ($+50$ procent).
+Dessutom har han skrivit sina anteckningar huller om buller, så du kan inte avgöra vilken ökning som hör till vilken dag i månaden.
+
+Du kan åtminstone beräkna en övre gräns på inflationstakten, vilket kanske hjälper din aktiehandel något.
+Vad är den högsta möjliga inflationstakten, givet din kompis data?
+
+\section*{Indata}
+Den första raden innehåller ett decimaltal $I$, inflationstakten i procent i början av månaden.
+Detta följs av en rad med $30$ nya decimaltal, ändringarna i inflationstakten som din kompis antecknat under månaden.
+
+Alla tal är mellan $0$ och $1000$ och har högst $2$ decimaler.
+
+
+\section*{Utdata}
+Skriv ut ett decimaltal: den högsta möjliga inflationstakten.
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
+  $1$    & $22$      & Din kompis har antecknat alla ökningar i procentenheter. \\ \hline
+  $2$    & $33$      & Din kompis har antecknat ökningarna i rätt ordning. \\ \hline
+  $3$    & $45$      & Inga ytterligare begräsningar. \\ \hline
+\end{tabular}
+
+\section*{Förklaring av exempelfall}
+TODO
