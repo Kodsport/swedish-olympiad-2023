@@ -2,40 +2,39 @@
 
 Alma har en massa brädor som hon vill såga i bitar. Hon har därför gått till ett toppmodernt
 sågverk som automatiskt sågar itu och sorterar brädor. Varje bräda kan representeras av en oändligt
-lång $x$-axel, och sågverket kommer såga av brädan vid de $N+1$ positionerna $x_1, x_2, \dots, x_N, y$,
-där $y$ är ett tal som användaren får välja, medan talen $x_i$ alltid är samma. Därefter sorteras alla
-ändligt långa bitar och matas ut av sågverket. 
+lång $x$-axel, och sågverket kommer såga av brädan vid de $N+1$ positionerna 
+$$x_1, x_2, \dots, x_N, v$$
+där $v$ är ett tal som användaren får välja. Därefter sorteras alla
+ändligt långa bitar och matas ut av sågverket. Alma vill ha reda på talen $x_1, x_2, \dots, x_N$, men det verkar som att ingen vet hur sågverket ser ut på insidan.
+Så istället tänker hon lista ut talen genom att mata in några brädor med väl valda värden $v$.
 
-Alma vill ha reda på talen $x_1, x_2, \dots, x_N$, men det verkar som att ingen vet hur sågverket fungerar.
-Så istället tänker hon lista ut talen genom att mata in några brädor med väl valda värden $y$.
 
 Det finns $N$ hemliga heltal $x_1 < x_2 < \dots < x_N$ mellan $1$ och $10^9$. 
-Notera att alla dessa tal är olika. Ditt mål är att hitta talen. Du får ställa frågor till sågverket. 
-Sågverket tar ett heltal $y$ som input ($1 \leq y \leq 10^9$), och gör följande:
+Notera att alla dessa tal är olika. Ditt mål är att hitta talen. Du får skicka brädor till sågverket. 
+Sågverket tar ett heltal $v$ som input ($1 \leq v \leq 10^9$), och gör följande:
 
 \begin{enumerate}
-  \item Skapa listan $L = [x_1, x_2, \dots, x_N, y]$.
+  \item Skapa listan $L = [x_1, x_2, \dots, x_N, v]$.
   \item Sortera $L$.
   \item Skapa listan $D$, där $D_i = L_{i+1}-L_i$ för alla $i = 1, 2, \dots, N$.
   \item Sortera $D$, och returnera de $N$ talen i $D$.
 \end{enumerate}
 
-Du får ställa högst $N$ frågor, förutom i testgrupp $4$ där du får ställa $N+1$ frågor.
+Du får skicka högst $N$ brädor, förutom i testgrupp $4$ där du får skicka $N+1$ brädor.
 
 \section*{Interaktion}
 Ditt program ska först läsa in två heltal $N$ och $T$ ($1 \leq N \leq 1000$, $1 \leq T \leq 5$).
 $N$ är antalet hemliga tal du ska hitta, och $T$ är numret på testgruppen. Anledningen till att $T$ 
 är givet i input är för att göra det lättare att ta delpoäng.
 
-Därefter får du börja ställa frågor. Skriv ut en rad med ``\verb|? y|'' för att stoppa in talet
-$y$ i sågverket. Talet $y$ måste uppfylla $1 \leq y \leq 10^9$. Efter varje fråga ska
+Därefter får du börja skicka brädor. Skriv ut en rad med ``\verb|? v|'' för att skicka en bräda med talet
+$v$ till sågverket. Talet $v$ måste uppfylla $1 \leq v \leq 10^9$. Sedan ska
 ditt program läsa in $N$ heltal på en rad, talen $D_1, D_2, \dots, D_N$. Notera att $D_1$ kan vara
-noll, ifall $y$ var lika med ett av talen $x_i$.
+noll, ifall $v$ var lika med ett av talen $x_i$.
 
 När du har hittat talen $x_1, x_2, \dots, x_N$ ska du skriva ut en rad på formen 
 $$! \; x_1 \; x_2 \; x_3 \; \dots \; x_N$$
-Denna rad räknas inte som en fråga till sågverket. Därefter ska ditt program avsluta och 
-inte skriva ut något mer.
+Därefter ska ditt program avsluta och inte skriva ut något mer.
 
 \textbf{Se till att flusha outputen efter varje query}, annars kan du få \textit{Time Limit Exceeded}.
 I C++ kan detta göras med exempelvis \texttt{cout << flush}
@@ -54,6 +53,6 @@ För att få poäng för en grupp så måste du klara alla testfall i gruppen.
   $1$   & $15$       & $N = 1$\\ \hline
   $2$   & $15$       & $N = 2$  \\ \hline
   $3$   & $11$       & $x_i \leq N+1$ \\ \hline
-  $4$   & $37$       & $N \leq 100$, $x_i \leq 10^4$, du får ställa högst $N+1$ frågor. \\ \hline
+  $4$   & $37$       & $N \leq 100$, $x_i \leq 10^4$, du får skicka högst $N+1$ brädor. \\ \hline
   $5$   & $22$       & Inga ytterligare begränsningar \\ \hline
 \end{tabular}
