@@ -1,9 +1,19 @@
-\problemname{Hoppers}
-Joshua har byggt en fabrik i minecraft som består av en tvådimensionell plattform med en massa hoppers. En hopper kan förvara en sak i sig.
-En gång per sekund puttar varje hopper saken de har i sig till hoppern de pekar på om de har något i sig. Ibland kan detta leda till att en hopper har mer än en sak i sig samtidigt.
-Detta funkar självklart inte, därför förstörs alla sakerna som puttades in i hoppern den sekunden. Joshua vill ha en stabil fabrik utan en massa krockar. 
-Han ger därför ett förslag till dig om hur sakerna ska placeras och hur fabriken ska se ut, och vill nu veta för varje sak om den kommer krocka eller åka runt i fabriken för all oändlighet.
-Om någonting krockar vill han dessutom veta var krocken skedde så han sedan kan uppdatera sin design. Skriv ett program för att hjälpa honom!
+\problemname{Minecraftflöde}
+Alex gillar vatten. Då är det inte konstigt att hon älskar vatten som forsar. Men det gillar mer än vatten som vatten är vattenfall!
+Tänk bara, vatten som forsar i all oändlighet. Hon har hittat en bergvägg som hon tror kommer bli perfekta vattenfallet efter att hon har tillfört lite vatten.
+Bergväggen kan modelleras som ett $R \cdot C$ stort rutnät, där $N$ rutor har en klippa som sticker ut. Alex tänkte hälla ut vatten ovanifrån så att det flödar
+ner i $K$ stycken kolumner ovanifrån. Vattnet sprider sig enligt följande regler: om rutan under vattnet är tomt sprider den sig dit. Om det finns en klippa ivägen
+Sprider den sig istället till höger och vänster. Om det finns en klippa ivägen till höger eller vänster sprider det sig inte i den riktningen. (Notera att detta inte
+är exakt hur vatten funkar i Minecraft). Alex har dock svårt att tänka sig hur det kommer se ut, så för att hjälpa henne tänker du skriva ett program som
+räknar hur många kolumner som har vatten i sig i botten av klippan.
+
+\section*{illustration av exempelfall 1}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=5cm]{flöde.png}
+  \quad
+  \caption{En illustration av flödet i exempelfall 1. Notera att de gråa delarna ligger utanför klippan och är endast illustrativa.}
+\end{figure}
 
 \section*{Indata}
 Den första raden innehåller två heltal $R, C$ ($1 \le R, C \le 10^9$), $N$ ($1 \le N \le 10^9$), antalet rader respektive kolumner i fabriken
@@ -26,10 +36,10 @@ För att få poäng för en grupp så måste du klara alla testfall i gruppen.
 \begin{tabular}{| l | l | p{12cm} |}
   \hline
   \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
-  $1$    & $25$      & $R \cdot C \le 1000$, en sten kan inte vara i en av de $8$ inilligande rutorna av en sten \\ \hline
-  $2$    & $40$      & En sten kan inte vara i en av de $8$ inilligande rutorna av en sten \\ \hline
-  $3$    & $10$      & $R \cdot C \le 1000$ \\ \hline
-  $4$    & $20$      & Inga ytterligare begräsningar. \\ \hline
+  $1$    & $20$      & $R \cdot C \le 1000$ \\ \hline
+  $2$    & $30$      & Stenar kan inte röra varandra varken diagonalt, horistonellt eller vertikalt. \\ \hline
+  $3$    & $20$      & Stenar kan inte röra varandra diagonalt. \\ \hline
+  $4$    & $30$      & Inga ytterligare begräsningar. \\ \hline
 \end{tabular}
 
 \section*{Förklaring av exempelfall 1}

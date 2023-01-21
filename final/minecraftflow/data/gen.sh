@@ -12,7 +12,19 @@ compile gen_platform.py
 samplegroup
 sample 1
 
-group largenotouch 35
+
+group smallgeneral 20
+limits r=1000 c=1000
+tc 1
+tc smallgeneralrand1 gen_random r=10 c=10 n=5 k=10
+tc smallgeneralrand2 gen_random r=10 c=50 n=5 k=20
+tc smallgeneralrand3 gen_random r=10 c=50 n=5 k=30
+tc smallgeneralrand4 gen_random r=10 c=100 n=5 k=40
+tc smallgeneralrand5 gen_random r=10 c=100 n=5 k=50
+tc smallgeneralrand6 gen_random r=10 c=100 n=5 k=60
+
+
+group largenotouch 30
 limits nodiag=1 noaxis=1
 tc largenotouchcolls1 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000 no_diag=1 no_axis=1
 tc largenotouchcolls2 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000 no_diag=1 no_axis=1
@@ -29,17 +41,7 @@ tc largestaircase4 gen_staircase r=1000000000 c=1000000000 k=100000 n=100000
 tc largestaircase5 gen_staircase r=1000000000 c=1000000000 k=100000 n=100000
 
 
-group smallgeneral 15
-limits r=1000 c=1000
-tc 1
-tc smallgeneralrand1 gen_random r=10 c=10 n=5 k=10
-tc smallgeneralrand2 gen_random r=10 c=50 n=5 k=20
-tc smallgeneralrand3 gen_random r=10 c=50 n=5 k=30
-tc smallgeneralrand4 gen_random r=10 c=100 n=5 k=40
-tc smallgeneralrand5 gen_random r=10 c=100 n=5 k=50
-tc smallgeneralrand6 gen_random r=10 c=100 n=5 k=60
-
-group largenodiag 35
+group largenodiag 20
 include_group largenotouch
 limits nodiag=1
 tc largenodiagcolls1 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000 no_diag=1
@@ -55,7 +57,7 @@ tc largeplatform2 gen_platform r=1000000000 c=1000000000 n=100000 k=50000
 tc largeplatform3 gen_platform r=1000000000 c=1000000000 n=100000 k=20000
 
 
-group full 15
+group full 30
 include_group largenodiag
 include_group largenotouch
 include_group smallgeneral
