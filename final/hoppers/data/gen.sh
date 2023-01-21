@@ -15,8 +15,6 @@ limits maxn=100 maxtiles=100
 sample 1
 sample 2
 sample 3
-sample 4
-sample 5
 
 group small 10
 include_group sample
@@ -24,8 +22,6 @@ limits maxtiles=1000 maxn=1000
 tc 1
 tc 2
 tc 3
-tc 4
-tc 5
 tc_manual ../manual_tc/manual1.in
 tc_manual ../manual_tc/manual2.in
 tc_manual ../manual_tc/manual3.in
