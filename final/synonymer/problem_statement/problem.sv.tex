@@ -1,22 +1,22 @@
 \problemname{Synonymer}
 Ibland när man kopierar text från Wikipedia till sina uppsatser kan texten fångas i ett program för plagiatkontroll.
 Då måste man först skriva om texten med egna ord, för att undvika att den fastnar i kontrollen.
-Det finns många olika sätt att göra det, men ett av dessa är att köra texten genom ett översättningsprogram till ett annat språk, och sedan tillbaka.
+Det finns många olika sätt att göra det på, men ett av dessa är att köra texten genom ett översättningsprogram till ett annat språk och sedan tillbaka.
 Har man otur kommer texten tillbaka alldeles för lik den ursprungliga trots det.
 
 Man skulle kunna undvika det problemet genom att se till att ett ord aldrig översätts tillbaka till samma ord om det finns en annan möjlighet.
 Rent formellt, anta att vi har ett lexikon med $N$ par av ord $(a, b)$, där $a$ är ordet på svenska och $b$ ordet på det andra språket.
-Ett visst ord $x$ kan då översättas till ordet $y$, om det finns två par $(x, z)$ och$(y, z)$ i lexikonet för något ord $z$.
+Ett visst ord $x$ kan då ändras till ordet $y$, om det finns två par $(x, z)$ och$(y, z)$ i lexikonet för något ord $z$.
 
 Givet en text, skriv om den genom att ersätta så många ord som möjligt genom att översätta det till det andra språket och tillbaka.
 
 \section*{Indata}
-Den första raden innehåller heltalet $N$ ($1 \le N \le 5000$), antalet ordpar i ordboken.
+Den första raden innehåller heltalet $N$ ($1 \le N \le 5000$), antalet ordpar i lexikonet.
 
-De följande $N$ raderna innehåller alla ordpar, en per rad, först med ordet på svenska följt av ordet på det andra språket.
+De följande $N$ raderna innehåller alla ordpar, ett per rad, först med ordet på svenska följt av ordet på det andra språket.
 Samma ord förekommer aldrig på båda språk, och inget ordpar förekommer två gånger.
 
-Detta följs av ett heltal $M$ ($1 \le M \le 1000$), antalet ordet i texten.
+Detta följs av ett heltal $M$ ($1 \le M \le 1000$), antalet ord i texten.
 Nästa rad innehåller $M$ ord, texten du ska översätta.
 Alla ord förekommer minst en gång som ett svenskt ord i ordboken.
 
@@ -41,7 +41,7 @@ För att få poäng för en grupp så måste du klara alla testfall i gruppen.
 
 \section*{Förklaring av exempelfall}
 Det finns två översättningar av skum, foam och shady.
-Dessa kan i sin tur översättas tillbaka till två olika ord: skum och fragda.
-För att inte översätta tillbaka ordet till skum igen måste du välja fragda.
+Dessa kan i sin tur översättas tillbaka till två olika ord: skum och fradga.
+För att inte översätta tillbaka ordet till skum igen måste du välja fradga.
 
-Det andra ordet finns det däremot bara en översättning av, så det måste vi översätta tillbaka.
+Det andra ordet finns det däremot bara en översättning av, så det måste vi översätta tillbaka till samma ord.
