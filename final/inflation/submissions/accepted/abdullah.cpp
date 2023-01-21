@@ -14,7 +14,7 @@ int main() {
   vector<double> v(n);
   double ans = I;
   for(int i=0; i<n; i++){
-    ll a;
+    double a;
     cin>>a;
     ans=max(ans+a,ans*(1+a/(double)100));
   }
