@@ -1,6 +1,8 @@
 author: Joshua Andersson
 source: Programmeringsolympiadens final 2023
 license: cc by-sa
-type: scoring
+type: 
+limits:
+  time_multiplier: 2
 grading:
   show_test_data_groups: true
