@@ -28,7 +28,7 @@ print(n,k)
 seen = set()
 for i in range(k):
     while True:
-        p = random.randint(lo,lo+k*3)
+        p = random.randint(lo,min(c-1,lo+k*3))
         if p not in seen:
             seen.add(p)
             print(p)
@@ -55,22 +55,31 @@ while placed < n and currow>=4 and len(q):
         t = heappop(q)
 
 
-        c = t[1]
+        col = t[1]
 
-        if c in lowest:
-            r = lowest[c]-4
+        if col in lowest:
+            row = lowest[c]-4
         else:
             lowest[c] = currow
+            row=currow-2
         works = True
         for dir in dirs:
-            if (r+dir[0],c+dir[1]) in seen:
+            if (row+dir[0],col+dir[1]) in seen:
                 works = False
                 break
         
         if works:
-            seen.add((r,c))
+            seen.add((row,col))
             placed+=1
-            print(r,c)
+            print(row,col)
+            heappush(q, (random.randint(0,int(1e5)),col+1))
+            heappush(q, (random.randint(0,int(1e5)),col-1))
             break
     
     currow -=4
+
+while placed < n:
+    p = (random.randint(0,r-1),random.randint(0,c-1))
+    if p not in seen:
+        seen.add(p)
+        print(p[0],p[1])
