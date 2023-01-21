@@ -9,7 +9,7 @@ compile gen_random.py
 samplegroup
 sample 1
 
-group g1 22
+group g1 55
 limits pct=1
 tc rand-perc01 gen_random hi=1 I=0
 tc rand-perc02 gen_random hi=1 I=5
@@ -18,20 +18,15 @@ tc rand-perc04 gen_random hi=2 I=0
 tc rand-perc05 gen_random hi=2 I=5
 tc rand-perc06 gen_random hi=2 I=10
 
-
-group g2 33
-limits ord=1
+group g2 45
+include_group g1
+tc 1
 tc rand-sort01 gen_random sort=1 I=50 lo=10
 tc rand-sort02 gen_random sort=1 I=50 lo=10
 tc rand-sort03 gen_random sort=1 I=50 lo=10
 tc rand-sort04 gen_random sort=1 I=50 lo=10
 tc rand-sort05 gen_random sort=1 I=50 lo=10
 tc rand-sort06 gen_random sort=1 I=50 lo=10
-
-group g3 45
-include_group g1
-include_group g2
-tc 1
 tc rand-01 gen_random
 tc rand-02 gen_random
 tc rand-03 gen_random

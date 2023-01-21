@@ -25,8 +25,6 @@ int main() {
   vector<double> A(N);
   rep(i,0,N) cin >> A[i];
 
-  sort(all(A));
-  
   double mx = 0;
   rep(i,0,N + 1) {
     double ni = I;
