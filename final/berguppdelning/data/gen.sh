@@ -2,17 +2,17 @@
 REQUIRE_SAMPLE_REUSE=0
 
 . ../../testdata_tools/gen.sh
-ulimit -s unlimited
+#ulimit -s unlimited
 
-use_solution ollebest.cpp
+use_solution olle.cpp
 
 compile genPerlin.py
 
 
 samplegroup
-limits r=4 c=4 n=3 noise=""
+limits t=0 r=4 c=6 n=6 noise=""
 sample 1
-
+sample 2
 
 testcase() {
     NAME=$(printf "%02d" $1)

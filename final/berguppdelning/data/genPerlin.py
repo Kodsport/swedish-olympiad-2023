@@ -84,9 +84,7 @@ if cmdlinearg("noise") == "olle":
 
 
 for row in heights:
-    for i in row:
-        print(i, end=" ")
-    print("")
+    print(*row)
 
 plt.imshow(heights, cmap='gray')
 plt.savefig(f"../noise/{t}noise.png")

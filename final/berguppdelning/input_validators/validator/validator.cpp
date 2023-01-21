@@ -20,12 +20,7 @@ void run() {
     // TODO: check not too close to average
     for (int i = 0; i < r; i++) 
     {
-        for (int j = 0; j < c; j++)
-        {
-            Int(0, maxV); 
-            Space();
-        }
-        Endl();
+        SpacedInts(c, 0, maxV);
     }
 
     Eof();
