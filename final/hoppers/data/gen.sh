@@ -18,7 +18,7 @@ sample 3
 sample 4
 sample 5
 
-group small 15
+group small 10
 include_group sample
 limits maxtiles=1000 maxn=1000
 tc 1
@@ -26,27 +26,34 @@ tc 2
 tc 3
 tc 4
 tc 5
-tc smallrand1 gen_random tiles=1000 r=100 n=1000
-tc smallrand2 gen_random tiles=1000 r=200 n=1000
-tc smallrand3 gen_random tiles=1000 r=400 n=1000
-tc smallrand4 gen_random tiles=1000 r=10  n=1000
-tc smallrand5 gen_random tiles=1000 r=100 n=1000
-tc smallcycle1 gen_cycle tiles=1000 r=30  n=1000 p_within=0.1 cycle_rows=14 p_rot=0.1
-tc smallcycle2 gen_cycle tiles=1000 r=30  n=1000 p_within=0.1 cycle_rows=14 p_rot=0.1
-tc smalltree1  gen_tree  tiles=1000 r=30  n=1000 max_depth=5
-tc smalltree2  gen_tree  tiles=1000 r=20  n=1000 max_depth=10
-tc smalltree3  gen_tree  tiles=1000 r=10  n=1000 max_depth=100
-tc smalltree4  gen_tree  tiles=1000 r=100 n=1000 max_depth=500
-tc smalltree5  gen_tree  tiles=1000 r=30  n=1000 max_depth=5   branching=1
-tc smalltree6  gen_tree  tiles=1000 r=20  n=1000 max_depth=10  branching=1
-tc smalltree7  gen_tree  tiles=1000 r=10  n=1000 max_depth=100 branching=1
-tc smalltree8  gen_tree  tiles=1000 r=100 n=1000 max_depth=500 branching=1
-tc smalltree9  gen_tree  tiles=1000 r=30  n=1000 max_depth=5   branching=2
-tc smalltree10 gen_tree  tiles=1000 r=20  n=1000 max_depth=10  branching=2
-tc smalltree11 gen_tree  tiles=1000 r=10  n=1000 max_depth=100 branching=2
-tc smalltree12 gen_tree  tiles=1000 r=100 n=1000 max_depth=500 branching=2
+tc_manual ../manual_tc/manual1.in
+tc_manual ../manual_tc/manual2.in
+tc_manual ../manual_tc/manual3.in
+tc_manual ../manual_tc/manual4.in
+tc_manual ../manual_tc/manual5.in
+tc_manual ../manual_tc/manual6.in
+tc_manual ../manual_tc/manual7.in
+tc smallrand1 gen_random tiles=1000 r=100 n=500
+tc smallrand2 gen_random tiles=1000 r=200 n=500
+tc smallrand3 gen_random tiles=1000 r=400 n=500
+tc smallrand4 gen_random tiles=1000 r=10  n=500
+tc smallrand5 gen_random tiles=1000 r=100 n=500
+tc smallcycle1 gen_cycle tiles=1000 r=30  n=500 p_within=0.2 cycle_rows=14 p_rot=0.1
+tc smallcycle2 gen_cycle tiles=1000 r=30  n=500 p_within=0.2 cycle_rows=14 p_rot=0.1
+tc smalltree1  gen_tree  tiles=1000 r=30  n=500 max_depth=5
+tc smalltree2  gen_tree  tiles=1000 r=20  n=500 max_depth=10
+tc smalltree3  gen_tree  tiles=1000 r=10  n=500 max_depth=100
+tc smalltree4  gen_tree  tiles=1000 r=100 n=500 max_depth=500
+tc smalltree5  gen_tree  tiles=1000 r=30  n=500 max_depth=5   branching=1
+tc smalltree6  gen_tree  tiles=1000 r=20  n=500 max_depth=10  branching=1
+tc smalltree7  gen_tree  tiles=1000 r=10  n=500 max_depth=100 branching=1
+tc smalltree8  gen_tree  tiles=1000 r=100 n=500 max_depth=500 branching=1
+tc smalltree9  gen_tree  tiles=1000 r=30  n=500 max_depth=5   branching=2
+tc smalltree10 gen_tree  tiles=1000 r=20  n=500 max_depth=10  branching=2
+tc smalltree11 gen_tree  tiles=1000 r=10  n=500 max_depth=100 branching=2
+tc smalltree12 gen_tree  tiles=1000 r=100 n=500 max_depth=500 branching=2
 
-group medium 25
+group medium 35
 include_group small
 limits maxtiles=1000000 maxn=1000
 tc mediumrand1 gen_random tiles=1000000 r=1000  n=1000
@@ -66,7 +73,7 @@ tc mediumtree2  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=1000
 tc mediumtree3  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=100000
 tc mediumtree4  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=1000000
 
-group linetrees 10
+group linetrees 15
 limits maxtiles=1000000 maxn=100000
 tc linetree1 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.1 cycle_rows=500 p_rot=0.0
 tc linetree2 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.5 cycle_rows=500 p_rot=0.0
@@ -80,7 +87,7 @@ tc linetree9 gen_cycle tiles=1000000  r=100000 n=100000 p_within=0.8 cycle_rows=
 tc linetree10 gen_cycle tiles=1000000 r=100000 n=100000 p_within=0.3 cycle_rows=50000 p_rot=0.0
 tc linetree11 gen_cycle tiles=1000000 r=100000 n=100000 p_within=0.7 cycle_rows=50000 p_rot=0.0
 
-group noup 35
+group noup 25
 limits maxtiles=1000000 maxn=100000 noup=1
 tc nouprand1 gen_noup tiles=1000000 r=10000 n=100000
 tc nouprand2 gen_noup tiles=1000000 r=1000  n=100000

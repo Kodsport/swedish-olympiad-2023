@@ -15,8 +15,8 @@ Varje tecken kommer antingen vara '\texttt{v}' (ner), '\texttt{<}' (vänster), '
 Därefter följer $N$ rader, med två heltal $P_r$ ($0 \le P_r \le R-1$) och $P_c$ ($0 \le P_c \le C-1$), raden och kolumnen som den $i:te$ saken börjar på. 
 
 \section*{Utdata}
-Skriv ut $N$ heltal. På den $i:te$ raden, om den $i:te$ saken aldrig krockar, skriv ut "Ingen krock". Annars, skriv ut "Krock vid $r, c$" ($0 \le r \le R-1$, $0 \le c \le C-1$), där 
-$r$ och $c$ är raden respektive kolumnen där krocken skedde.
+Skriv ut $N$ heltal. På den $i:te$ raden, om den $i:te$ saken aldrig krockar, skriv ut "cycle". Annars, skriv ut "$r c$" ($0 \le r \le R-1$, $0 \le c \le C-1$), där 
+$r$ och $c$ är raden respektive kolumnen där krocken skedde ($0$-indexerat).
 
 \section*{Poängsättning}
 Din lösning kommer att testas på en mängd testfallsgrupper.
@@ -26,10 +26,10 @@ För att få poäng för en grupp så måste du klara alla testfall i gruppen.
 \begin{tabular}{| l | l | p{12cm} |}
   \hline
   \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
-  $1$    & $15$      & $R \cdot C \le 1000, N \le 1000$ \\ \hline
-  $2$    & $25$      & $N \le 1000$ \\ \hline
-  $3$    & $10$      & Om en hopper inte är en del av en cykel kan max en annan hopper peka in i den. \\ \hline
-  $4$    & $35$      & Det finns inga hoppers som pekar uppåt. \\ \hline
+  $1$    & $10$      & $R \cdot C \le 1000, N \le 1000$ \\ \hline
+  $2$    & $35$      & $N \le 1000$ \\ \hline
+  $3$    & $15$      & Om en hopper inte är en del av en cykel kan max en annan hopper peka in i den. \\ \hline
+  $4$    & $25$      & Det finns inga hoppers som pekar uppåt. \\ \hline
   $5$    & $15$      & Inga ytterligare begräsningar. \\ \hline
 \end{tabular}
 

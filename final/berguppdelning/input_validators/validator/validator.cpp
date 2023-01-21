@@ -4,10 +4,15 @@
 void run() {
     int maxR = Arg("r");
     int maxC = Arg("c");
-    int maxN = Arg("nsize");
+    int maxN = Arg("n");
     int maxV = Arg("maxv", 1000);
-    string ignore = Arg("base_noise");
+    string ignore = Arg("noise");
     int ignore_ = Arg("t");
+    string ignore_1 = Arg("bandsz","asd");
+    string ignore_2 = Arg("roundthresh","asd");
+
+    
+
     
     int t = Int(0, 10); Endl();
     int r = Int(1, maxR); Space(); int c = Int(1, maxC); Space(); int n = Int(1, maxN); Endl();

@@ -269,7 +269,7 @@ int main() {
             cout << "cycle\n";
         }
         else{
-            cout << "collision at " << ANS[c1]/c << ", " << ANS[c1]%c << "\n";
+            cout << ANS[c1]/c << " " << ANS[c1]%c << "\n";
         }
     }
 

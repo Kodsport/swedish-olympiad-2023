@@ -451,7 +451,7 @@ int32_t main()
         }
         else
         {
-            cout << "collision at " << ans[i].first << ", " << ans[i].second << "\n";
+            cout << ans[i].first << " " << ans[i].second << "\n";
         }
     }
 

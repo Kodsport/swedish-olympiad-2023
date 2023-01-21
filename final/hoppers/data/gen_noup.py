@@ -31,6 +31,14 @@ for i in range(r):
         if j==c-1: nchoices.remove('>')
         row.append(random.choice(nchoices))
     print("".join(row))
-    
+
+
+seen = set()
 for i in range(n):
-    print(random.randint(0,r-1),random.randint(0,c-1))
+    while True:
+        p= (random.randint(0,r-1),random.randint(0,c-1))
+
+        if not p in seen:
+            seen.add(p)
+            print(p[0],p[1])
+            break

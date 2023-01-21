@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
         i++;
     }
     
-    
+    set<pii> seen;
     vector<pii> items;
     int n = 0;
     mt19937 rng(seed);
@@ -98,7 +98,7 @@ int main(int argc, char* argv[]) {
         {
             pii leaf2 = { leaf.first - minx, leaf.second - miny };
             items.emplace_back(leaf2);
-
+            seen.insert(leaf2);
             n++;
         }
     }
@@ -107,8 +107,19 @@ int main(int argc, char* argv[]) {
     uniform_int_distribution<int> disty(0, maxy - miny);
     rep(i, 0, noise)
     {
-        items.emplace_back(distx(rng), disty(rng));
-        n++;
+        while (true)
+        {
+            pii p = {distx(rng),disty(rng)};
+            
+            if (seen.find(p)==seen.end())
+            {
+                seen.insert(p);
+                items.emplace_back(p);
+                n++;
+                break;
+            }
+        }
+        
     }
 
     cout << (maxx - minx) << " " << (maxy - miny + 1) << " " << n << "\n";
@@ -116,7 +127,7 @@ int main(int argc, char* argv[]) {
     {
         rep(j,0,int(board[0].size()))
         {
-            if (i==board.size()-1&&board[i][j]=='v') cout << '^';
+            if (i==int(board.size())-1&&board[i][j]=='v') cout << '^';
             else cout << board[i][j];
         } 
         cout << "\n";
@@ -127,6 +138,6 @@ int main(int argc, char* argv[]) {
         cout << item.first << " " << item.second << "\n";
     }
 
-    int area = (maxy - miny + 1) * (maxx - minx + 1);
+    //int area = (maxy - miny + 1) * (maxx - minx + 1);
     //cerr << leaves << '/' << area << ' ' << (double)leaves / area << endl;
 }

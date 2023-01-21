@@ -124,7 +124,7 @@ int main() {
                     int x = pos % w;
                     int y = pos / w;
 
-                    results[c] = string("collision at ") + to_string(x) + string(", ") + to_string(y);
+                    results[c] = to_string(x) + string(" ") + to_string(y);
                     crates_left.erase(c);
                 }
             }

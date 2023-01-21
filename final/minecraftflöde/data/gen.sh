@@ -5,9 +5,26 @@
 use_solution joshua_full.cpp
 
 compile gen_random.py
+compile gen_many_collisions.py
+compile gen_staircase.py
 
 samplegroup
 sample 1
+
+group largenotuch 35
+tc largenotouchcolls1 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000
+tc largenotouchcolls2 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000
+tc largenotouchcolls3 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=23400
+tc largenotouchcolls4 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000
+tc largenotouchcolls5 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=95001
+tc largenotouchcolls6 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=50000
+tc largenotouchcolls7 gen_many_collisions r=1000000000 c=1000000000 k=80000  n=100000
+tc largenotouchcolls8 gen_many_collisions r=1000000000 c=1000000000 k=50000  n=100000
+tc largestaircase1 gen_staircase r=1000000000 c=1000000000 k=100000 n=23400
+tc largestaircase2 gen_staircase r=1000000000 c=1000000000 k=100000 n=95001
+tc largestaircase3 gen_staircase r=1000000000 c=1000000000 k=100000 n=50000
+tc largestaircase4 gen_staircase r=1000000000 c=1000000000 k=100000 n=100000
+tc largestaircase5 gen_staircase r=1000000000 c=1000000000 k=100000 n=100000
 
 
 group smallgeneral 15

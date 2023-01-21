@@ -85,9 +85,15 @@ if cycle_rows:
         print("".join(cycle[i]))
 
 
-
+seen = set()
 for i in range(n):
-    if random.uniform(0,1)<percent_within:
-        print(random.randint(cycle_rows,r-1), random.randint(0,c-1))
-    else:
-        print(random.randint(0,cycle_rows), random.randint(0,c-1))
+    while True:
+        if random.uniform(0,1)<percent_within:
+            p=(random.randint(cycle_rows,r-1), random.randint(0,c-1))
+        else:
+            p=(random.randint(0,cycle_rows), random.randint(0,c-1))
+
+        if not p in seen:
+            seen.add(p)
+            print(p[0],p[1])
+            break

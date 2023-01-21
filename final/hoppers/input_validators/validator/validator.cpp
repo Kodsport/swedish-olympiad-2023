@@ -1,5 +1,6 @@
 #include "validator.h"
-
+#include<bits/stdc++.h>
+#include <set>
 
 void run() {
     int maxN = Arg("maxn");
@@ -36,9 +37,12 @@ void run() {
         assert(grid[r-1][i]!='v');
     }
 
+    set<pair<int,int>> seen;
     for (int i = 0; i < n; i++)
     {
-        Int(0, r-1); Space(); Int(0, c-1); Endl();
+        int pr = Int(0, r-1); Space(); int pc = Int(0, c-1); Endl();
+        seen.emplace(pr,pc);
     }
+    assert(seen.size()==n);
     Eof();
 }

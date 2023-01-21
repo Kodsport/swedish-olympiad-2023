@@ -269,7 +269,7 @@ void solvesmart(int r, int c, int n, vector<string>& boardin, vp2& starting)
         }
         else
         {
-            cout << "collision at " << ans[i].first << ", " << ans[i].second << "\n";
+            cout << ans[i].first << " " << ans[i].second << "\n";
         }
     }
 }

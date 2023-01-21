@@ -456,7 +456,7 @@ string solvesmart(int r, int c, int n, vector<string>& boardin, vp2& starting)
         }
         else
         {
-            ret << "collision at " << ans[i].first << ", " << ans[i].second << "\n";
+            ret << ans[i].first << " " << ans[i].second << "\n";
         }
     }
     return ret.str();
