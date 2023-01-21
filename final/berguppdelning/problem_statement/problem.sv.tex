@@ -1,6 +1,6 @@
 \problemname{Berguppdelning}
 
-Danskarna är avundsjuka på att alla andra länder har så mycket bättre skidbackar. 
+\noindent Danskarna är avundsjuka på att alla andra länder har så mycket bättre skidbackar. 
 Frågan har tagits hela vägen till EU-domstol, 
 och det har beslutats att man ska rita om landsgränserna i Europa så att fördelningen 
 av skidbackar blir så jämn som möjligt. Europa kan modelleras som ett rutnät av storlek $R \cdot C$,
@@ -11,13 +11,11 @@ yta avgör hur trevligt det är att åka skidor där.
 Hjälp danskarna att dela upp Europas $N$ länder så att 
 bergen är fördelade så jämnt som möjligt, relativt till ländernas yta!
 
-
 \section*{Indata}
 Den första raden innehåller tre heltal 
 $R, C$ ($2 \le R \cdot C \le 10^6$), $N$ ($1 \le N \le 10^5$), 
 antalet rader respektive kolumner i rutnätet,
 och antalet länder.
-
 Därefter följer $R$ rader, en för varje rad i rutnätet. 
 Varje rad innehåller $C$ tal. På rad $i$, kolumn $j$ 
 står talet $m_{ij}$ ($0 \leq m_{ij} \leq 1000$), 
@@ -31,10 +29,22 @@ Varje land identifieras med ett tal $0 \leq x < n$.
 Din lösning kommer att testas på 10 testfall, 
 där varje fall ger upp till 10 poäng. 
 Låt $a_k$ vara mängden berg i land $k$ dividerat med antalet rutor i landet, 
-och låt $\bar{a}$ vara det totala antalet berg i hela rutnätet dividerat med det totala antalet rutor.
-Du vill minimera värdet av uttrycket $S = \sum_{k=1}^{n}{(a_k - \bar{a})^2}$. 
-Om $S = 0$ får din lösning 10 poäng i testfallet. 
-Annars bestäms din poäng enligt uttrycket $10 \cdot \texttt{max}(1, \frac{S_D}{S})$, där $S_D$ är vad domarlösningen uppnådde på samma testfall. 
+och låt $\bar{a}$ vara det totala antalet berg dividerat med det totala antalet rutor i hela rutnätet.
+Du vill minimera värdet av uttrycket 
+
+\[
+S = \sum_{k=1}^{n}{(a_k - \bar{a})^2}. 
+\]
+
+\noindent Om $S = 0$ får din lösning 10 poäng i testfallet. 
+Annars bestäms din poäng enligt uttrycket 
+
+\[
+10 \cdot \texttt{max}(1, \frac{S_D}{S}),
+\]
+
+\noindent där $S_D$ är vad domarlösningen uppnådde på samma testfall. 
+
 
 \noindent
 \begin{tabular}{| l | l | p{12cm} |}
@@ -51,3 +61,23 @@ Annars bestäms din poäng enligt uttrycket $10 \cdot \texttt{max}(1, \frac{S_D}
   $9$    & $10$      & $R = C = 400$, $N = 1600$ \\ \hline
   $10$    & $10$      & $R = C = 400$, $N = 1600$ \\ \hline
 \end{tabular}
+
+\section*{Förklaring av exempelfall 1}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=2cm]{sample1.png}
+  \quad
+  \caption{Uppdelningen av länder i exempelfall 1.}
+\end{figure}
+
+\noindent I det första exempelfallet är $\bar{a} = \frac{1 + 5 + 2 + 4}{4} = 3$. Medelvärderna är 3 för det röda landet, 2 för det blåa och 4 för det gröna. Detta ger $S = 2$.
+
+\section*{Förklaring av exempelfall 2}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=5cm]{sample2.png}
+  \quad
+  \caption{Uppdelningen av länder i exempelfall 1.}
+\end{figure}
+
+\noindent I det andra exempelfallet är $\bar{a} = 4$. Medelvärdet i varje land är 4. Detta ger $S = 0$, alltså en perfekt lösning.
