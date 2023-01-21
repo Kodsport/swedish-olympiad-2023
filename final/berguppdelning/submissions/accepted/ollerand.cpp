@@ -165,7 +165,6 @@ int main() {
   srand(t);
   double average = .0;
   cin >> rows >> cols >> region_count;
-  if (cols > 200) exit(0);
   score.resize(rows);
   original_score.resize(rows);
   rep(r,0,rows) score[r].resize(cols);
