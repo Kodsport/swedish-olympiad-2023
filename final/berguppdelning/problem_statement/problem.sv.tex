@@ -11,8 +11,10 @@ yta avgör hur trevligt det är att åka skidor där.
 Hjälp danskarna att dela upp Europas $N$ länder så att 
 bergen är fördelade så jämnt som möjligt, relativt till ländernas yta!
 
+
 \section*{Indata}
-Den första raden innehåller tre heltal 
+Den första raden innehåller ett heltal $T$, numret på det testfall som körs.
+Den andra raden innehåller tre heltal 
 $R, C$ ($2 \le R \cdot C \le 10^6$), $N$ ($1 \le N \le 10^5$), 
 antalet rader respektive kolumner i rutnätet,
 och antalet länder.
@@ -31,6 +33,7 @@ där varje fall ger upp till 10 poäng.
 Låt $a_k$ vara mängden berg i land $k$ dividerat med antalet rutor i landet, 
 och låt $\bar{a}$ vara det totala antalet berg dividerat med det totala antalet rutor i hela rutnätet.
 Du vill minimera värdet av uttrycket 
+
 
 \[
 S = \sum_{k=1}^{n}{(a_k - \bar{a})^2}. 
@@ -80,4 +83,4 @@ Annars bestäms din poäng enligt uttrycket
   \caption{Uppdelningen av länder i exempelfall 1.}
 \end{figure}
 
-\noindent I det andra exempelfallet är $\bar{a} = 4$. Medelvärdet i varje land är 4. Detta ger $S = 0$, alltså en perfekt lösning. Observera att det finns andra perfekta lösningar.
+\noindent I det andra exempelfallet är $\bar{a} = 4$. Medelvärdet i varje land är 4. Detta ger $S = 0$, alltså en perfekt lösning.
