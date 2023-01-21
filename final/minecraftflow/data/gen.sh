@@ -30,6 +30,7 @@ tc largestaircase5 gen_staircase r=1000000000 c=1000000000 k=100000 n=100000
 
 
 group smallgeneral 15
+limits r=1000 c=1000
 tc 1
 tc smallgeneralrand1 gen_random r=10 c=10 n=5 k=10
 tc smallgeneralrand2 gen_random r=10 c=50 n=5 k=20
@@ -39,6 +40,7 @@ tc smallgeneralrand5 gen_random r=10 c=100 n=5 k=50
 tc smallgeneralrand6 gen_random r=10 c=100 n=5 k=60
 
 group largenodiag 35
+include_group largenotouch
 limits nodiag=1
 tc largenodiagcolls1 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000 no_diag=1
 tc largenodiagcolls2 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000 no_diag=1
@@ -51,9 +53,18 @@ tc largenodiagcolls8 gen_many_collisions r=1000000000 c=1000000000 k=50000  n=10
 tc largeplatform1 gen_platform r=1000000000 c=1000000000 n=100000 k=100000
 tc largeplatform2 gen_platform r=1000000000 c=1000000000 n=100000 k=50000
 tc largeplatform3 gen_platform r=1000000000 c=1000000000 n=100000 k=20000
-tc largestaircase1
-tc largestaircase2
-tc largestaircase3
-tc largestaircase4
-tc largestaircase5
+
+
+group full 15
+include_group largenodiag
+include_group largenotouch
+include_group smallgeneral
+tc fullcolls1 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000
+tc fullcolls2 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000
+tc fullcolls3 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=23400
+tc fullcolls4 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000
+tc fullcolls5 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=95001
+tc fullcolls6 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=50000
+tc fullcolls7 gen_many_collisions r=1000000000 c=1000000000 k=80000  n=100000
+tc fullcolls8 gen_many_collisions r=1000000000 c=1000000000 k=50000  n=100000
 
