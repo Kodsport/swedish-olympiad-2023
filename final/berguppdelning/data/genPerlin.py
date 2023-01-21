@@ -53,6 +53,9 @@ print(rows, cols, n)
 def query_noise(r: int, c: int) -> int:
     global base_noise
 
+    if cmdlinearg("noise")=="olle":
+        return 0
+
     val = 0
     for noise in base_noise[1]:
         val += noise.noise([r * noise.scale, c * noise.scale]) * noise.mul

@@ -10,7 +10,7 @@ compile genPerlin.py
 
 
 samplegroup
-limits r=4 c=4 n=3
+limits r=4 c=4 n=3 noise=""
 sample 1
 
 
