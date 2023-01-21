@@ -13,6 +13,8 @@ void run() {
   map<string, vector<string>> btoa;
   bool hassol = Arg("hassol", 0);
 
+  set<pair<string, string>> D;
+
   int N = Int(1, 5000);
   Endl();
   for (int i = 0; i < N; i++) {
@@ -25,7 +27,9 @@ void run() {
     checkw(b);
     atob[a].push_back(b);
     btoa[b].push_back(a);
+    D.emplace(a, b);
   }
+  assert((int)D.size() == N);
 
   for (auto it : atob)
     for (auto it2 : btoa)
