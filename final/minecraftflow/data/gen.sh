@@ -11,11 +11,14 @@ compile gen_platform.py
 
 samplegroup
 sample 1
-
+sample 2
+sample 3
 
 group smallgeneral 20
 limits r=1000 c=1000
 tc 1
+tc 2
+tc 3
 tc smallgeneralrand1 gen_random r=10 c=10 n=5 k=10
 tc smallgeneralrand2 gen_random r=10 c=50 n=5 k=20
 tc smallgeneralrand3 gen_random r=10 c=50 n=5 k=30
