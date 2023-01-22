@@ -40,7 +40,7 @@ void assert_done(istream& is, F fail) {
 }
 
 template <class F>
-double score(istream& is, const vector<vector<double>>& grid, int n, int r, int c, F fail) {
+double score(istream& is, const vector<vector<int>>& grid, int n, int r, int c, F fail) {
 
     double totalsc = 0;
     double globalavg = 0;
@@ -67,6 +67,7 @@ double score(istream& is, const vector<vector<double>>& grid, int n, int r, int 
         }
     }
 
+    assert_done(is, fail);
 
     // group index maps to positions within group
     vector<set<pair<int, int>>> groupcoords(n);
@@ -89,6 +90,8 @@ double score(istream& is, const vector<vector<double>>& grid, int n, int r, int 
     {
         rep(j, 0, c)
         {
+            if(visited[i][j]) continue;
+
             int currgroup = group[i][j];
             // Om vi har besökt grupp k men en grabb i k inte är visited är den inte sammanhängande
             if (groupsvisited[currgroup] && !visited[i][j])
@@ -127,9 +130,6 @@ double score(istream& is, const vector<vector<double>>& grid, int n, int r, int 
         totalsc += pow(componentscore[i] / componentsize[i] - globalavg, 2);
     }
 
-
-    assert_done(is, fail);
-
     return totalsc;
 }
 
@@ -150,7 +150,7 @@ int main(int argc, char** argv) {
 
     fin >> r >> c >> n;
 
-    vector<vector<double>> grid(r, vector<double>(c));
+    vector<vector<int>> grid(r, vector<double>(c));
 
     rep(i, 0, r) rep(j, 0, c)
     {
