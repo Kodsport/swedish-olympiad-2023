@@ -150,7 +150,7 @@ int main(int argc, char** argv) {
 
     fin >> r >> c >> n;
 
-    vector<vector<int>> grid(r, vector<double>(c));
+    vector<vector<int>> grid(r, vector<int>(c));
 
     rep(i, 0, r) rep(j, 0, c)
     {
