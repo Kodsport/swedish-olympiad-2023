@@ -7,6 +7,8 @@
 #pragma GCC target("aes,pclmul,rdrnd")                           // encryption
 #pragma GCC target("avx,avx2,f16c,fma,sse3,ssse3,sse4.1,sse4.2") // SIMD
 
+using namespace std;
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -21,7 +23,9 @@
 #include <stack>
 #include <algorithm>
 #include <chrono>
-using namespace std;
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
+template<typename T> using indexed_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 #define rep(i,a,b) for (int i = a; i < b; i++)
 #define pb push_back
@@ -34,6 +38,11 @@ typedef vector<vi> vvi;
 
 int rows, cols, region_count, T;
 vvd original_score, score;
+
+auto Start = chrono::high_resolution_clock::now();
+void resettimer() { Start = chrono::high_resolution_clock::now(); }
+int elapsedmillis() { return chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - Start).count(); }
+
 
 void input() {
     cin >> T >> rows >> cols >> region_count;
@@ -87,11 +96,13 @@ struct UF {
     vi p, r;
     vector<double> total_score;
     vi total_size;
+    indexed_set<int> parents_remaining;
 
     vector<set<int>> neighbors;
 
     UF(int N) {
         n = N;
+        rep(i,0,n) parents_remaining.insert(i);
         regions_left = n;
         p.resize(n); rep(i,0,n) p[i] = i;
         r.assign(n, 0);
@@ -104,6 +115,7 @@ struct UF {
 
     UF(int N, vvi state) {
         n = N;
+        rep(i,0,n) parents_remaining.insert(i);
         regions_left = n;
         p.resize(n); rep(i,0,n) p[i] = i;
         r.assign(n, 0);
@@ -143,10 +155,15 @@ struct UF {
 
     int P(int x) {return (x == p[x]) ? x : p[x] = P(p[x]);}
 
+    int get_random_parent() {
+        return *parents_remaining.find_by_order(rand() % regions_left);
+    }
+
     void merge(int a, int b) {
         a = P(a); b = P(b);
         if (a == b) return;
         if (r[b] < r[a]) swap(a, b);
+        parents_remaining.erase(a);
         p[a] = b;
         regions_left--;
         total_size[b] += total_size[a];
@@ -186,6 +203,19 @@ struct UF {
         greedy_merge_dfs(x, depth-1);
     }
 
+    void merge_random() {
+        rep(j,0,rand()%10) {
+            int x = rand() % (rows * cols);
+            int y;
+            set<int> neis = get_neighbors(x);
+            int k = rand() % neis.size();
+            auto iter = neis.begin();
+            rep(I,0,k) iter++;
+
+            merge(x, *iter);
+        }
+    }
+
     vvi get_state() {
         set<int> parents;
         rep(r,0,rows) rep(c,0,cols) parents.insert(P(index(r, c)));
@@ -213,13 +243,13 @@ vi test_case_iters = {
     100,
     100,
     100,
-    5,
-    5,
-    5,
-    3,
+    100,
+    100,
+    10,
+    10,
     10,
     8,
-    18
+    25
 };
 
 pair<int,int> next_coordinate(int r, int c) {
@@ -237,16 +267,19 @@ vvi best_merge(UF & uf, bool try_all) {
         int iters = (try_all) ? rows * cols : test_case_iters[T];
         int r = 0, c = -1;
         rep(i,0,iters) {
+
+            int x;
             if (try_all) {
                 pair<int,int> coord = next_coordinate(r, c);
                 r = coord.first; 
                 c = coord.second;
+                x = uf.P(index(r, c));
             }
             else {
                 r = rand() % rows;
                 c = rand() % cols;
+                x = uf.P(index(r, c));
             }
-            int x = uf.P(index(r, c));
             if (checked.find(x) != checked.end()) continue;
             checked.insert(x);
 
@@ -288,11 +321,14 @@ vvi best_merge(vvi & state) {
     return best_merge(state, false);
 }
 
+vvi best_merge(UF & uf) {
+    return best_merge(uf, false);
+}
+
 vvi greedy_merge(int target_regions) {
     UF uf(rows * cols);
     int merges = 0;
     while (uf.regions_left > target_regions) {
-        //cout << uf.regions_left << endl;
         int r = rand() % rows;
         int c = rand() % cols;
         uf.greedy_merge_dfs(index(r, c), min(3, uf.regions_left - target_regions));
@@ -301,6 +337,24 @@ vvi greedy_merge(int target_regions) {
 
 vvi solve_tiny() {
     return best_merge(true);
+}
+
+vvi solve_very_tiny() {
+    double best_score = 1e9;
+    vvi best_ans = solve_tiny();
+    int i = 0;
+    while (elapsedmillis() < 3000) {
+        srand(i);i++;
+        UF uf(rows * cols);
+        uf.merge_random();
+        vvi cand = best_merge(uf, true);
+        double s = get_score(cand);
+        if (s < best_score) {
+            best_score = s;
+            best_ans = cand;
+        }
+    }
+    return best_ans;
 }
 
 vvi solve_line(vd sc) {
@@ -365,7 +419,7 @@ vvi get_small_things() {
         }
     }
 
-    priority_queue<pair<double, pair<int, int>>> q;
+    std::priority_queue<pair<double, pair<int, int>>> q;
     rep(i,1,max_small) rep(c,0,cols-i) {
         q.push({-abs(rolling_average[i][c]), {i, c}});
     }
@@ -392,12 +446,11 @@ vvi get_small_things() {
 }
 
 vvi get_small_things_2D() {
-    // inte bättre än andra lösningar
     int max_small = 4;
     vector<vector<vvd>> rolling_average(rows, vector<vvd>(cols, vvd(max_small, vd(max_small, .0))));
 
     rep(r,0,rows) rep(c,0,cols) rolling_average[r][c][1][1] = score[r][c];
-    priority_queue<pair<double, pair<pair<int,int>,pair<int,int>>>> q;
+    std::priority_queue<pair<double, pair<pair<int,int>,pair<int,int>>>> q;
 
     rep(i,1,max_small) rep(j,(i==1)?2:1,max_small) {
         int max_iter_r = rows - i;
@@ -415,7 +468,6 @@ vvi get_small_things_2D() {
             q.push({-abs(new_average), {{r, c}, {i,j}}});
         }
     }
-
 
     int regions_left = region_count - 1;
     vvi ans(rows, vi(cols, -1));
@@ -479,6 +531,82 @@ vvi merge_squares() {
     return uf.get_state();
 }
 
+bool can_swap(vvi & ans, int r, int c) {
+    vector<pair<int,int>> neis;
+    for (auto [R, C] : nei(r, c)) if (ans[r][c] == ans[R][C]) neis.pb({R, C});
+    if (neis.size() == 0) return false;
+    if (neis.size() == 1) return true;
+    set<pair<int,int>> v;
+    queue<pair<int,int>> q;
+    q.push(neis[0]); v.insert(neis[0]); v.insert({r, c});
+    rep(i,0,20) {
+        if (q.empty()) break;
+        auto [R, C] = q.front(); q.pop();
+        for (auto [rr, cc] : nei(R, C)) {
+            if (ans[R][C] != ans[rr][cc]) continue;
+            if (v.find({rr, cc}) != v.end()) continue;
+            v.insert({rr, cc});
+            q.push({rr, cc});
+        }
+    }
+    for (auto p : neis) if (v.find(p) == v.end()) return false;
+    return true;
+}
+
+vvi hill_climb(vvi ans) {
+    vd average(region_count, .0);
+    vi size(region_count, 0);
+    rep(r,0,rows) rep(c,0,cols) {
+        size[ans[r][c]]++;
+        average[ans[r][c]] += score[r][c];
+    }
+    rep(i,0,region_count) average[i] /= (double)size[i];
+
+    int c = 0;
+    while (elapsedmillis() < 5000) {
+        rep(r,0,rows) rep(c,0,cols) {
+            for (auto [R, C] : nei(r, c)) {
+                if (ans[r][c] == ans[R][C]) continue;
+                int x = ans[r][c], y = ans[R][C];
+                if ((average[x] < 0 && average[y] < 0) || (average[x] > 0 && average[y] > 0)) continue;
+                if (average[x] < 0 && score[r][c] < 0 && size[x] > 1 && can_swap(ans, r, c)) {
+                    double new_average_x = (average[x] * size[x] - score[r][c]) / (double)(size[x]-1);
+                    double new_average_y = (average[y] * size[y] + score[r][c]) / (double)(size[y]+1);
+                    
+                    double old_score = abs(average[x]) + abs(average[y]);
+                    double new_score = abs(new_average_x) + abs(new_average_y);
+                    if (new_score > old_score) continue;
+                    
+                    average[x] = new_average_x;
+                    average[y] = new_average_y;
+                    size[x]--;
+                    size[y]++;
+                    ans[r][c] = y;
+                }
+                else if (average[x] < 0 && score[R][C] > 0 && size[y] > 1 && can_swap(ans, R, C)) {
+                    double new_average_x = (average[x] * size[x] + score[R][C]) / (double)(size[x]+1);
+                    double new_average_y = (average[y] * size[y] - score[R][C]) / (double)(size[y]-1);
+                    double old_score = abs(average[x]) + abs(average[y]);
+                    double new_score = abs(new_average_x) + abs(new_average_y);
+                    if (new_score > old_score) continue;
+                    
+                    average[x] = new_average_x;
+                    average[y] = new_average_y;
+                    size[x]++;
+                    size[y]--;
+                    ans[R][C] = x;
+                }
+            }
+        }
+    }
+    return ans;
+}
+
+vvi solve_binary() {
+    vvi ans = best_merge();
+    return ans;
+}
+
 vvi sample_cheese() {
     vvi ans;
     if (rows > 2) ans = {
@@ -494,41 +622,36 @@ vvi sample_cheese() {
     return ans;
 }
 
-auto Start = chrono::high_resolution_clock::now();
-void resettimer() { Start = chrono::high_resolution_clock::now(); }
-int elapsedmillis() { return chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - Start).count(); }
-
 int main() {
     input();
 
     vvi ans;
     if (T == 0) ans = sample_cheese();
-    if (T == 1) ans = solve_tiny();
+    if (T == 1) ans = solve_very_tiny();
     if (T == 2) ans = solve_line();
     if (T == 3) ans = solve_double_line();
-    if (T == 5) ans = solve_tiny();
-    
+    if (T == 4) ans = solve_binary();
 
-    if (cols == 2 || T == 4 || T == 6 || T == 7) {
+    if (T >= 5 && T < 10) {
+        int i = 0;
         ans = best_merge();
-    }
-
-    if (T == 7 || T == 8 || T == 9) {
-        //vvi state = greedy_merge(200*200);
-        //vvi state = merge_squares();
-        ans = best_merge();
-        //ans = get_small_things_2D();
+        vvi a;
+        while (elapsedmillis() < 3000) {
+            srand(i);
+            i++;
+            UF uf(rows * cols);
+            uf.merge_random();
+            a = best_merge(uf);
+            if (get_score(a) < get_score(ans)) ans = a;
+        }
     }
     
     if (T == 10) {
         vvi state = merge_squares();
-        //vvi state = greedy_merge(200*200);
         ans = best_merge(state);
     }
 
+    ans = hill_climb(ans);
+
     output_ans(ans);
-    //double s = get_score(ans);
-    //cout << "Score: " << s << endl;
-    //cout << "Score per region: " << s / (double)region_count << endl;
-    //cout << "Time: " << (double)elapsedmillis() / 1000.0 << " seconds";
 }
