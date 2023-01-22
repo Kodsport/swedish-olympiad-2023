@@ -1,11 +1,21 @@
 \problemname{Brobygge}
-Rut, som inte har lärt sig simma, vill ta sig över en flod. Som tur är ska en bro byggas på en yta som kan representeras av ett $N \cdot M$ stort rutnät.
+Rut, som inte har lärt sig simma, vill ta sig över en flod. Som tur är ska en bro byggas på en yta som kan representeras av ett $N \times M$ stort rutnät.
 Varje timme byggs ett brosegment på en ruta som tidigare var täckt av vatten, så till exempel byggs fem brosegment på fem timmar.
 Rut har fått tag på en lista med positionerna för de första brosegmenten, och vet att hon kan ta sig över floden när man kan gå på bron från ena sidan av floden till den andra utan att nudda vattnet.
 Hon börjar på rad $0$ och vill ta sig till på rad $N-1$.
 Det finns en landmassa som man kan gå på längs med hela rad $0$ och rad $N-1$.
 Hon kan gå mellan rutor som inte är täckta av vatten genom att gå upp, ner, höger eller vänster.
 Hon vill nu veta om de givna brosegmenten räcker för att ta sig över, och isåfall hur länge hon behöver vänta innan bron är tillräckligt färdig för att kunna ta sig till andra sidan. 
+
+\begin{figure}[h]
+  \centering
+\includegraphics[width=0.2\textwidth]{brobygge_sample.png}
+\quad
+\includegraphics[width=0.2\textwidth]{brobygge_sample2.png}
+  \caption{Illustration av exempelfall 1 efter 4 och 7 sekunder. Först efter 7 sekunder finns en väg.}
+  \label{fig:hoppers_t0}
+\end{figure}
+
 
 \section*{Indata}
 Den första raden innehåller tre heltal $N, M$ ($3 \le N, M \le 10^9$), och $T$ ($1 \le T \le 10^5$), antalet rader respektive kolumner i rutnätet

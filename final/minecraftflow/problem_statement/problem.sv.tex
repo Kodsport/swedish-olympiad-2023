@@ -1,25 +1,26 @@
-\problemname{Minecraftflöde}
+\problemname{Vattenfall}
 Alexander gillar vatten. Då är det inte så konstigt att han är förtjust i vatten som forsar. Detta kanske är förklaringen till varför han vill skapa sitt eget vattenfall.
 Tänk bara, vatten som forsar i all oändlighet! Han har hittat en bergvägg som han tror kommer bli det perfekta vattenfallet efter att han har tillfört lite vatten.
-Bergväggen kan modelleras som ett $R \cdot C$ stort rutnät, där $N$ rutor har en klippa som sticker ut. Alex tänker hälla ut vatten ovanifrån så att det flödar
-ner vatten i $K$ stycken kolumner. Vattnet sprider sig i rutnätet enligt följande regler: om rutan under vattnet är tomt sprider det sig dit. Om det finns en klippa ivägen
-Sprider det sig istället till höger och vänster. Om det finns en klippa ivägen till höger eller vänster sprider det sig inte i den riktningen. Alexander har dock svårt att tänka sig
+Bergväggen kan modelleras som ett $R \times C$ stort rutnät, där $N$ rutor har en klippa som sticker ut. Alex tänker hälla ut vatten ovanifrån så att det flödar
+ner vatten i $K$ stycken kolumner. Vattnet sprider sig i rutnätet enligt följande regler: om rutan under vattnet är tom sprider det sig dit. Om det finns en klippa i vägen
+sprider det sig istället till höger och vänster. Om det finns en klippa ivägen till höger eller vänster sprider det sig inte i den riktningen. Alexander har dock svårt att tänka sig
 hur det kommer se ut, så för att hjälpa honom tänker du skriva ett program som räknar ut hur många kolumner som har vatten i sig i nedersta raden av klippan.
 
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=10cm]{vatten.png}
+  \includegraphics[width=7cm]{vatten1.png}
   \quad
-  \caption{En illustration av flödet i exempelfall 1. Den röda ramen markerar slutet på bergsväggen.}
+  \includegraphics[width=7cm]{vatten2.png}
+  \caption{En illustration av flödet i exempelfall 1 och 2. Den röda ramen markerar slutet på bergsväggen.}
 \end{figure}
 
 \section*{Indata}
 Den första raden innehåller två heltal $R, C$ ($1 \le R, C \le 10^9$), antalet rader respektive kolumner som berget består av.
 Den andra innehåller två hetal $K, N$ ($1 \le K, N \le 10^5$), antalet kolumner med vatten i och antalet klippor som sticker ut ur berget.
 
-Därefter följer $K$ rader, som vardera innehåller en siffra $V$ ($0 \le V \le C-1$), kolumnen som den $i$:te källan vatten strömmar nerför.
+Därefter följer $K$ rader, som vardera innehåller en siffra $V$ ($0 \le V \le C-1$), som betyder att det strömmar ner vatten längs kolumn $V$.
 
-Därefter följer $N$ rader, som vardera innehåller två heltal $S_r$ ($1 \le S_r \le R-1$) och $S_c$ ($0 \le S_c \le C-1$), raden och kolumnen där den $i:te$ klippan finns. 
+Därefter följer $N$ rader, som vardera innehåller två heltal $S_r$ ($1 \le S_r \le R-1$) och $S_c$ ($0 \le S_c \le C-1$), raden och kolumnen där den $i$:te klippan finns. 
 
 \section*{Utdata}
 Skriv ut ett heltal: antalet kolumner som är fyllda med vatten i nedersta raden av rutnätet.
@@ -33,8 +34,8 @@ För att få poäng för en grupp så måste du klara alla testfall i gruppen.
   \hline
   \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
   $1$    & $20$      & $R \cdot C \le 1000$ \\ \hline
-  $2$    & $30$      & Stenar kan inte röra varandra varken diagonalt, horistonellt eller vertikalt. \\ \hline
-  $3$    & $20$      & Stenar kan inte röra varandra diagonalt. \\ \hline
+  $2$    & $30$      & Klippor kan inte röra varandra varken diagonalt, horistonellt eller vertikalt. \\ \hline
+  $3$    & $20$      & Klippor kan inte röra varandra diagonalt. \\ \hline
   $4$    & $30$      & Inga ytterligare begräsningar. \\ \hline
 \end{tabular}
 
