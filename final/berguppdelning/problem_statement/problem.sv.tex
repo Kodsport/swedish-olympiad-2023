@@ -1,13 +1,16 @@
 \problemname{Berguppdelning}
 
 \noindent Danskarna är avundsjuka på att alla andra länder har så mycket bättre skidbackar. 
-Frågan har tagits hela vägen till EU-domstol, 
+Frågan har tagits hela vägen till EU-domstolen, 
 och det har beslutats att man ska rita om landsgränserna i Europa så att fördelningen 
-av skidbackar blir så jämn som möjligt. Europa kan modelleras som ett rutnät av storlek $R \cdot C$,
-där det till varje ruta hör ett tal $m_{ij}$ som beskriver hur många berg det finns där.
+av skidbackar blir så jämn som möjligt. Europa kan modelleras som ett rutnät av storlek $R \times C$,
+där rutan på rad i, kolumn j har ett tal $m_{ij}$ som beskriver 
+hur många berg det finns i rutan.
 Ett land består av en sammanhängande mängd rutor,
 där det totala antalet berg i landet dividerat med landets
-yta avgör hur trevligt det är att åka skidor där.
+yta avgör hur trevligt det är att åka skidor där. 
+Landet är sammanhängande om det är möjligt att inom landet gå 
+från varje ruta till varje annan, genom att enbart röra sig i de fyra väderstrecken (alltså ej diagonalt).
 Hjälp danskarna att dela upp Europas $N$ länder så att 
 bergen är fördelade så jämnt som möjligt, relativt till ländernas yta!
 
@@ -15,7 +18,7 @@ bergen är fördelade så jämnt som möjligt, relativt till ländernas yta!
 \section*{Indata}
 Den första raden innehåller ett heltal $T$, numret på det testfall som körs.
 Den andra raden innehåller tre heltal 
-$R, C$ ($2 \le R \cdot C \le 10^6$), $N$ ($1 \le N \le 10^5$), 
+$R, C$ ($2 \le R \times C \le 10^5$), $N$ ($1 \le N \le 16000$), 
 antalet rader respektive kolumner i rutnätet,
 och antalet länder.
 Därefter följer $R$ rader, en för varje rad i rutnätet. 
@@ -24,8 +27,8 @@ står talet $m_{ij}$ ($0 \leq m_{ij} \leq 1000$),
 antalet berg på motsvarande plats i rutnätet.
 
 \section*{Utdata}
-Skriv ut $R$ rader med $C$ tal vardera, där varje tal motsvarar vilket land som äger rutan efter uppdelningen. 
-Varje land identifieras med ett tal $0 \leq x < n$.
+De $N$ länderna är numrerade från $0$ till $N - 1$. Skriv ut $R$ rader med $C$ tal vardera, där varje tal innehåller numret på landet som äger rutan efter din uppdelning.
+
 
 \section*{Poängsättning}
 Din lösning kommer att testas på 10 testfall, 
@@ -36,14 +39,14 @@ Du vill minimera värdet av uttrycket
 
 
 \[
-S = \sum_{k=1}^{n}{(a_k - \bar{a})^2}. 
+S = \sum_{k=1}^{N}{(a_k - \bar{a})^2}. 
 \]
 
 \noindent Om $S = 0$ får din lösning 10 poäng i testfallet. 
 Annars bestäms din poäng enligt uttrycket 
 
 \[
-10 \cdot \texttt{max}(1, \frac{S_D}{S}),
+10 \times \max(1, \frac{S_D}{S}),
 \]
 
 \noindent där $S_D$ är vad domarlösningen uppnådde på samma testfall. 
@@ -52,7 +55,7 @@ Annars bestäms din poäng enligt uttrycket
 \noindent
 \begin{tabular}{| l | l | p{12cm} |}
   \hline
-  \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
+  \textbf{Testfall} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
   $1$    & $10$      & $R = C = N = 10$ \\ \hline
   $2$    & $10$      & $R = 1$, $C = 100000$, $N = 1000$ \\ \hline
   $3$    & $10$      & $R = 2$, $C = 10000$, $N = 1000$ \\ \hline
@@ -80,7 +83,7 @@ Annars bestäms din poäng enligt uttrycket
   \centering
   \includegraphics[width=5cm]{sample2.png}
   \quad
-  \caption{Uppdelningen av länder i exempelfall 1.}
+  \caption{Uppdelningen av länder i exempelfall 2.}
 \end{figure}
 
 \noindent I det andra exempelfallet är $\bar{a} = 4$. Medelvärdet i varje land är 4. Detta ger $S = 0$, alltså en perfekt lösning.
