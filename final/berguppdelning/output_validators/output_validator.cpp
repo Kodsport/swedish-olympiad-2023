@@ -62,7 +62,7 @@ double score(istream& is, const vector<vector<double>>& grid, int n, int r, int 
             }
             catch (const std::exception&)
             {
-                fail("Output was non-integer: " + in);
+                fail("Output was non-integer");
             }
         }
     }
@@ -166,15 +166,18 @@ int main(int argc, char** argv) {
         long double sc = score(cin, grid, n, r, c, die);
         long double bestsc = score(fans, grid, n, r, c, judge_error);
         //bestsc = double(n*m)/2.0;
-        long double ratio = bestsc / sc;
+    
+        long double ratio = 1.0;
+        if(sc != 0.0){
+            ratio = bestsc / sc;
+        }
         ratio = min(ratio, 1.0l);
         //ofstream("../debug" + to_string(tc) + ".txt") << " " << tc << "contestant" << bestsc << " " << sc << " " << 10.0 * ratio;
 
         if (tc == 0) accept(0);
         else
         {
-            if (sc == 0) accept(10);
-            else accept(10.0 * ratio);
+            accept(10.0 * ratio);
         }
     }
     catch (...) {

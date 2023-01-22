@@ -10,11 +10,11 @@ compile genPerlin.py
 
 
 samplegroup
-limits r=2 c=2 n=3 noise=""
+limits t=0 r=2 c=2 n=3 noise=""
 sample 1
 
 samplegroup
-limits r=4 c=6 noise=""
+limits t=0 r=4 c=6 n=6 noise=""
 sample 2
 
 
