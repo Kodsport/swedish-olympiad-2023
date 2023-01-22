@@ -6,7 +6,7 @@ void run() {
     int maxM = Arg("maxm", int(1e9));
     int maxT = Arg("maxt", int(1e5));
 
-    int n = Int(1, maxN); Space(); int m = Int(1, maxM); Space(); int t = Int(1, maxT); Endl();
+    int n = Int(3, maxN); Space(); int m = Int(3, maxM); Space(); int t = Int(1, maxT); Endl();
 
     assert(n>=3);
 

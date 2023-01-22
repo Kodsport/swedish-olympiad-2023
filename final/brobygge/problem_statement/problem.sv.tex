@@ -1,19 +1,19 @@
 \problemname{Brobygge}
 Rut, som inte har lärt sig simma, vill ta sig över en flod. Som tur är ska en bro byggas över en del av floden, som kan representeras som ett $N \times M$ stort rutnät.
 Varje timme byggs ett brosegment på en ruta som tidigare var täckt av vatten, så till exempel har fem brosegment byggts efter fem timmar.
-Rut har fått tag på en lista med positionerna för de första brosegmenten som byggs, 
-och vet att hon kan ta sig över floden när man kan gå på bron från ena sidan av floden till den andra utan att nudda vattnet.
+Rut har fått tag på en lista med positionerna för de första brosegmenten som ska byggas, 
+och hon vet att hon kan ta sig över floden när man kan gå på bron från ena sidan av floden till den andra utan att behöva simma någon sträcka.
 Hon börjar på rad $0$ och vill ta sig till på rad $N-1$.
-Det finns en landmassa som man kan gå på längs med hela rad $0$ och rad $N-1$.
+Dessa två rader har vardera en landmassa som hon kan använda för att gå längs hela floden.
 Hon kan gå mellan rutor som inte är täckta av vatten genom att gå upp, ner, höger eller vänster.
-Hon vill nu veta om de givna brosegmenten räcker för att ta sig över, och isåfall hur länge hon behöver vänta innan bron är tillräckligt färdig för att kunna ta sig till andra sidan. 
+Hon vill nu veta om de givna brosegmenten räcker för att ta sig över, och isåfall hur många timmar hon behöver vänta innan bron är tillräckligt färdig för att kunna ta sig till andra sidan. 
 
 \begin{figure}[h]
   \centering
 \includegraphics[width=0.2\textwidth]{brobygge_sample.png}
 \quad
 \includegraphics[width=0.2\textwidth]{brobygge_sample2.png}
-  \caption{Illustration av exempelfall 1 efter 4 och 7 sekunder. Först efter 7 sekunder finns en väg.}
+  \caption{Illustration av exempelfall 1 efter 4, respektive 7 timmar. Först efter 7 timmar finns en väg till andra sidan.}
   \label{fig:hoppers_t0}
 \end{figure}
 
@@ -22,7 +22,7 @@ Hon vill nu veta om de givna brosegmenten räcker för att ta sig över, och is�
 Den första raden innehåller tre heltal $N, M$ ($3 \le N, M \le 10^9$), och $T$ ($1 \le T \le 10^5$), antalet rader respektive kolumner i rutnätet
 och antalet brosegment som ska byggas.
 
-Därefter följer $T$ rader, där den $i$:te raden innehåller två tal $R$ ($1 \le R \le N-2$) och $C$ ($0 \le C \le M-1$), raden och kolumnen för den ruta som ett brosegment byggas på den $i$:te timmen.
+Därefter följer $T$ rader, där den $i$:te raden innehåller två tal $R$ ($1 \le R \le N-2$) och $C$ ($0 \le C \le M-1$), raden och kolumnen där en ruta byggs färdigt på den $i$:te timmen.
 Notera att i detta problem är rad $0$ raden längst ner.
 
 \section*{Utdata}
