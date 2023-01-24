@@ -85,3 +85,34 @@ tc large-11 gen_cluster n=$MAXN t=5
 tc large-12 gen_random n=$MAXN one=1 t=5
 tc large-13 gen_random n=$MAXN one=1 t=5
 tc large-14 gen_random n=$MAXN one=1 t=5
+tc g5almost-1 gen_random n=1 t=5 max_x=1
+tc g5almost-2 gen_random n=5 t=5 max_x=5
+tc g5almost-3 gen_random n=100 t=5 max_x=10000
+tc g5almost-4 gen_random n=100 t=5 max_x=10000
+tc g5almost-5 gen_random n=100 t=5 max_x=10000
+tc g5almost-6 gen_random n=100 t=5 min_x=1000 max_x=10000
+tc g5almost-7 gen_random n=100 t=5 min_x=9777 max_x=10000
+tc g5almost-8 gen_diff n=100 t=5 max_d=101
+tc g5almost-9 gen_diff n=100 t=5 min_d=23 max_d=57 diff=3
+tc g5almost-10 gen_diff n=100 t=5 min_d=23 max_d=57 diff=1
+tc g5almost-11 gen_cluster n=100 t=5 max_x=10000
+tc g5almost-12 gen_random n=100 t=5 max_x=10000 one=1
+tc g5almost-13 gen_random n=100 t=5 max_x=10000 one=1
+tc g5smallx-2 gen_random n=1 t=5 min_x=2 max_x=2
+tc g5smallx-3 gen_random n=2 t=5 max_x=3
+tc g5smallx-4 gen_random n=20 t=5 max_x=21
+tc g5smallx-5 gen_random n=$MAXN t=5 max_x=$MAXN
+tc g5smallx-6 gen_random n=$MAXN t=5 max_x=$(($MAXN+1))
+tc g5smallx-7 gen_random n=$MAXN t=5 max_x=$(($MAXN+1))
+tc g5smallx-8 gen_random n=$MAXN t=5 max_x=$(($MAXN+1))
+tc g5smallx-9 gen_random n=$MAXN t=5 max_x=$(($MAXN+1))
+tc g5smallx-10 gen_random n=$MAXN t=5 min_x=2 max_x=$(($MAXN+1))
+tc g5one-2 gen_random n=1 t=5
+tc g5one-3 gen_random n=1 t=5
+tc g5one-5 gen_random n=1 t=5 min_x=$MAXX
+tc g5two-1 gen_random n=2 t=5
+tc g5two-2 gen_random n=2 t=5
+tc g5two-3 gen_random n=2 t=5
+tc g5two-5 gen_random n=2 t=5 min_x=$(($MAXX-1))
+tc g5two-6 gen_random n=2 t=5 min_x=444444444 max_x=444444445
+tc g5two-7 gen_random n=2 t=5 one=1

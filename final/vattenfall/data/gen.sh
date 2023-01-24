@@ -14,7 +14,7 @@ sample 1
 sample 2
 sample 3
 
-group smallgeneral 20
+group g1smallgeneral 20
 limits r=1000 c=1000
 tc 1
 tc 2
@@ -27,7 +27,7 @@ tc smallgeneralrand5 gen_random r=10 c=100 n=5 k=50
 tc smallgeneralrand6 gen_random r=10 c=100 n=5 k=60
 
 
-group largenotouch 30
+group g2largenotouch 30
 limits nodiag=1 noaxis=1
 tc largenotouchcolls1 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000 no_diag=1 no_axis=1
 tc largenotouchcolls2 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000 no_diag=1 no_axis=1
@@ -44,8 +44,8 @@ tc largestaircase4 gen_staircase r=1000000000 c=1000000000 k=100000 n=100000
 tc largestaircase5 gen_staircase r=1000000000 c=1000000000 k=100000 n=100000
 
 
-group largenodiag 20
-include_group largenotouch
+group g3largenodiag 20
+include_group g2largenotouch
 limits nodiag=1
 tc largenodiagcolls1 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000 no_diag=1
 tc largenodiagcolls2 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000 no_diag=1
@@ -60,10 +60,10 @@ tc largeplatform2 gen_platform r=1000000000 c=1000000000 n=100000 k=50000
 tc largeplatform3 gen_platform r=1000000000 c=1000000000 n=100000 k=20000
 
 
-group full 30
-include_group largenodiag
-include_group largenotouch
-include_group smallgeneral
+group g4full 30
+include_group g1smallgeneral
+include_group g2largenotouch
+include_group g3largenodiag
 tc fullcolls1 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000
 tc fullcolls2 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=100000
 tc fullcolls3 gen_many_collisions r=1000000000 c=1000000000 k=100000 n=23400

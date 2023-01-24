@@ -13,7 +13,7 @@ samplegroup
 limits maxn=10 maxm=10 maxt=10
 sample 1
 
-group thin 10
+group g1thin 10
 limits maxn=4
 tc thinrandno1 gen_no n=4 m=1000000000 t=100000
 tc thinrandno2 gen_no n=4 m=100000000 t=100000
@@ -28,7 +28,7 @@ tc thindrunkyes7 gen_yes_drunk n=3 m=1000000000 t=100000 p_deviate=0.6 lateyes=1
 tc thindrunkyes8 gen_yes_drunk n=3 m=1000000000 t=100000 p_deviate=0.8 lateyes=1
 
 
-group small 20
+group g2small 20
 include_group sample
 limits maxn=50 maxm=50
 tc smallrandno1 gen_no n=50 m=50 t=700
@@ -50,9 +50,9 @@ tc smallwalkyes3 gen_yes_randomwalk n=50 m=50 t=2000 p_walking=0.5
 tc smallwalkyes4 gen_yes_randomwalk n=50 m=50 t=2000 p_walking=0.7
 tc smalllateyes gen_yes_lateyes n=50 m=50 t=1000
 
-group medium 30
+group g3medium 30
 include_group sample
-include_group small
+include_group g2small
 limits maxn=1000 maxm=1000
 tc mediumrandno1 gen_no n=1000 m=1000 t=100000
 tc mediumrandno2 gen_no n=500 m=1000  t=100000
@@ -74,9 +74,9 @@ tc mediumwalkyes4 gen_yes_randomwalk n=1000 m=1000 t=100000 p_walking=0.7
 tc mediumlateyes  gen_yes_lateyes n=1000 m=1000 t=2000
 
 
-group smallT 15
+group g4smallT 15
 include_group sample
-include_group small
+include_group g2small
 limits maxt=2000
 tc smallTrandno1 gen_no n=100  m=1000000000 t=2000
 tc smallTrandno2 gen_no n=200  m=1000000000 t=2000
@@ -97,11 +97,12 @@ tc smallTwalkyes3 gen_yes_randomwalk n=700  m=1000000000 t=2000 p_walking=0.5
 tc smallTwalkyes4 gen_yes_randomwalk n=500  m=1000000000 t=2000 p_walking=0.7
 tc smallTlateyes  gen_yes_lateyes n=1000 m=1000000000 t=2000
 
-group large 25
+group g5large 25
 include_group sample
-include_group small
-include_group medium
-include_group thin
+include_group g1thin
+include_group g2small
+include_group g3medium
+include_group g4smallT
 tc largerandno1 gen_no n=1000000000 m=1000000000 t=100000
 tc largerandno2 gen_no n=100000 m=1000000000     t=100000
 tc largerandno3 gen_no n=10000 m=1000000000      t=100000

@@ -16,7 +16,7 @@ sample 1
 sample 2
 sample 3
 
-group small 10
+group g1small 10
 include_group sample
 limits maxtiles=1000 maxn=1000
 tc 1
@@ -49,8 +49,8 @@ tc smalltree10 gen_tree  tiles=1000 r=20  n=500 max_depth=10  branching=2
 tc smalltree11 gen_tree  tiles=1000 r=10  n=500 max_depth=100 branching=2
 tc smalltree12 gen_tree  tiles=1000 r=100 n=500 max_depth=500 branching=2
 
-group medium 35
-include_group small
+group g2medium 35
+include_group g1small
 limits maxtiles=1000000 maxn=1000
 tc mediumrand1 gen_random tiles=1000000 r=1000  n=1000
 tc mediumrand2 gen_random tiles=1000000 r=10000 n=1000
@@ -69,7 +69,7 @@ tc mediumtree2  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=1000
 tc mediumtree3  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=100000
 tc mediumtree4  gen_tree  tiles=1000000 r=1000  n=1000 max_depth=1000000
 
-group linetrees 15
+group g3linetrees 15
 limits maxtiles=1000000 maxn=100000
 tc linetree1 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.1 cycle_rows=500 p_rot=0.0
 tc linetree2 gen_cycle tiles=1000000 r=1000  n=100000 p_within=0.5 cycle_rows=500 p_rot=0.0
@@ -83,7 +83,7 @@ tc linetree9 gen_cycle tiles=1000000  r=100000 n=100000 p_within=0.8 cycle_rows=
 tc linetree10 gen_cycle tiles=1000000 r=100000 n=100000 p_within=0.3 cycle_rows=50000 p_rot=0.0
 tc linetree11 gen_cycle tiles=1000000 r=100000 n=100000 p_within=0.7 cycle_rows=50000 p_rot=0.0
 
-group noup 25
+group g4noup 25
 limits maxtiles=1000000 maxn=100000 noup=1
 tc nouprand1 gen_noup tiles=1000000 r=10000 n=100000
 tc nouprand2 gen_noup tiles=1000000 r=1000  n=100000
@@ -100,11 +100,11 @@ tc noupalldown2 gen_cycle tiles=1000000 r=500000 n=100000 p_within=1 cycle_rows=
 tc noupalldown3 gen_cycle tiles=1000000 r=500000 n=100000 p_within=1 cycle_rows=0 p_rot=0.15 noup=1
 
 
-group large 15
-include_group small
-include_group medium
-include_group noup
-include_group linetrees
+group g5large 15
+include_group g1small
+include_group g2medium
+include_group g3linetrees
+include_group g4noup
 limits maxtiles=1000000 maxn=100000
 tc largerand1 gen_random tiles=1000000 r=1000  n=100000
 tc largerand2 gen_random tiles=1000000 r=10000 n=100000
