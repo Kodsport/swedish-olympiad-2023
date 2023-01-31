@@ -1,0 +1,18 @@
+\problemname{Botfoll}
+
+Efter senaste fotbolls-VM har en del länder tänkt dra sig ur FIFA och bilda en ny sport: Botfoll. 
+I Botfoll spelar två lag med $N$ spelare i varje. En spelare kan vara antingen försvarare eller anfallare, 
+och inför varje match får laget bestämma vilken av dessa roller varje spelare ska ha.
+
+Du är coach för ett lag med $N$ spelare, där den $i$:te spelaren har anfallsnivå $a_i$ och försvarsnivå $d_i$. 
+Lagets anfallsstyrka $A$ är summan av alla $a_i$ hos de spelare som är anfallare, 
+och lagets försvarsstyrka $D$ är summan av $d_i$ hos de som är försvarare. 
+Om laget möter ett annat lag med anfallsstyrka $A'$ och försvarsstyrka $D'$, 
+så kommer ditt lag göra $\max(0, A-D')$ mål, medan motståndarlaget kommer göra $\max(0, A'-D)$ mål.
+
+Ditt lag kommer möta $Q$ andra lag, där det $i$:te har anfallsstyrka $A_i$ och försvarsstyrka $D_i$. 
+Din uppgift är att för varje match bestämma vad resultatet kommer bli (förlust, oavgjort, eller vinst), 
+om du optimalt väljer vilka som ska försvara och vilka som ska anfalla.
+
+
+
