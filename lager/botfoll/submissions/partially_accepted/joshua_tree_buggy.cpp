@@ -295,6 +295,9 @@ int32_t main()
     MergeTree mtree(dp.size(), dp);
 
     dread(int, q);
+    int win = 0;
+    int draw = 0;
+    int lose = 0;
     while (q--)
     {
         dread2(int, a, d);
@@ -304,11 +307,12 @@ int32_t main()
         bestscore = max(bestscore, -max(0LL, a - tree.query(0, d)));
         bestscore = max(bestscore, mtree.query(d, dp.size()-1, a)-d);
 
-        if (bestscore < 0) cout << "lose";
-        else if (bestscore == 0) cout << "draw";
-        else cout << "win";
-        cout << "\n";
+        if (bestscore < 0) lose++;
+        else if (bestscore == 0) draw++;
+        else win++;
     }
+
+    cout << win << " " << draw << " " << lose << "\n";
 
     
     quit;

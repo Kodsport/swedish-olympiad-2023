@@ -194,6 +194,9 @@ int32_t main()
 
 
     dread(int, q);
+    int win = 0;
+    int draw = 0;
+    int lose = 0;
     while (q--)
     {
         dread2(int, a, d);
@@ -211,12 +214,12 @@ int32_t main()
             }
         }
 
-        if (bestscore < 0) cout << "lose";
-        else if (bestscore == 0) cout << "draw";
-        else cout << "win";
-        cout << "\n";
+        if (bestscore < 0) lose++;
+        else if (bestscore == 0) draw++;
+        else win++;
     }
 
+    cout << win << " " << draw << " " << lose << "\n";
     
     quit;
 }

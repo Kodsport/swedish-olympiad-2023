@@ -14,8 +14,8 @@ typedef long double ld;
 typedef unsigned long long ull;
 
 const ll big = 1000000007;
-const ll MAXN = 201;
-const ll MAXA = 201;
+const ll MAXN = 401;
+const ll MAXA = 401;
 int n,q;
 
 vi A,D;
@@ -49,6 +49,7 @@ int main() {
     }
 
     cin >> q;
+    vi ANS(3, 0);
     rep(c1,0,q){
         int a,d;
         cin >> a >> d;
@@ -56,8 +57,9 @@ int main() {
         if(sumd >= a)ans = 1;
         if(DP[d+1] >= a+d-sumd)ans = 1;
         if(DP[d+1] > a+d-sumd)ans = 2;
-        cout << result[ans] << "\n";
+        ANS[2-ans]++;
     }
+    cout << ANS[0] << " " << ANS[1] << " " << ANS[2] << "\n";
 
 
     return 0;

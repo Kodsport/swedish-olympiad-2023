@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 big = 10**9+7
-MAXN = 201
-MAXA = 201
+MAXN = 401
+MAXA = 401
 DP = [-big] * (MAXN*MAXA)
 sumd = 0
 result = ["lose", "draw", "win"]
@@ -19,8 +19,11 @@ for suma in reversed(range(0, MAXN*MAXA-1)):
     DP[suma] = max(DP[suma], DP[suma+1])
 
 q = int(input())
+ANS = [0, 0, 0]
 for _ in range(q):
-    a, d = map(int, input().split())
+    inp = input().split()
+    a = int(inp[0])
+    d = int(inp[1])
     ans = 0
     if sumd >= a:
         ans = 1
@@ -28,4 +31,6 @@ for _ in range(q):
         ans = 1
     if DP[d+1] > a+d-sumd:
         ans = 2
-    print(result[ans])
+    ANS[2-ans] += 1
+    
+print(*ANS)

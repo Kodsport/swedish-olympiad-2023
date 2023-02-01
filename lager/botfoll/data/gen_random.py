@@ -12,10 +12,10 @@ def cmdlinearg(name, default=None):
         sys.exit(1)
     return default
 
-MAXQ = 4 * 10**5
-MAXN = 200
-MAXX = 200
-MAXA = 40000
+MAXQ = 2 * 10**5
+MAXN = 400
+MAXX = 400
+MAXA = 160000
 
 random.seed(int(cmdlinearg('seed', sys.argv[-1])))
 n = int(cmdlinearg('n'))
