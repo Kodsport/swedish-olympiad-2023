@@ -9,11 +9,11 @@ ll getLca(ll a, ll b, vector<vector<pair<ll,ll>>> & parents, vector<ll> & dist){
     ll diff=dist[a]-dist[b];
     if(diff>0)swap(a,b);
     diff=abs(diff);
-    for(int i=0; i<LOG; i++){
+    for(int i=LOG-1; i>=0; i--){
         if((1<<i) & diff)b=parents[i][b].first;
     }
     if(a==b)return a;
-    for(int i=0; i<LOG; i++){
+    for(int i=LOG-1; i>=0; i--){
         if(parents[i][a].first!=parents[i][b].first){
             a=parents[i][a].first;
             b=parents[i][b].first;
@@ -52,6 +52,7 @@ int main()
     q.push(root);
     vector<ll> dist(n,-1);
     dist[root] = 0;
+    parents[0][0]={0,inf};
     while (!q.empty())
     {
         ll cur = q.front();
@@ -77,22 +78,22 @@ int main()
         a--,b--;
         val%=v[a];
         ll lca=getLca(a,b,parents,dist);
-        
         // Getting the closest node to the current node whose weight is less or equal to val
         ll cur=a;
         while(cur!=lca){
             for(int i=LOG-1; i>=0; i--){
-                if(parents[i][cur].second>val and dist[parents[i][cur].first]<dist[lca])cur=parents[i][cur].first;
+                if(parents[i][cur].second>val and dist[parents[i][cur].first]>dist[lca])cur=parents[i][cur].first;
             }
             cur=parents[0][cur].first;
             val%=v[cur];
         }
         
         // Going down to the end node. This happens in (LogN)^3.
-        while(cur!=b){
+        ll counter=10;
+        while(cur!=b and counter--){
             ll diff=dist[b]-dist[cur];
             for(int i=LOG-1; i>=0; i--){
-                if((1<<i) >=diff)continue;
+                if((1<<i) >diff)continue;
                 ll k=diff- (1<<i);
                 if(parents[i][getKthAncestor(b,k,parents)].second>val)cur=getKthAncestor(b,k,parents);
             }
