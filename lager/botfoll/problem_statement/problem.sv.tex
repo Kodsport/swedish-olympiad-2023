@@ -11,8 +11,38 @@ Om laget möter ett annat lag med anfallsstyrka $A'$ och försvarsstyrka $D'$,
 så kommer ditt lag göra $\max(0, A-D')$ mål, medan motståndarlaget kommer göra $\max(0, A'-D)$ mål.
 
 Ditt lag kommer möta $Q$ andra lag, där det $i$:te har anfallsstyrka $A_i$ och försvarsstyrka $D_i$. 
-Din uppgift är att för varje match bestämma vad resultatet kommer bli (förlust, oavgjort, eller vinst), 
-om du optimalt väljer vilka som ska försvara och vilka som ska anfalla.
+Din uppgift är att för varje match välja vilka som ska försvara och vilka som ska anfalla så att resultatet
+blir så bra som möjligt (du vill såklart helst vinna, därefter få oavgjort, och helst inte förlora).
 
 
+\section*{Indata}
+Den första raden innehåller ett heltal $N$ ($1 \leq N \leq 400$), antalet spelare i ditt lag.
+
+Följande $N$ rader innehåller två heltal $a_i, d_i$ ($1 \leq a_i, d_i \leq 400$), spelare $i$:s anfallsstyrka
+och försvarsstyrka.
+
+Nästa rad innehåller ett heltal $Q$ ($1 \leq Q \leq 3 \cdot 10^5$), antalet matcher.
+
+Därefter följer $Q$ rader som vardera innehåller två heltal $A_i$ och $D_i$ ($1 \leq A_i, D_i \leq 160000$),
+vilket betyder att ditt lag möter ett lag med anfallsstyrka $A_i$ och försvarsstyrka $D_i$.
+
+\section*{Utdata}
+
+Skriv ut tre heltal $w$, $d$, $l$ på en rad: antalet matcher du kommer vinna, få oavgjort, och förlora, om 
+du optimalt väljer vilka som ska försvara och anfalla varje match.
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  Grupp & Poängvärde & Gränser \\ \hline
+  $1$   & $11$       & $A_i = 0$ för alla $1 \leq i \leq Q$\\ \hline
+  $2$   & $16$       & $N \leq 5$, $Q  \leq 1000$ \\ \hline
+  $3$   & $20$       & $D_i = 0$ för alla $1 \leq i \leq Q$ \\ \hline
+  $4$   & $24$       & $N, a_i, d_i \leq 30$, $Q \leq 1000$ \\ \hline
+  $5$   & $29$       & Inga ytterligare begränsningar \\ \hline
+\end{tabular}
 
