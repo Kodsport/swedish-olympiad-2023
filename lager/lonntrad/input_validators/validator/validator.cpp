@@ -16,7 +16,7 @@ struct UF {
 };
 
 void run() {
-	int N = Int(3, 100'000);
+	int N = Int(3, Arg("n"));
 	Endl();
 	vector<int> deg(N);
 	UF uf(N);
@@ -31,7 +31,8 @@ void run() {
 		deg[a]++;
 		deg[b]++;
 	}
+	bool line = Arg("line", 0);
 	for (int i = 0; i < N; i++) {
-		assert(deg[i] <= 3);
+		assert(deg[i] <= (line ? 2 : 3));
 	}
 }

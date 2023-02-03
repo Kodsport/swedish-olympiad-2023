@@ -3,11 +3,20 @@
 from common import *
 import math
 
-def gen_tree(mode):
+mode = cmdlinearg('mode')
+extra = int(cmdlinearg('extra', 0))
+extraord = int(cmdlinearg('extraord', 0))
+
+def gen_tree():
     eds = []
     depth = [0]
     adj = [[] for _ in range(n)]
+    avail = {0}
+    n2 = n
     for i in range(1, n):
+        if n - i <= extra * len(avail):
+            n2 = i
+            break
         while True:
             if mode == 'random':
                 pred = random.randrange(i)
@@ -34,21 +43,45 @@ def gen_tree(mode):
                 break
         adj[pred].append(i)
         adj[i].append(pred)
+        if len(adj[pred]) == 3:
+            avail.remove(pred)
+        avail.add(i)
         eds.append((pred, i))
         depth.append(depth[pred] + 1)
-    print('depth =', max(depth), file=sys.stderr)
     if mode == 'binary2':
         at = 0
         k = 2
-        while at < n:
+        while at < n2:
             layer = eds[at:at+k]
             random.shuffle(layer)
             eds = eds[:at] + layer + eds[at+k:]
             at += k
             k *= 2
+
+    if extra:
+        avail = sorted(avail)
+        random.shuffle(avail)
+        assert n - n2 <= extra * len(avail)
+        # i - n2 < extra * len(avail)
+        # (i - n2) / extra < len(avail)
+        for i in range(n2, n):
+            if extraord == 0:
+                j = i % len(avail)
+            elif extraord == 1:
+                j = (i - n2) // extra
+            else:
+                j = random.randrange(len(avail))
+            pred = avail[j]
+            eds.append((pred, i))
+            depth.append(depth[pred] + 1)
+            adj[pred].append(i)
+            adj[i].append(pred)
+            avail[j] = i
+    else:
+        assert n == n2
+
+    print('depth =', max(depth), file=sys.stderr)
     return eds, adj
 
-mode = cmdlinearg('mode')
-
-eds, _ = gen_tree(mode)
+eds, _ = gen_tree()
 output(eds)

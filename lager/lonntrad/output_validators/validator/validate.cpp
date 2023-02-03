@@ -12,6 +12,8 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 typedef long double ld;
 
+const int MAX_QUERIES = 60'000;
+
 template<class T>
 struct RMQ {
 	vector<vector<T>> jmp;
@@ -184,12 +186,15 @@ int main(int argc, char **argv) {
 			if (!cin) wrong_answer("EOF2");
 			if (a < 1 || a > N || b < 1 || b > N || c < 1 || c > N) wrong_answer("out of bounds");
 			if (a == b) wrong_answer("a = b is not allowed");
+			++qcount;
+			if (qcount > MAX_QUERIES) {
+				wrong_answer("too many queries");
+			}
 			// if (a == c) wrong_answer("a = c is not allowed");
 			// if (b == c) wrong_answer("b = c is not allowed");
 			--a, --b, --c;
 			if (closer(a, b, c)) cout << "A" << endl;
 			else cout << "B" << endl;
-			++qcount;
 		} else if (qtype == '!') {
 			break;
 		} else {

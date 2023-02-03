@@ -14,6 +14,9 @@ mt19937 rng{123};
 int totalQ;
 
 bool closer(int a, int b, int c) {
+	assert(a != b);
+	if (c == a) return true;
+	if (c == b) return false;
 	cout << "? " << a+1 << ' ' << b+1 << ' ' << c+1 << endl;
 	char ch;
 	cin >> ch;
@@ -70,9 +73,7 @@ void splitBy(const vi& inds, int a, int b, bool big, int qs) {
 			b = B[i];
 	}
 	out.push_back({a, b});
-	if (big) {
-		cerr << sz(inds) << " needed " << qs << endl;
-	}
+	// if (big) cerr << sz(inds) << " needed " << qs << endl;
 	bool abig = sz(A) > sz(B);
 	rec(move(A), big && abig);
 	rec(move(B), big && !abig);

@@ -17,11 +17,12 @@ random.seed(int(cmdlinearg('seed', sys.argv[-1])))
 n = int(cmdlinearg('n'))
 w = int(float(cmdlinearg('w')))
 edge_order = cmdlinearg('eorder', 'normal')
+randomize_inds = int(cmdlinearg('randominds', 1))
 
-def output(edges, randomize=True):
+def output(edges):
     assert len(edges) == n-1
     ren = list(range(n))
-    if randomize:
+    if randomize_inds:
         random.shuffle(ren)
     if edge_order == 'rev':
         edges = edges[::-1]
