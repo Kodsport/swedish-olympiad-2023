@@ -65,6 +65,8 @@ tc binary-5 gen_random n=1000 w=1e9 mode=binary
 tc binary-6 gen_random n=1000 w=0 mode=binary extra=5 extraord=2
 tc binary-7 gen_random n=1000 w=0 mode=binary extra=7 extraord=1
 tc binary-8 gen_random n=1000 w=1e9 mode=binary extra=5
+tc binary-9 gen_random n=1000 w=1e9 mode=binary
+tc binary-10 gen_random n=1000 w=1e9 mode=binary
 tc deep-1 gen_random n=1000 w=0 mode=deeper
 tc deep-2 gen_random n=1000 w=1e9 mode=deeper
 tc tristar-1 gen_random n=1000 w=0 mode=binary extra=333
