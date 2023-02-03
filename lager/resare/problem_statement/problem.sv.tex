@@ -1,116 +1,20 @@
-\documentclass[a4paper,12pt,oneside]{amsbook}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage{multicol}
-%\usepackage{euler}
-%\usepackage{garamond}
-\usepackage{hyperref}
-
-\usepackage{newcent}
-%\fontfamily{fxm}\selectfont
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-% Detta paket skoter grafiken
-\usepackage[dvips]{graphicx}
-%\usepackage[pdftex]{graphicx}
-
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage[swedish]{babel}
-% For bortkommentering
-\usepackage{verbatim}
-% For att slippa indentering av Sections och SubSections
-\usepackage{indentfirst}
-
-% Har stalls paragrafindentering och avstand mellan stycken och rader mm
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt}
-\setlength{\baselineskip}{12pt}
-% Har definieras sidan
-\setlength{\voffset}{-15mm}
-\setlength{\hoffset}{-5.5mm}
-
-\setlength{\topmargin}{0mm}
-\setlength{\headheight}{10mm}
-\setlength{\headsep}{8mm}
-\setlength{\footskip}{16mm}
-
-\setlength{\evensidemargin}{0mm}
-\setlength{\oddsidemargin}{0mm}
-
-\setlength{\marginparsep}{0mm}
-\setlength{\marginparwidth}{0mm}
-
-\setlength{\textwidth}{170mm}
-\setlength{\textheight}{230mm}
-\setlength{\paperwidth}{210mm}
-\setlength{\paperheight}{297mm}
-\setlength{\headwidth}{170mm}
-% Huvud och Fot
-%\fancypagestyle{}{
-\fancyhf{}\fancyhead[c]{\small{\textit{Programmeringsolympiaden Kvalificering 2020}}}
-\fancyfoot[c]{\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-\newenvironment{lista}
-{\begin{itemize}
-\setlength{\parindent}{0pt}
-\setlength{\itemsep}{6pt}}
-{\end{itemize}}
-% Uppgifter
-\newcounter{probnr}
-\newenvironment{tal}{%
-\begin{list}
-%{\textbf{\arabic{section}.\arabic{probnr}}} {\usecounter{probnr}
-{\textbf{\arabic{probnr}}} {\usecounter{probnr}
-\setlength{\leftmargin}{0mm}
-\setlength{\rightmargin}{0mm}
-\setlength{\labelwidth}{-1mm}
-\setlength{\labelsep}{1mm}}
-\setlength{\itemsep}{6pt}
-}{\end{list}}
-% Definition av avsnitt: FAKTA, EXEMPEL, PASTAENDE
-\newtheorem{fakta}{Fakta}
-\newtheorem{exempel}{Exempel}
-\newtheorem{problem}{Problem}
-%
-\newtheoremstyle{test}% NAME
-{20pt}      % ABOVESPACE
-{10pt}      % BELOWSPACE
-{\sffamily} % BODYFONT
-{0pt}       % INDENT
-{\scshape}  % HEADFONT
-{}          % HEADPUNCT
-{\newline}  % HEADSPACE
-{}          % CUSTOM-HEAD-SPEC
-
-\theoremstyle{test}
-\newtheorem{program}{Program}
-\newcommand{\sv}[1]{\textsc{#1}}            % Sma versaler
-\newcommand{\fe}[1]{\textbf{#1}}            % FET
-\newcommand{\ku}[1]{\textit{#1}}            % KURSIV
-\newcommand{\cu}[1]{\texttt{#1}}            % Courier
-\newcommand{\sk}[1]{\texttt{#1}}            % Courier
-\newcommand{\rubrik}[1]{\begin{center}\sf\huge{#1}\normalsize\rm\end{center}}
-\begin{document}
-%\DeclareGraphicsExtensions{.jpg,.pdf,.mps,.png,.eps}
 \problemname{Den generösa resaren}
 Din rika kompis Erika bor i ett land med $N$ byar där den $i$:te byn har $A_i$ invånare. Byarna är kopplade med varandra med $N-1$ vägar så att det går att ta sig från en godtycklig by till en annan godtycklig by genom vägarna.
 
 Efter en hel dags arbete är Erika utmattad och behöver därför att gå på semester, så hon planerar att besöka några av landets byar. Som alla rika männiksor så finns det inget din kompis gillar mer än att ge bort pegnar! Hon planerar därför att ta med sig en stor påse med 1-krona mynt och ge bort så mycket pengar som hon kan i varje by hon besöker. 
 
-Det finns dock ett problem: om en invånare i en by får mer pengar än en annan invånare i samma by så blir hen jättearg och Erikas liv blir hotad. För att undvika detta bestämmer hon att ge alla invånare så mycket pengar hon kan så att alla \textit{i samma by} får lika mycket pengar, även om det betyder att ingen får pengar.
+Det finns dock ett problem: om en invånare i en by får mindre pengar än en annan invånare i samma by så blir hen jättearg och Erikas liv blir hotad. För att undvika detta bestämmer hon att ge alla invånare så mycket pengar hon kan så att alla \textit{i samma by} får lika mycket pengar, även om det betyder att ingen får pengar.
 
 Nu undrar Erika hur mycket pengar hon kommer ha vid slutet av en sådan resa. Hon ställer $Q$ frågor till dig av formen: Givet att resan startar vid by $u$ och slutar vid by $v$ med $x$ 1-kronor, hur mycket pengar kommer finnas kvar vid slutet av resan?
 
 Notera att resan alltid följer den enkla vägen mellan två byar, dvs. den enda kortaste vägen. Notera också att Erika använder 1-korna mynt och det går därför bara att ge bort icke-negativa heltal pengar.
 
 \section*{Indata}
-Den första raden innehåller de två heltalen $N$ ($1\leq N \leq 2 \cdot 10^5$) och $Q$ ($1 \leq Q \leq 5 \cdot 10^5$).
+Den första raden innehåller de två heltalen $N$ ($1\leq N \leq 5 \cdot 10^5$) och $Q$ ($1 \leq Q \leq 5 \cdot 10^5$).
 
 Därefter följer $N-1$ rader, den $i$:te raden raden innehåller två tal $a_i$ $b_i$, där $1 \leq a_i,b_i \leq N$. Detta betyder att det finns en kant (väg) mellan byarna $a_i$ och $b_i$
 
-Sedan följer en rad med $N$ heltal där det $i$:te talet, $A_i$, beskriver antalet invånare i byn $i$.
+Sedan följer en rad med $N$ heltal där det $i$:te talet, $1\leq A_i \leq10^9$, beskriver antalet invånare i byn $i$.
 
 Till slut följer $Q$ rader, den $i$:te raden har tre heltal: $u_i$ $v_i$ $x_i$, där $u_i$ är startbyn, $v_i$ är slutbyn och $x_i$ är antalet 1-krona mynt resan börjar med i den $i$:te frågan. $1 \leq a_i,b_i \leq N$, $1 \leq x_i \leq 10^9$.
 
@@ -133,4 +37,3 @@ För att få poäng för en grupp så måste du klara alla testfall i gruppen.
   $6$   & $23$       & $Q \leq 30000$\\ \hline
   $7$   & $14$       & Inga ytterligare begränsningar \\ \hline
 \end{tabular}
-\end{document}
