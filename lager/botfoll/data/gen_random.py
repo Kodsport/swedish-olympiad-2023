@@ -17,7 +17,7 @@ def swp(a,d,swapped):
         (a, d) = (d, a)
     return (a, d)
 
-MAXQ = 2 * 10**5
+MAXQ = 3 * 10**5
 MAXN = 400
 MAXX = 400
 MAXA = 160000
