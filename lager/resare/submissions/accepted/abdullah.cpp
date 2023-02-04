@@ -4,16 +4,16 @@ typedef long long ll;
 const long long inf = 2e9;
 using namespace std;
 
-vector<int> parent, depth, heavy, head, pos,vec,w;
+vector<int> parent, depth, heavy, head, pos,vec,w,posInv;
 int cur_pos;
 
 ll LOG=20;
 struct SparseTable {
     ll n;
-    vector<vector<ll>> p;
-    SparseTable(vector<ll> & v){
+    vector<vector<int>> p;
+    SparseTable(vector<int> & v){
         n=v.size();
-        p.resize(LOG,vector<ll>(n));
+        p.resize(LOG,vector<int>(n));
         p[0]=v;
         for(int i=1; i<LOG; i++){
             for(int j=0; j<(n-(1<<i)+1); j++){
@@ -26,7 +26,17 @@ struct SparseTable {
         return min(p[log2(diff)][l],p[log2(diff)][r-(1<<(int)(log2(diff)))+1]);
     }
 
-    ll nearestLeq(ll lo, ll x){
+    ll nearestLeqLeft(ll lo, ll x){
+        ll l=0,r=lo;
+        while(l<=r){
+            ll mid=(l+r)/2;
+            if(rmq(mid,r)<=x)l=mid+1;
+            else r=mid-1;
+        }
+        return r;
+    }
+
+    ll nearestLeqRight(ll lo, ll x){
         ll l=lo,r=n-1;
         while(l<=r){
             ll mid=(l+r)/2;
@@ -36,7 +46,8 @@ struct SparseTable {
         return l;
     }
 };
-SparseTable sparseTable;
+vector<int> dummyVec;
+SparseTable sparseTable(dummyVec);
 int dfs(int v, vector<vector<int>> const& adj) {
     int size = 1;
     int max_c_size = 0;
@@ -71,28 +82,48 @@ void init(vector<vector<int>> const& adj) {
     head = vector<int>(n);
     pos = vector<int>(n);
     vec= vector<int>(n);
+    posInv=vector<int>(n);
     cur_pos = 0;
     dfs(0, adj);
     decompose(0, 0, adj);
 }
 
 int query(int a, int b, int x) {
-    int res = 0;
-    for (; head[a] != head[b]; b = parent[head[b]]) {
-        if (depth[head[a]] > depth[head[b]])
-            swap(a, b);
-        ll last=sparseTable.nearestLeq(pos[head[b]], x);
-        while(last<=pos[b]){
-            x%=vec[last];
-            last=sparseTable.nearestLeq(last, x);
-        }
+    map<ll,ll> onPath;
+    map<ll,ll> child;
+    ll cur=b;
+    while(1){
+        onPath[head[cur]]=cur;
+        cur=head[cur];
+        if(cur==0)break;
+        child[parent[cur]]=cur;
+        cur=parent[cur];
     }
-    if (depth[a] > depth[b])
-        swap(a, b);
-    ll last=sparseTable.nearestLeq(pos[a], x);
-    while(last<=pos[b]){
-        x%=vec[last];
-        last=sparseTable.nearestLeq(last, x);
+    int res = 0;
+    while(1) {
+        ll nxt=onPath[head[a]];
+        if(nxt==0)nxt=head[a];
+        // cout<<"nxt: "<<nxt<<" pos[a]: "<<pos[a]<<" pos[nxt]: "<<pos[nxt]<<endl;
+        if(pos[a]>pos[nxt]){
+            ll last=sparseTable.nearestLeqLeft(pos[a], x);
+            while(last>=pos[nxt]){
+                x%=vec[last];
+                last=sparseTable.nearestLeqLeft(last, x);
+                // cout<<"last: "<<last<<endl;
+            }
+        }
+        else {
+            ll last=sparseTable.nearestLeqRight(pos[a], x);
+            while(last<=pos[nxt]){
+                x%=vec[last];
+                last=sparseTable.nearestLeqRight(last, x);
+                // cout<<"last: "<<last<<endl;
+            }
+        }
+        if(nxt==b)break;
+        if(child[nxt])a=child[nxt];
+        else a=parent[nxt];
+        // cout<<a<<" "<<nxt<<endl;
     }
     return x;
 }
@@ -113,15 +144,17 @@ int main()
         g[a].push_back(b);
         g[b].push_back(a);
     }
-    w.resize(n);
+    w=vector<int>(n);
     for(auto &a:w)cin>>a;
-    sparseTable= SparseTable(w);
     init(g);
+    sparseTable= SparseTable(vec);
+    for(int i=0; i<n; i++)posInv[pos[i]]=i;
     while(q--){
         ll a,b,x;
         cin>>a>>b>>x;
         a--,b--;
         cout<<query(a,b,x)<<'\n';
+        // cout<<endl<<endl<<endl;
     }
     return 0;
 }
