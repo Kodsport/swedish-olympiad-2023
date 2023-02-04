@@ -19,10 +19,12 @@ Ditt program ska först läsa in ett heltal $N$ ($3 \leq N \leq 1000$), antalet 
 Därefter får du börja utföra mätningar med din apparat, högst $65\,000$ stycken.
 För varje mätning ska du skriva ut en rad på formatet \texttt{? A B C} ($1 \le A, B, C \le N$, $A \neq B$),
 och sedan läsa in en rad, som kommer innehålla antingen tecknet \texttt A (om $d(A, C) < d(B, C)$) eller \texttt B (om $d(A, C) > d(B, C)$).
-Det garanteras att $d(A, C) \neq d(B, C)$.
+Det garanteras att $d(A, C) \neq d(B, C)$ för alla $A \neq B$.
 
 Till slut ska du skriva ut en rad med tecknet \texttt{!}, och sedan $N-1$ rader, med kanterna i trädet.
 Varje rad ska innehålla två tal $a, b$ ($1 \le a, b \le N$), indexen på noderna kanten går mellan.
+
+Det är garanterat att trädet i varje testfall är bestämt på förhand och inte ändras adaptivt i respons till dina mätningar.
 
 \section*{Poängsättning}
 Din lösning kommer att testas på en mängd testfallsgrupper.
