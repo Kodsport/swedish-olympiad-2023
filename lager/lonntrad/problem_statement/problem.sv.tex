@@ -10,13 +10,13 @@ Apparaten jämför avstånd i trädet.
 Låt $d(x, y)$ beteckna summan av kantlängder på vägen mellan noderna $x$ och $y$.
 Med en användning av apparaten kan du, givet tre nodindex $A, B, C$ (där $A \neq B$) jämföra huruvida $d(A, C)$ är mindre eller större än $d(B, C)$.
 
-Med hjälp av högst $65\,000$ användningar av apparaten, kan du hitta vilka kanter som finns i trädet?
+Med hjälp av högst $20\,000$ användningar av apparaten, kan du hitta vilka kanter som finns i trädet?
 Du behöver inte hitta längden på kanterna.
 
 \section*{Interaktion}
 Ditt program ska först läsa in ett heltal $N$ ($3 \leq N \leq 1000$), antalet noder i trädet.
 
-Därefter får du börja utföra mätningar med din apparat, högst $65\,000$ stycken.
+Därefter får du börja utföra mätningar med din apparat, högst $20\,000$ stycken.
 För varje mätning ska du skriva ut en rad på formatet \texttt{? A B C} ($1 \le A, B, C \le N$, $A \neq B$),
 och sedan läsa in en rad, som kommer innehålla antingen tecknet \texttt A (om $d(A, C) < d(B, C)$) eller \texttt B (om $d(A, C) > d(B, C)$).
 Det garanteras att $d(A, C) \neq d(B, C)$ för alla $A \neq B$.
@@ -35,9 +35,10 @@ För att få poäng för en grupp så måste du klara alla testfall i gruppen.
   \hline
   Grupp & Poängvärde & Gränser \\ \hline
   $1$   & $10$       & $N \le 30$\\ \hline
-  $2$   & $15$       & $N \le 300$  \\ \hline
-  $3$   & $15$       & Trädet utgör en linje \\ \hline
-  $4$   & $60$       & Inga ytterligare begränsningar \\ \hline
+  $2$   & $15$       & $N \le 175$  \\ \hline
+  $3$   & $40$       & $N \le 350$ \\ \hline
+  $4$   & $10$       & Trädet utgör en linje \\ \hline
+  $5$   & $25$       & Inga ytterligare begränsningar \\ \hline
 \end{tabular}
 
 \section*{Exempelförklaring}
