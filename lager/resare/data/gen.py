@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from common import *
 import math
 import sys
 import random
@@ -117,7 +118,7 @@ elif modeWeights =='killCubic':
     if part==0:
         for i in range(n//3):
             weights.append(maxA)
-    for i in range(n%3):
+    while len(weights)<n:
         weights.append(maxA)
 
 for i in range(len(weights)):
