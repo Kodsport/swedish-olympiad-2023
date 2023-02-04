@@ -124,8 +124,8 @@ tc line-large-q-15 gen seed=15 n=$MAXN q=$MAXQ modeTree=line modeWeights=special
 
 group group5 18
 limits endAtOne=1
-tc end-at-one-1 gen n=1 q=10 maxA=100 maxX=100 seed=1 endAtOne=1
-tc end-at-one-2 gen n=2 q=10 maxA=100 maxX=100 seed=2 endAtOne=1
+tc end-at-one-1 gen n=3 q=10 maxA=100 maxX=100 seed=1 endAtOne=1
+tc end-at-one-2 gen n=3 q=10 maxA=100 maxX=100 seed=2 endAtOne=1
 tc end-at-one-3 gen n=3 q=10 maxA=100 maxX=100 seed=3 endAtOne=1
 tc end-at-one-4 gen n=4 q=10 maxA=100 maxX=100 seed=4 endAtOne=1
 tc end-at-one-5 gen n=5 q=10 maxA=100 maxX=100 seed=5 endAtOne=1
