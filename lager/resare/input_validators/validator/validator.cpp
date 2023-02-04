@@ -17,7 +17,7 @@ struct UF {
 };
 
 const int maxN = 200000;
-const int maxQ = 500000;
+const int maxQ = 100000;
 
 void run() {
 	int n = Int(3, Arg("maxN", maxN)); Space(); int q = Int(1, Arg("maxQ", maxQ)); Endl();
