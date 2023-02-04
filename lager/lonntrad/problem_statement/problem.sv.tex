@@ -1,14 +1,15 @@
 \problemname{Lönnträd}
 Som kryptoarborist sysslar du med studiet av hemliga träd.
-I dag har du varit ute i skogen och stött på ett spännande exemplar, med $N$ noder,
+Idag har du varit ute i skogen och stött på ett spännande exemplar, med $N$ noder,
 och $N-1$ olika långa kanter, alla av positiv längd.
+Det är dessutom känt att varje nod har högst $3$ kanter.
 
 Det är inte helt lätt att avgöra strukturen av trädet --
 vilka noder som är sammankopplade med varandra --
 men du har fått tag på en apparat som du tror kan hjälpa dig.
 Apparaten jämför avstånd i trädet.
 Låt $d(x, y)$ beteckna summan av kantlängder på vägen mellan noderna $x$ och $y$.
-Med en användning av apparaten kan du, givet tre nodindex $A, B, C$ (där $A \neq B$) jämföra huruvida $d(A, C)$ är mindre eller större än $d(B, C)$.
+Med en användning av apparaten kan du, givet tre noder $A, B, C$ (där $A \neq B$) jämföra huruvida $d(A, C)$ är mindre eller större än $d(B, C)$.
 
 Med hjälp av högst $20\,000$ användningar av apparaten, kan du hitta vilka kanter som finns i trädet?
 Du behöver inte hitta längden på kanterna.
@@ -22,7 +23,7 @@ och sedan läsa in en rad, som kommer innehålla antingen tecknet \texttt A (om 
 Det garanteras att $d(A, C) \neq d(B, C)$ för alla $A \neq B$.
 
 Till slut ska du skriva ut en rad med tecknet \texttt{!}, och sedan $N-1$ rader, med kanterna i trädet.
-Varje rad ska innehålla två tal $a, b$ ($1 \le a, b \le N$), indexen på noderna kanten går mellan.
+Varje rad ska innehålla två tal $a, b$ ($1 \le a, b \le N$), namnen på noderna kanten går mellan.
 
 Det är garanterat att trädet i varje testfall är bestämt på förhand och inte ändras adaptivt i respons till dina mätningar.
 
