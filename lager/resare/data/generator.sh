@@ -13,7 +13,7 @@ compile gen.py
 MAXN=200000
 MAXX=1000000000
 MAXA=1000000000
-MAXQ=500000
+MAXQ=100000
 
 samplegroup
 sample_manual 1
@@ -162,8 +162,8 @@ tc end-at-one-35 gen n=$MAXN q=$MAXQ seed=35 endAtOne=1
 tc end-at-one-36 gen n=$MAXN q=$MAXQ modeTree=deep seed=36 endAtOne=1
 tc end-at-one-37 gen n=$MAXN q=$MAXQ modeTree=deep seed=37 endAtOne=1
 tc end-at-one-38 gen n=$MAXN q=$MAXQ modeTree=deep seed=38 endAtOne=1
-tc end-at-one-39 gen n=$MAXN q=$MAXQ modeTree=deeper seed=39 endAtone=1
-tc end-at-one-40 gen n=$MAXN q=$MAXQ modeTree=deeper seed=40 endAtone=1
+tc end-at-one-39 gen n=$MAXN q=$MAXQ modeTree=deeper seed=39 endAtOne=1
+tc end-at-one-40 gen n=$MAXN q=$MAXQ modeTree=deeper seed=40 endAtOne=1
 
 group group6 23
 limits maxQ=30000

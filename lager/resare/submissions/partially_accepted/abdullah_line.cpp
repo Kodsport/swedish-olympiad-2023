@@ -7,10 +7,10 @@ using namespace std;
 ll LOG=20;
 struct SparseTable {
     ll n;
-    vector<vector<ll>> p;
-    SparseTable(vector<ll> & v){
+    vector<vector<int>> p;
+    SparseTable(vector<int> & v){
         n=v.size();
-        p.resize(LOG,vector<ll>(n));
+        p.resize(LOG,vector<int>(n));
         p[0]=v;
         for(int i=1; i<LOG; i++){
             for(int j=0; j<(n-(1<<i)+1); j++){
@@ -20,10 +20,20 @@ struct SparseTable {
     }
     ll rmq(ll l, ll r){ // [l,r]
         ll diff=r-l+1;
-        return min(p[log2(diff)][l],p[log2(diff)][r-(1<<(int)(log2(diff)))]);
+        return min(p[log2(diff)][l],p[log2(diff)][r-(1<<(int)(log2(diff)))+1]);
     }
 
-    ll nearestLeq(ll lo, ll x){
+    ll nearestLeqLeft(ll lo, ll x){
+        ll l=0,r=lo;
+        while(l<=r){
+            ll mid=(l+r)/2;
+            if(rmq(mid,r)<=x)l=mid+1;
+            else r=mid-1;
+        }
+        return r;
+    }
+
+    ll nearestLeqRight(ll lo, ll x){
         ll l=lo,r=n-1;
         while(l<=r){
             ll mid=(l+r)/2;
@@ -33,7 +43,6 @@ struct SparseTable {
         return l;
     }
 };
-
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -50,7 +59,7 @@ int main()
         g[a].push_back(b);
         g[b].push_back(a);
     }
-    vector<ll> v(n);
+    vector<int> v(n);
     for(int i=0; i<n; i++)cin>>v[i];
     SparseTable sparseTable(v);
     while(Q--){
@@ -58,10 +67,10 @@ int main()
         cin>>a>>b>>val;
         a--,b--;
         ll l=a;
-        val%=spareseTable[0][l];
+        val%=sparseTable.rmq(a,a);
         while(l<b){
-            l=sparseTable.nearestLeq(l,val);
-            if(l<=b)val%=spareseTable[0][a];
+            l=sparseTable.nearestLeqRight(l,val);
+            if(l<=b)val%=sparseTable.rmq(l,l);
         }
         cout<<val<<'\n';
     }
