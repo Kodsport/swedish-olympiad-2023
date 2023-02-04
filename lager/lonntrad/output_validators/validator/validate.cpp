@@ -12,7 +12,7 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 typedef long double ld;
 
-const int MAX_QUERIES = 60'000;
+const int MAX_QUERIES = 20'000;
 
 template<class T>
 struct RMQ {
