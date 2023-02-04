@@ -6,6 +6,7 @@ PPATH=$(realpath ..)
 #ulimit -s unlimited
 
 use_solution abdullah.cpp
+ulimit -s unlimited
 
 compile gen.py
 
@@ -20,7 +21,7 @@ sample_manual 1
 
 group group1 10
 limits maxN=2000 maxQ=2000 
-include_group samplegroup
+include_group sample
 tc small-1 gen n=1 q=10 maxA=100 maxX=100 seed=1
 tc small-2 gen n=2 q=10 maxA=100 maxX=100 seed=2
 tc small-3 gen n=3 q=10 maxA=100 maxX=100 seed=3
@@ -168,59 +169,58 @@ tc end-at-one-40 gen n=$MAXN q=$MAXQ modeTree=deeper seed=40 endAtone=1
 
 group group6 23
 limits maxQ=30000
-include_group samplegroup
+include_group sample
 include_group group1
 include_group group3
-tc small-queries-1 seed=1 n=$MAXN q=30000
-tc small-queries-2 seed=2 n=$MAXN q=30000
-tc small-queries-3 seed=3 n=$MAXN q=30000
-tc small-queries-4 seed=4 n=$MAXN q=30000
-tc small-queries-5 seed=5 n=$MAXN q=30000
-tc small-queries-6 seed=6 n=$MAXN q=30000 modeTree=deep
-tc small-queries-7 seed=7 n=$MAXN q=30000 modeTree=deep
-tc small-queries-8 seed=8 n=$MAXN q=30000 modeTree=deep
-tc small-queries-9 seed=9 n=$MAXN q=30000 modeTree=deep
-tc small-queries-10 seed=10 n=$MAXN q=30000 modeTree=deeper
-tc small-queries-11 seed=11 n=$MAXN q=30000 modeQeries=distinct modeTree=deeper
-tc small-queries-12 seed=12 n=$MAXN q=30000 modeTree=killCubic modeQeries=distinct modeWeights=killCubic
-tc small-queries-13 seed=13 n=$MAXN q=30000 modeTree=killCubic modeQeries=distinct modeWeights=killCubic
-tc small-queries-14 seed=14 n=$MAXN q=30000 modeTree=killCubic modeQeries=distinct modeWeights=killCubic
-tc small-queries-15 seed=15 n=$MAXN q=30000 modeTree=killCubic modeQeries=distinct modeWeights=killCubic
-tc small-queries-16 seed=16 n=$MAXN q=30000 modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
-tc small-queries-17 seed=17 n=$MAXN q=30000 modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
-tc small-queries-18 seed=18 n=$MAXN q=30000 modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
-tc small-queries-19 seed=19 n=$MAXN q=30000 modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
-tc small-queries-20 seed=20 n=$MAXN q=30000 modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
+tc small-queries-1  gen seed=1 n=$MAXN q=30000
+tc small-queries-2  gen seed=2 n=$MAXN q=30000
+tc small-queries-3  gen seed=3 n=$MAXN q=30000
+tc small-queries-4  gen seed=4 n=$MAXN q=30000
+tc small-queries-5  gen seed=5 n=$MAXN q=30000
+tc small-queries-6  gen seed=6 n=$MAXN q=30000 modeTree=deep
+tc small-queries-7  gen seed=7 n=$MAXN q=30000 modeTree=deep
+tc small-queries-8  gen seed=8 n=$MAXN q=30000 modeTree=deep
+tc small-queries-9  gen seed=9 n=$MAXN q=30000 modeTree=deep
+tc small-queries-10 gen  seed=10 n=$MAXN q=30000 modeTree=deeper
+tc small-queries-11 gen  seed=11 n=$MAXN q=30000 modeQeries=distinct modeTree=deeper
+tc small-queries-12 gen  seed=12 n=$MAXN q=30000 modeTree=killCubic modeQeries=distinct modeWeights=killCubic
+tc small-queries-13 gen  seed=13 n=$MAXN q=30000 modeTree=killCubic modeQeries=distinct modeWeights=killCubic
+tc small-queries-14 gen  seed=14 n=$MAXN q=30000 modeTree=killCubic modeQeries=distinct modeWeights=killCubic
+tc small-queries-15 gen  seed=15 n=$MAXN q=30000 modeTree=killCubic modeQeries=distinct modeWeights=killCubic
+tc small-queries-16 gen  seed=16 n=$MAXN q=30000 modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
+tc small-queries-17 gen  seed=17 n=$MAXN q=30000 modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
+tc small-queries-18 gen  seed=18 n=$MAXN q=30000 modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
+tc small-queries-19 gen  seed=19 n=$MAXN q=30000 modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
+tc small-queries-20 gen  seed=20 n=$MAXN q=30000 modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
 
 group group7 14
-include_group samplegroup
+include_group sample
 include_group group1
 include_group group2
 include_group group3
 include_group group4
 include_group group5
 include_group group6
-tc large-1 seed=1 n=$MAXN q=$MAXQ
-tc large-2 seed=2 n=$MAXN q=$MAXQ
-tc large-3 seed=3 n=$MAXN q=$MAXQ
-tc large-4 seed=4 n=$MAXN q=$MAXQ
-tc large-5 seed=5 n=$MAXN q=$MAXQ
-tc large-6 seed=6 n=$MAXN q=$MAXQ modeTree=deep
-tc large-7 seed=7 n=$MAXN q=$MAXQ modeTree=deep
-tc large-8 seed=8 n=$MAXN q=$MAXQ modeTree=deep
-tc large-9 seed=9 n=$MAXN q=$MAXQ modeTree=deep
-tc large-10 seed=10 n=$MAXN q=$MAXQ modeTree=deeper
-tc large-11 seed=11 n=$MAXN q=$MAXQ modeTree=deeper
-tc large-12 seed=12 n=$MAXN q=$MAXQ modeTree=killCubic modeWeights=killCubic
-tc large-13 seed=13 n=$MAXN q=$MAXQ modeTree=killCubic modeWeights=killCubic
-tc large-14 seed=14 n=$MAXN q=$MAXQ modeTree=killCubic modeWeights=killCubic
-tc large-15 seed=15 n=$MAXN q=$MAXQ modeTree=killCubic modeWeights=killCubic
-tc large-16 seed=16 n=$MAXN q=$MAXQ modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
-tc large-17 seed=17 n=$MAXN q=$MAXQ modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
-tc large-18 seed=18 n=$MAXN q=$MAXQ modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
-tc large-19 seed=19 n=$MAXN q=$MAXQ modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
-tc large-20 seed=20 n=$MAXN q=$MAXQ modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
-
+tc large-1  gen seed=1 n=$MAXN q=$MAXQ
+tc large-2  gen seed=2 n=$MAXN q=$MAXQ
+tc large-3  gen seed=3 n=$MAXN q=$MAXQ
+tc large-4  gen seed=4 n=$MAXN q=$MAXQ
+tc large-5  gen seed=5 n=$MAXN q=$MAXQ
+tc large-6  gen seed=6 n=$MAXN q=$MAXQ modeTree=deep
+tc large-7  gen seed=7 n=$MAXN q=$MAXQ modeTree=deep
+tc large-8  gen seed=8 n=$MAXN q=$MAXQ modeTree=deep
+tc large-9  gen seed=9 n=$MAXN q=$MAXQ modeTree=deep
+tc large-10 gen seed=10 n=$MAXN q=$MAXQ modeTree=deeper
+tc large-11 gen seed=11 n=$MAXN q=$MAXQ modeTree=deeper
+tc large-12 gen seed=12 n=$MAXN q=$MAXQ modeTree=killCubic modeWeights=killCubic
+tc large-13 gen seed=13 n=$MAXN q=$MAXQ modeTree=killCubic modeWeights=killCubic
+tc large-14 gen seed=14 n=$MAXN q=$MAXQ modeTree=killCubic modeWeights=killCubic
+tc large-15 gen seed=15 n=$MAXN q=$MAXQ modeTree=killCubic modeWeights=killCubic
+tc large-16 gen seed=16 n=$MAXN q=$MAXQ modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
+tc large-17 gen seed=17 n=$MAXN q=$MAXQ modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
+tc large-18 gen seed=18 n=$MAXN q=$MAXQ modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
+tc large-19 gen seed=19 n=$MAXN q=$MAXQ modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
+tc large-20 gen seed=20 n=$MAXN q=$MAXQ modeTree=killCubic modeQeries=startToEnd modeWeights=killCubic
 
 
 

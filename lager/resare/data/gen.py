@@ -84,7 +84,7 @@ elif modeWeights=='specialLine':
             for j in range(n//(len(nums)-1)):
                 weights.append(nums[i+(j%2)])
         for i in range(n%(len(nums)-1)):
-            weights.append(2,end="")
+            weights.append(2)
     else:
         for i in range(n):
             weights.append(nums[i])
