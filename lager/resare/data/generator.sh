@@ -10,20 +10,19 @@ ulimit -s unlimited
 
 compile gen.py
 
-MAXN=500000
+MAXN=200000
 MAXX=1000000000
 MAXA=1000000000
 MAXQ=500000
 
 samplegroup
-limits 
 sample_manual 1
 
 group group1 10
 limits maxN=2000 maxQ=2000 
 include_group sample
-tc small-1 gen n=1 q=10 maxA=100 maxX=100 seed=1
-tc small-2 gen n=2 q=10 maxA=100 maxX=100 seed=2
+tc small-1 gen n=3 q=10 maxA=100 maxX=100 seed=1
+tc small-2 gen n=4 q=10 maxA=100 maxX=100 seed=2
 tc small-3 gen n=3 q=10 maxA=100 maxX=100 seed=3
 tc small-4 gen n=4 q=10 maxA=100 maxX=100 seed=4
 tc small-5 gen n=5 q=10 maxA=100 maxX=100 seed=5
@@ -125,7 +124,6 @@ tc line-large-q-15 gen seed=15 n=$MAXN q=$MAXQ modeTree=line modeWeights=special
 
 group group5 18
 limits endAtOne=1
-include_group group4
 tc end-at-one-1 gen n=1 q=10 maxA=100 maxX=100 seed=1 endAtOne=1
 tc end-at-one-2 gen n=2 q=10 maxA=100 maxX=100 seed=2 endAtOne=1
 tc end-at-one-3 gen n=3 q=10 maxA=100 maxX=100 seed=3 endAtOne=1

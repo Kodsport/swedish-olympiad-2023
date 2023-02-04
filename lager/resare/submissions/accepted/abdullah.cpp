@@ -99,7 +99,6 @@ int query(int a, int b, int x) {
         child[parent[cur]]=cur;
         cur=parent[cur];
     }
-    int res = 0;
     while(1) {
         ll nxt=onPath[head[a]];
         if(nxt==0)nxt=head[a];
@@ -134,7 +133,6 @@ int main()
     cin.tie(0);
     ll n,q;
     cin >> n>>q;
-    ll root = 0;
     vector<vector<int>> g(n);
     for(int i=0;i<n-1;i++)
     {

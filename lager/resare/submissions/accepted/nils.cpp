@@ -14,13 +14,13 @@ typedef long double ld;
 typedef unsigned long long ull;
 
 const ll big = 1000000007;
-const ll MAXN = 200001;
+const ll MAXN = 500001;
 
 int n,q;
 vector<vi> C(MAXN, vi());
 vi A;
 
-const int SQRT = 100;
+const int SQRT = 500;
 
 int PAR[MAXN] = {0};
 int SQRT_PAR[MAXN] = {0};
@@ -51,9 +51,16 @@ int lca(int u, int v){
     while(DIST[v]%SQRT != DIST[u]%SQRT){
         v = PAR[v];
     }
-    while(u != v){
+    while(DIST[v] > DIST[u]){
+        v = SQRT_PAR[v];
+    }
+    while(SQRT_PAR[u] != SQRT_PAR[v]){
         u = SQRT_PAR[u];
         v = SQRT_PAR[v];
+    }
+    while(u != v){
+        u = PAR[u];
+        v = PAR[v];
     }
     return u;
 }
@@ -81,7 +88,7 @@ int query(int u, int v, int x){
     int w = lca(u, v);
     x %= A[u];
     while(u != w){
-        if(DIST[u] - DIST[w] < SQRT || SQRT_MIN[u] < x){
+        if(DIST[u] - DIST[w] < SQRT || SQRT_MIN[u] <= x){
             u = PAR[u];
             if(x >= A[u])x %= A[u];
         }

@@ -173,6 +173,4 @@ for i in range(q):
     queries.append(a)
 for i in range(q):
     a=queries[i]
-    print(a[0],a[1],a[2],end='')
-    if i+1!=q:
-        print()
+    print(a[0],a[1],a[2])
