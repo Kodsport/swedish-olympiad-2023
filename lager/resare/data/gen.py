@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-from common import *
 import math
 import sys
 import random
