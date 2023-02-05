@@ -168,7 +168,3 @@ tc large-17 gen n=$MAXN q=$MAXQ modeTree=killCubic modeQueries=startToEnd modeWe
 tc large-18 gen n=$MAXN q=$MAXQ modeTree=killCubic modeQueries=startToEnd modeWeights=killCubic
 tc large-19 gen n=$MAXN q=$MAXQ modeTree=killCubic modeQueries=startToEnd modeWeights=killCubic
 tc large-20 gen n=$MAXN q=$MAXQ modeTree=killCubic modeQueries=startToEnd modeWeights=killCubic
-
-
-
-
