@@ -62,7 +62,7 @@ tc small-38 gen n=2000 q=2000 modeTree=deep
 tc small-39 gen n=2000 q=2000 modeTree=deeper
 tc small-40 gen n=2000 q=2000 modeTree=deeper
 
-group group2 16
+group group2 20
 limits modeTree=line maxA=100
 tc line-small-weights-1 gen n=$MAXN q=$MAXQ modeTree=line maxA=100
 tc line-small-weights-2 gen n=$MAXN q=$MAXQ modeTree=line maxA=100
@@ -80,7 +80,7 @@ tc line-small-weights-13 gen n=$MAXN q=$MAXQ modeTree=line maxA=100 modeWeights=
 tc line-small-weights-14 gen n=$MAXN q=$MAXQ modeTree=line maxA=100 modeWeights=specialLine
 tc line-small-weights-15 gen n=$MAXN q=$MAXQ modeTree=line maxA=100 modeWeights=specialLine modeQueries=startToEnd
 
-group group3 9
+group group3 25
 limits modeTree=line
 include_group group2
 tc line-large-q-1 gen n=$MAXN q=$MAXQ modeTree=line
@@ -99,7 +99,7 @@ tc line-large-q-13 gen n=$MAXN q=$MAXQ modeTree=line modeWeights=specialLine
 tc line-large-q-14 gen n=$MAXN q=$MAXQ modeTree=line modeWeights=specialLine
 tc line-large-q-15 gen n=$MAXN q=$MAXQ modeTree=line modeWeights=specialLine modeQueries=startToEnd
 
-group group4 18
+group group4 25
 limits endAtOne=1
 tc end-at-one-1 gen n=3 q=10 maxA=100 maxX=100 endAtOne=1
 tc end-at-one-2 gen n=3 q=10 maxA=100 maxX=100 endAtOne=1
@@ -142,7 +142,7 @@ tc end-at-one-38 gen n=$MAXN q=$MAXQ modeTree=deep endAtOne=1
 tc end-at-one-39 gen n=$MAXN q=$MAXQ modeTree=deeper endAtOne=1
 tc end-at-one-40 gen n=$MAXN q=$MAXQ modeTree=deeper endAtOne=1
 
-group group5 14
+group group5 20
 include_group sample
 include_group group1
 include_group group3
