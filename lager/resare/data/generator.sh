@@ -16,7 +16,8 @@ MAXA=1000000000
 MAXQ=100000
 
 samplegroup
-sample_manual 1
+sample 1
+sample 2
 
 group group1 10
 limits maxN=2000 maxQ=2000 
