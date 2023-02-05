@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 
-from common import *
 import math
 import sys
 import random
 
+checked = set()
+
 def cmdlinearg(name, default=None):
+    checked.add(name)
     for arg in sys.argv:
         if arg.startswith(name + "="):
             return arg.split("=")[1]
@@ -54,13 +56,12 @@ def gen_tree(mode,n):
 modeTree=cmdlinearg('modeTree','random')
 modeWeights=cmdlinearg('modeWeights','random')
 modeQueries= cmdlinearg('modeQueries','random')
-seed=cmdlinearg('seed')
 n=int(cmdlinearg('n'))
 q=int(cmdlinearg('q'))
 endAtOne=int(cmdlinearg('endAtOne',0))
 maxA=int(cmdlinearg('maxA',10**9))
 maxX=int(cmdlinearg('maxX',10**9))
-random.seed(seed)
+random.seed(int(cmdlinearg('seed', sys.argv[-1])))
 print(n,q)
 eds, _ = gen_tree(modeTree,n)
 weights=[]
@@ -166,11 +167,12 @@ for i in range(q):
             queries.append((1,n,maxA))
         continue
     a=getQuery()
-    if modeQueries=="distnict":
-        while used[a]:
-            a=getQuery()
-        used[a]=True
+
     queries.append(a)
 for i in range(q):
     a=queries[i]
     print(a[0],a[1],a[2])
+
+for arg in sys.argv[1:-1]:
+    assert '=' in arg
+    assert arg.split('=')[0] in checked, arg
