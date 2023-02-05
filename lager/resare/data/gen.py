@@ -5,10 +5,13 @@ import math
 import sys
 import random
 
+checked = set()
+
 def cmdlinearg(name, default=None):
     for arg in sys.argv:
         if arg.startswith(name + "="):
             return arg.split("=")[1]
+    checked.add(name)
     if default is None:
         print("missing parameter", name)
         sys.exit(1)
@@ -174,3 +177,7 @@ for i in range(q):
 for i in range(q):
     a=queries[i]
     print(a[0],a[1],a[2])
+
+for arg in sys.argv[1:-1]:
+    assert '=' in arg
+    assert arg.split('=')[0] in checked, arg
