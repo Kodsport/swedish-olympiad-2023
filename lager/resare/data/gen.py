@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-from common import *
 import math
 import sys
 import random
@@ -8,10 +7,10 @@ import random
 checked = set()
 
 def cmdlinearg(name, default=None):
+    checked.add(name)
     for arg in sys.argv:
         if arg.startswith(name + "="):
             return arg.split("=")[1]
-    checked.add(name)
     if default is None:
         print("missing parameter", name)
         sys.exit(1)
