@@ -89,8 +89,7 @@ int main()
         }
         
         // Going down to the end node. This happens in (LogN)^3.
-        ll counter=10;
-        while(cur!=b and counter--){
+        while(cur!=b){
             ll diff=dist[b]-dist[cur];
             for(int i=LOG-1; i>=0; i--){
                 if((1<<i) >diff)continue;

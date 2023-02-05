@@ -66,11 +66,21 @@ int main()
         ll a,b,val;
         cin>>a>>b>>val;
         a--,b--;
-        ll l=a;
-        val%=sparseTable.rmq(a,a);
-        while(l<b){
-            l=sparseTable.nearestLeqRight(l,val);
-            if(l<=b)val%=sparseTable.rmq(l,l);
+        if(a<b){
+            ll l=a;
+            val%=v[a];
+            while(l<=b){
+                l=sparseTable.nearestLeqRight(l,val);
+                if(l<=b)val%=v[l];
+            }
+        }
+        else {
+            ll l=a;
+            val%=v[a];
+            while(l>=b){
+                l=sparseTable.nearestLeqLeft(l,val);
+                if(l>=b)val%=v[l];
+            }
         }
         cout<<val<<'\n';
     }
