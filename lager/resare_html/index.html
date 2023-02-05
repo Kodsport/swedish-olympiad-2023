@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for HTML5 for Linux version 5.6.0">
+  <meta content="text/html; charset=utf-8" http-equiv=
+  "content-type">
+  <title></title>
+  <link rel="stylesheet" href="problem.css">
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: { 
+    ignoreClass: ".*",
+    inlineMath: [['$','$'], ['\\(','\\)']]
+        },
+  MMLorHTML: {
+    prefer: {Firefox: "HTML"}
+    }
+  });
+  </script>
+  <script type="text/javascript" src=
+  "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+  <div class="problembody">
+    <div class="problemheader">
+      <h1>Den generösa resenären</h1>
+      <h3>Problem ID: resare</h3>
+    </div>Din rika kompis Erika bor i ett land med <span class=
+    "tex2jax_process">$N$</span> byar där den <span class=
+    "tex2jax_process">$i$</span>:te byn har <span class=
+    "tex2jax_process">$A_i$</span> invånare. Byarna är kopplade med
+    varandra med <span class="tex2jax_process">$N-1$</span> vägar
+    så att det går att ta sig från en godtycklig by till en annan
+    godtycklig by genom vägarna.
+    <p>Efter en hel dags arbete är Erika utmattad och behöver
+    därför att gå på semester, så hon planerar att besöka några av
+    landets byar. Som alla rika människor så finns det inget din
+    kompis gillar mer än att ge bort pengar! Hon planerar därför
+    att ta med sig en stor påse med enkronor och ge bort så mycket
+    pengar som hon kan i varje by hon besöker.</p>
+    <p>Det finns dock ett problem: om en invånare i en by får
+    mindre pengar än en annan invånare i samma by så blir hen
+    jättearg och Erikas liv blir hotat. För att undvika detta
+    bestämmer hon sig för att ge alla invånare så mycket pengar hon
+    kan så att alla <i class="itshape">i samma by</i> får lika
+    mycket pengar, även om det betyder att ingen får pengar.</p>
+    <p>Nu undrar Erika hur mycket pengar hon kommer ha vid slutet
+    av en sådan resa. Hon ställer <span class=
+    "tex2jax_process">$Q$</span> frågor till dig av formen: Givet
+    att resan startar vid by <span class=
+    "tex2jax_process">$u$</span> och slutar vid by <span class=
+    "tex2jax_process">$v$</span> med <span class=
+    "tex2jax_process">$x$</span> 1-kronor, hur mycket pengar kommer
+    finnas kvar vid slutet av resan?</p>
+    <p>Notera att resan alltid följer den enkla vägen mellan två
+    byar, dvs. den enda kortaste vägen. Notera också att Erika
+    använder enkronorna och det går därför bara att ge bort
+    icke-negativa heltal pengar.</p>
+    <h2>Indata</h2>
+    <p>Den första raden innehåller de två heltalen <span class=
+    "tex2jax_process">$N$</span> (<span class=
+    "tex2jax_process">$1\leq N \leq 5 \cdot 10^5$</span>) och
+    <span class="tex2jax_process">$Q$</span> (<span class=
+    "tex2jax_process">$1 \leq Q \leq 5 \cdot 10^5$</span>).</p>
+    <p>Därefter följer <span class="tex2jax_process">$N-1$</span>
+    rader, den <span class="tex2jax_process">$i$</span>:te raden
+    innehåller två tal <span class="tex2jax_process">$a_i$</span>
+    <span class="tex2jax_process">$b_i$</span>, där <span class=
+    "tex2jax_process">$1 \leq a_i,b_i \leq N$</span>. Detta betyder
+    att det finns en kant (väg) mellan byarna <span class=
+    "tex2jax_process">$a_i$</span> och <span class=
+    "tex2jax_process">$b_i$</span>.</p>
+    <p>Sedan följer en rad med <span class=
+    "tex2jax_process">$N$</span> heltal där det <span class=
+    "tex2jax_process">$i$</span>:te talet, <span class=
+    "tex2jax_process">$1\leq A_i \leq 10^9$</span>, beskriver
+    antalet invånare i byn <span class=
+    "tex2jax_process">$i$</span>.</p>
+    <p>Till slut följer <span class="tex2jax_process">$Q$</span>
+    rader, den <span class="tex2jax_process">$i$</span>:te raden
+    har tre heltal: <span class="tex2jax_process">$u_i$</span>
+    <span class="tex2jax_process">$v_i$</span> <span class=
+    "tex2jax_process">$x_i$</span>, där <span class=
+    "tex2jax_process">$u_i$</span> är startbyn, <span class=
+    "tex2jax_process">$v_i$</span> är slutbyn och <span class=
+    "tex2jax_process">$x_i$</span> är antalet enkronor Erika börjar
+    med i den <span class="tex2jax_process">$i$</span>:te frågan.
+    <span class="tex2jax_process">$1 \leq a_i,b_i \leq N$</span>,
+    <span class="tex2jax_process">$1 \leq x_i \leq
+    10^9$</span>.</p>
+    <h2>Utdata</h2>
+    <p>Skriv ut <span class="tex2jax_process">$Q$</span> rader: den
+    <span class="tex2jax_process">$i$</span>:te raden ska innehålla
+    svaret av den <span class="tex2jax_process">$i$</span>:te
+    frågan.</p>
+    <h2>Poängsättning</h2>
+    <p>Din lösning kommer att testas på en mängd testfallsgrupper.
+    För att få poäng för en grupp så måste du klara alla testfall i
+    gruppen.</p>
+    <table class="tabular" cellspacing="0">
+      <tr>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black; border-left:1px solid black">
+          <p>Grupp</p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p>Poängvärde</p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p>Gränser</p>
+        </td>
+      </tr>
+      <tr>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black; border-left:1px solid black">
+          <p><span class="tex2jax_process">$1$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p><span class="tex2jax_process">$10$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p><span class="tex2jax_process">$ Q,N \leq
+          2000$</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black; border-left:1px solid black">
+          <p><span class="tex2jax_process">$2$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p><span class="tex2jax_process">$16$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p>Det finns en väg mellan byn <span class=
+          "tex2jax_process">$i$</span> och byn <span class=
+          "tex2jax_process">$i+1$</span> för alla <span class=
+          "tex2jax_process">$1 \leq i \leq N-1$</span> ,
+          <span class="tex2jax_process">$A_i \leq 100$</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black; border-left:1px solid black">
+          <p><span class="tex2jax_process">$3$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p><span class="tex2jax_process">$10$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p>Det finns en väg mellan byn <span class=
+          "tex2jax_process">$i$</span> och byn <span class=
+          "tex2jax_process">$i+1$</span> för alla <span class=
+          "tex2jax_process">$1 \leq i \leq N-1$</span>,
+          <span class="tex2jax_process">$Q \leq 30000$</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black; border-left:1px solid black">
+          <p><span class="tex2jax_process">$4$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p><span class="tex2jax_process">$9$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p>Det finns en väg mellan byn <span class=
+          "tex2jax_process">$i$</span> och byn <span class=
+          "tex2jax_process">$i+1$</span> för alla <span class=
+          "tex2jax_process">$1 \leq i \leq N-1$</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black; border-left:1px solid black">
+          <p><span class="tex2jax_process">$5$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p><span class="tex2jax_process">$18$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p>Alla resor slutar vid by 1, dvs. <span class=
+          "tex2jax_process">$v_i=1$</span> för alla <span class=
+          "tex2jax_process">$1 \leq i \leq Q$</span>.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black; border-left:1px solid black">
+          <p><span class="tex2jax_process">$6$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p><span class="tex2jax_process">$23$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black">
+          <p><span class="tex2jax_process">$Q \leq
+          30000$</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black; border-left:1px solid black; border-bottom-style:solid; border-bottom-color:black; border-bottom-width:1px">
+          <p><span class="tex2jax_process">$7$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black; border-bottom-style:solid; border-bottom-color:black; border-bottom-width:1px">
+          <p><span class="tex2jax_process">$14$</span></p>
+        </td>
+        <td style=
+        "border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left; border-right:1px solid black; border-bottom-style:solid; border-bottom-color:black; border-bottom-width:1px">
+          <p>Inga ytterligare begränsningar</p>
+        </td>
+      </tr>
+    </table>
+    <table class="sample" summary="sample data">
+      <tr>
+        <th>Sample Input 1</th>
+        <th>Sample Output 1</th>
+      </tr>
+      <tr>
+        <td>
+          <pre>10 7
+1 2
+2 5
+5 3
+2 6
+6 7
+7 8
+7 10
+1 4
+1 9
+5 8 10 10 9 5 10 20 3 20
+3 9 5
+3 9 14
+8 3 34
+8 10 31
+1 6 8
+7 2 19
+10 4 43
+</pre>
+        </td>
+        <td>
+          <pre>0
+1
+4
+1
+3
+4
+3
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

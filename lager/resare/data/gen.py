@@ -168,10 +168,7 @@ for i in range(q):
             queries.append((1,n,maxA))
         continue
     a=getQuery()
-    if modeQueries=="distnict":
-        while used[a]:
-            a=getQuery()
-        used[a]=True
+
     queries.append(a)
 for i in range(q):
     a=queries[i]
