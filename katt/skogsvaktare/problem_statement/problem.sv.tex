@@ -1,0 +1,39 @@
+\problemname{Skogsvaktare}
+Du har ett träd, d.v.s. en sammanhängande graf utan cykler.
+På vissa av dessa hörn växer det frukter som du vill vakta mot inkräktande maskar och annan ohyra.
+Till din hjälp har du designat en insektsrobot som kan vakta frukter.
+Om du placerar en insektsrobot på ett visst hörn så vaktar den alla de frukter vars avstånd från roboten är så litet som möjligt.
+Mer formellt, antag att det minsta avståndet från roboten till någon frukt är $D$.
+Då vaktar roboten alla frukter som har exakt avståndet $D$ från roboten.
+
+Du vill placera robotar i trädet så att du vaktar samtliga frukter, men av kostandsskäl vill du minimera antalet robotar du placerar.
+Finn en sådan placering av robotar i trädet.
+
+\section*{Indata}
+Den första raden av indatan består av två heltal $N$ och $F$ ($1 \le N \le 500\,000$, $1 \le F \le N$), antalet hörn och antalet frukter i trädet.
+
+De följande $N - 1$ beskriver kanterna i trädet.
+Hörnen i trädet är numrerade mellan $1$ och $N$.
+En kant ges av två heltal $a$ och $b$ ($1 \le a, b \le N$) och betyder att kanten förbinder hörn $a$ och $b$.
+
+Till slut följer en rad med $F$ olika heltal, de hörn där det finns frukter.
+
+\section*{Utdata}
+Skriv först ut det minsta antalet hörn $K$ du måste placera robotar på.
+
+Skriv sedan ut en rad med $K$ heltal på, hörnen som du placerar robotar på.
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  Grupp & Poängvärde & Gränser \\ \hline
+    $1$   & $8$      & Den $i$:te kanten förbinder hörnen $i$ och $i + 1$, d.v.s. trädet är en linje. \\ \hline
+    $2$   & $18$     & $F \le 15$ \\ \hline
+    $3$   & $23$     & $N \le 2\,000$ \\ \hline
+    $4$   & $51$     & Inga ytterligare begränsningar. \\ \hline
+\end{tabular}
+
