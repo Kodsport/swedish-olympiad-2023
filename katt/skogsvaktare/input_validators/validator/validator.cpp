@@ -44,10 +44,6 @@ void run() {
             assert(a == i && b == i + 1);
         }
 	}
-    set<int> fs;
-    rep(i,0,F) {
-        int x = (int)Int(1, N) - 1;
-        fs.insert(x);
-    }
-    assert((int)fs.size() == F);
+    vector<int> fs = SpacedInts(F, 1, N);
+    assert((int)set<int>(all(fs)).size() == F);
 }
