@@ -40,7 +40,6 @@ struct Tree {
 
     bool ok(int l, int r) {
         pair<int, int> res = query(l, r);
-        cerr << "res for [" << l << "," << r << ") = " << res.first << " " << res.second << endl;
         return res.first == 0 && res.second >= 0;
     }
 };
