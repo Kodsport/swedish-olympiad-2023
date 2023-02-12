@@ -1,0 +1,44 @@
+\problemname{Lösenordsnoja 2}
+Agenten August är tillbaka med ett nytt lösenordsproblem åt dig.
+Den här gången försöker han hacka mejladressen som tillhör den okända personen som övervakade honom i problemet Lösenordsnoja.
+Lösenordet är mycket speciellt: det består endast av totalt $N$ vänster- och högerparenteser, d.v.s tecknen \texttt{(} och \texttt{)}, och dessutom lika många av varje typ ($N$ är därför jämnt).
+
+Det är självklart mycket svårt att minnas ett sådant komplicerat lösenord.
+Därför har mejltjänsten som den okända personen använder en "Jag har glömt mitt lösenord"-funktion.
+Denna funktion låter en användare välja två index $1 \le i \le j \le N$ och få svar på frågan: är delsträngen från det $i$:te till och med det $j$:te en giltig parentessträng?
+
+En giltig parentessträng defineras på följande vis:
+\begin{itemize}
+    \item $()$ är en giltig parentessträng.
+    \item Om $A$ är en giltig parentessträng är $(A)$ det också.
+    \item Om $A$ och $B$ båda är giltiga parentessträngar är $AB$ det också.
+\end{itemize}
+
+Kan du hjälpa August hacka mejladressen genom att komma på lösenordet?
+
+\section*{Interaktivitet}
+Det här är ett interaktivt problem, där du kan använda "Jag har glömt mitt lösenord"-funktionen ett antal gånger för att komma på lösenordet.
+Du ska först läsa in två tal $N$ och $Q$ från domaren, antalet tecken i lösenordet (ett jämnt tal) och antalet gånger du får använda funktionen (fler gånger än så skulle verka misstänksamt).
+
+Sedan får du ställa högst $Q$ frågor.
+För att ställa en fråga skriver du ut en rad på formen "\texttt{?} $i$ $j$" där $1 \le i \le j \le N$.
+Domaren kommer då skriva tillbaka en rad med antingen $1$ om delsträngen är en giltig parentessträng, och $0$ annars.
+
+När du kommit fram till vad lösenordet är skriver du ut en rad med ett \texttt{!}, följt av mellanslag, följt av tecknen i lösenordet (se exemplet nedan).
+
+\textbf{Not}: glöm inte att flusha standard out efter varje fråga du ställt!
+
+\section*{Poängsättning}
+Din lösning kommer att testas på en mängd testfallsgrupper.
+För att få poäng för en grupp så måste du klara alla testfall i gruppen.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  Grupp & Poängvärde & Gränser \\ \hline
+    $1$   & $14$       & $2 \le N \le 1\,000$, $Q = \frac{N^2}{4}$, hela lösenordet är en giltig parentessträng. \\ \hline
+    $2$   & $7$        & $2 \le N \le 1\,000$, $Q = \frac{N^2}{4}$ \\ \hline
+    $3$   & $57$       & $2 \le N \le 100\,000$, $Q = N - 1$, hela lösenordet är en giltig parentessträng. \\ \hline
+    $4$   & $22$       & $2 \le N \le 100\,000$, $Q = N - 1$ \\ \hline
+\end{tabular}
+
