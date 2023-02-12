@@ -19,7 +19,7 @@ sample 1
 sample 2
 sample 3
 
-group group1 8
+group group1 12
 limits maxr=$MAXR maxc=$MAXC maxrc=10000 maxx=$MAXX maxq=10000
 tc 1
 tc 2
@@ -32,13 +32,13 @@ tc_manual ../manual_tests/1e.in
 tc_manual ../manual_tests/1f.in
 tc_manual ../manual_tests/1g.in
 
-group group2 9
+group group2 15
 limits maxr=1 maxc=$MAXC maxrc=$MAXRC maxx=$MAXX maxq=$MAXQ
 tc_manual ../manual_tests/2a.in
 tc_manual ../manual_tests/2b.in
 tc_manual ../manual_tests/2c.in
 
-group group3 31
+group group3 33
 limits maxr=$MAXR maxc=$MAXC maxrc=$MAXRC maxx=1 maxq=$MAXQ
 tc_manual ../manual_tests/3a.in
 tc_manual ../manual_tests/3b.in
@@ -46,7 +46,7 @@ tc_manual ../manual_tests/3c.in
 tc_manual ../manual_tests/3d.in
 tc_manual ../manual_tests/3e.in
 
-group group4 52
+group group4 40
 limits maxr=$MAXR maxc=$MAXC maxrc=$MAXRC maxx=$MAXX maxq=$MAXQ
 include_group group1
 include_group group2
