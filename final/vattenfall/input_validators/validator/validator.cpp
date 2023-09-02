@@ -23,7 +23,7 @@ void run() {
     set<pair<int,int>> seenpoints;
     for (int i = 0; i < n; i++)
     {
-        int pr = Int(1, r-1); Space(); int pc = Int(0,c-1); Endl();
+        int pr = Int(0, r-1); Space(); int pc = Int(0,c-1); Endl();
         seenpoints.emplace(pr,pc);
     }
     assert(seenpoints.size()==n);
