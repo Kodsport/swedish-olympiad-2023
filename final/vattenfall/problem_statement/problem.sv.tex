@@ -1,9 +1,16 @@
 \problemname{Vattenfall}
-Alexander gillar vatten. Då är det inte så konstigt att han är förtjust i vatten som forsar. Detta kanske är förklaringen till varför han vill skapa sitt eget vattenfall.
-Tänk bara, vatten som forsar i all oändlighet! Han har hittat en bergvägg som han tror kommer bli det perfekta vattenfallet efter att han har tillfört lite vatten.
+Alexander gillar vatten. Därför är det inte så konstigt att han är förtjust i vatten som forsar. Detta kanske är förklaringen till varför han vill skapa sitt eget vattenfall.
+Tänk bara, vatten som forsar i all oändlighet!
+
+Han har hittat en bergvägg som han tror kommer bli det perfekta vattenfallet efter att han har tillfört lite vatten.
 Bergväggen kan modelleras som ett $R \times C$ stort rutnät, där $N$ rutor har en klippa som sticker ut. Alexander tänker hälla ut vatten ovanifrån så att det flödar
-ner vatten i $K$ stycken kolumner. Vattnet sprider sig i rutnätet enligt följande regler: om rutan under vattnet är tom sprider det sig dit. Om det finns en klippa i vägen
-sprider det sig istället till höger och vänster. Om det finns en klippa ivägen till höger eller vänster sprider det sig inte i den riktningen. Alexander vill dock inte orsaka en
+ner vatten i $K$ stycken kolumner.
+
+Vattnet sprider sig i rutnätet enligt följande regler: om rutan under vattnet är tom sprider det sig dit. Om det finns en klippa i vägen
+sprider det sig istället till höger och vänster. Om det finns en klippa ivägen till höger eller vänster sprider det sig inte i den riktningen.
+Detta gäller även för vattnet som hälls ovanifrån, d.v.s. om vatten hälls i kolumn $i$ och den översta raden har en klippa på kolumn $i$, är det som om vatten även hälls ovanifrån i kolumnerna $i - 1$ och $i + 1$, förutsatt att dessa kolumner ligger inom rutnätet.
+
+Alexander vill dock inte orsaka en
 översvämning, för då kommer allt vatten att så stilla till slut. Vatten som står stilla är självklart tråkigare än vatten som forsar.
 Därför vill han ha din hjälp att skriva ett program som räknar ut hur många kolumner som har vatten i sig i nedersta raden av klippan.
 
