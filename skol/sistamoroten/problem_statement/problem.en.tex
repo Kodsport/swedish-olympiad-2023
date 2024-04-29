@@ -1,0 +1,35 @@
+\problemname{The Last Carrot}
+\noindent
+It's frustrating for Tor and his mother that sometimes there's a carrot left (see the task \emph{Carrots}).
+Instead of sharing it, Tor suggests rolling dice to decide who gets the carrot. He takes out $N$ dice, each with $M$ sides,
+numbered from $1$ to $M$, each with an equal probability of being rolled. He then lets his mother choose $K$ numbers,
+and if the numbers on the dice sum up to one of those numbers, she wins; otherwise, Tor wins.
+Now, Mother wants your help to write a program to determine her chances of winning if she chooses her outcomes optimally.
+
+
+\section*{Input}
+\noindent
+Input consists of the the three integers $N, M, K$ ($1 \le N \le 20$, $1 \le M \le 5000$, $1 \le K < N \cdot M$), 
+the number of dice, how many sides each dice has and how many outcomes Mother can choose.
+
+\section*{Output}
+\noindent
+Print a real number -- the probability that Mother will win if she chooses her outcomes optimally.
+The answer will be considered correct if it has an absolute error of at most $10^{-5}$.
+
+
+\section*{Scoring}
+Your solution will be tested on a set of test groups, each worth a number of points. 
+Each test group contains a set of test cases. 
+To get the points for a test group you need to solve all test cases in the test group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $20$        & $n=2,m \le 100 $   \\ \hline 
+  $2$    & $20$        & $n \le 6,  m \le 6 $  \\ \hline
+  $3$    & $20$        & $n \le 12, m \le 12 $  \\ \hline 
+  $4$    & $20$        & $n \le 20, m \le 100 $  \\ \hline
+  $5$    & $20$        & $n \le 20, m \le 5000 $  \\ \hline
+\end{tabular}
