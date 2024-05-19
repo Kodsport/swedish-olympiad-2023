@@ -1,0 +1,38 @@
+\problemname{Tug Of War}
+\noindent
+During a physical education class, the teacher wants to divide all the students into two teams
+for a tug-of-war competition. To make the tug-of-war interesting, the teams should be exactly
+equal in size and exactly equal in strength. The teacher has beforehand estimated each student's
+strength to be a number between $1$ and $4$.
+
+Given the number of students of each strength level present in the class, can you determine how the
+teacher should divide the teams? It is guaranteed that the students' strengths are chosen so that this
+is always possible.
+
+\section*{Input}
+The first and only line contains the four integers $s_1, s_2, s_3, s_4$ ($0 \leq s_i \leq 10^{7}$),
+where $s_i$ is the number of students who have the strength $i$.
+
+\section*{Output}
+Print the four integers $a_1, a_2, a_3, a_4$ on a single line, where $a_i$ is the number of students with strength
+$i$ that should be on one team for the tug-of-war.
+
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $20$      & $s_i \le 300$. \\ \hline
+  $2$    & $20$      & $s_i \le 2000$. \\ \hline
+  $3$    & $20$      & No student has strength $4$. \\ \hline
+  $4$    & $40$      & No additional constraints. \\ \hline
+\end{tabular}
+
+\section*{Explanation of samples}
+In the first sample, there are four students, one for each strength level. Each team should thus
+have two students. If the students with strengths $1$ and $4$ are chosen for one team, and the
+students with strengths $2$ and $3$ are chosen for the other, both teams will have the same strength, namely $5$.

@@ -1,0 +1,36 @@
+\problemname{The Digit Cipher}
+\noindent
+Alice has invented a revolutionary cipher that no one will be able to solve!
+Here's how it works: you take the string to be encrypted and replace each letter with its position in the alphabet. For example, 
+A becomes 1, B becomes 2, C becomes 3, and so on up to Ö which becomes 29 (the last 3 letters in the Swedish alphabet are Å, Ä, and Ö).
+When she did this, she discovered a major problem with the cipher: it cannot always be decoded uniquely!
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{sifferkrypto.pdf}
+  \caption{Example of the ambiguity that can occur with Alice's new cipher.}
+\end{figure}
+  
+Write a program that reads an encrypted message and outputs how many different original strings could have given rise to this message.
+For the given input, there is always at least one possible original string.
+
+\section*{Input}
+The input is a single line of $1$ to $15$ digits, the encrypted message.
+
+\section*{Output}
+Print an integer: the number of strings that would be encrypted to the message in the input.
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $40$      & For every 3 consecutive digits, at least one of them is not $1$ or $2$. \\ \hline
+  $2$    & $60$      & No additional constraints. \\ \hline
+\end{tabular}
+
+\section*{Explanation of sample 1}
+In the first sample, the six possible strings are CBCABDJ, CWLDJ, CWAXJ, CWABDJ, CBCAXJ, och CBCLDJ.
