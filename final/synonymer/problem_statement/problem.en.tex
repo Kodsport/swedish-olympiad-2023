@@ -1,0 +1,52 @@
+\problemname{Synonyms}
+Sometimes when copying text from Wikipedia into essays, the text can get caught in a plagiarism detection program.
+To avoid this, one must first rewrite the text in their own words so it doesn't get flagged by the program.
+There are many ways to do this, one of which is to run the text through a translation program into another
+language and then back again.
+If you're unlucky, the text may come back too similar to the original despite this.
+
+You could avoid this problem by ensuring that a word is never translated back to the same word if there is another possibility.
+Formally, assume we have a dictionary with $N$ pairs of words $(a, b)$, where $a$ is the word in Swedish and $b$
+is the word in another language.
+A certain word $x$ can then be changed to the word $y$ if there exist two pairs $(x, z)$ and $(y, z)$ in the
+dictionary for some word $z$.
+
+Given a text, rewrite it by replacing as many words as possible by translating them to the other language and back.
+
+
+\section*{Input}
+The first line contains the integer $N$ ($1 \le N \le 5000$), the number of word pairs in the dictionary.
+
+The following $N$ lines each contain a word pair, with the word in Swedish first, followed by the word in the other language.
+The same word never appears in both languages, and no word pair appears twice.
+
+This is followed by an integer $M$ ($1 \le M \le 1000$), the number of words in the text.
+The next line contains $M$ words, the text you are to translate.
+All words appear at least once as a Swedish word in the dictionary.
+
+All words are between $1$ and $20$ letters long and consist only of letters from \texttt{a}-\texttt{z}.
+It is not guaranteed that the words are actual real words.
+
+\section*{Output}
+Print $M$ words on a single line, the text where as many words as possible have been replaced with a synonym, using
+the process described in the task. If there are many possible synonyms for a word, you can choose any of them, as
+long as it is not the same word.
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $56$      & All words in the other language has at least two Swedish translations. \\ \hline
+  $2$    & $44$      & No additional constraints. \\ \hline
+\end{tabular}
+
+\section*{Explanation of sample}
+There are two translations of ``skum'', which are ``foam'' and ``shady''.
+These can, in turn, be translated back into two different words: ``skum'' and ``fradga''.
+To avoid translating the word back to ``skum'', you must choose ``fradga''.
+
+However, for the second word, there is only one translation available, so we have to translate it back to the same word.

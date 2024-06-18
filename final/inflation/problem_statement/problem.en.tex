@@ -1,0 +1,45 @@
+\problemname{Inflation}
+A large part of the economy is influenced by the prevailing inflation, i.e., how quickly prices of
+goods in society are rising. For example, the level of inflation affects how the Riksbank sets its
+policy rate, which in turn impacts the stock market, mortgage rates, and so on.
+Inflation is measured in percentage, indicating how much prices have increased compared to the same time last year.
+
+In Sweden, the agency Statistics Sweden (SCB) measures the rate of inflation in society.
+They calculate the inflation rate each month by measuring how the inflation rate \emph{changes every day}
+during the month and then summing up all the daily increases.
+You would like to use these figures to know if you should buy or sell all your stocks before SCB releases the figures officially.
+Luckily, you have a friend who is willing to leak the figures to you.
+
+One problem is that your friend has been quite inconsistent with his notes.
+Sometimes he has recorded the daily change in the inflation rate in percentage points and sometimes in percent.
+If the inflation rate was $20\%$ and the recorded increase was ``$50$'', you do not know if the new inflation
+rate is $70\%$ (an increase of 50 percentage points) or $30\%$ (an increase of 50 percent).
+
+At the very least, you can calculate an upper limit on the inflation rate, which might help your stock trading somewhat.
+What is the highest possible inflation rate, given your friend's data?
+
+
+\section*{Input}
+The first line of input contains a decimal number $I$, the inflation rate in percent at the beginning of the month.
+This is followed by a line with $30$ new decimal numbers, the changes in the inflation rate that your friend has
+recorded during the month.
+
+All numbers are between $0$ and $1000$ and have at most $2$ decimal places.
+
+\section*{Output}
+Print a decimal number: the highest possible inflation rate.
+Your answer is considered correct if it has a relative or absolute error of at most $10^{-6}$.
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $55$      & Your friend has written down all increases in percentage points. \\ \hline
+  $2$    & $45$      & No additional constraints. \\ \hline
+\end{tabular}
+
+%\section*{Samples}
