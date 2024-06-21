@@ -1,0 +1,51 @@
+\problemname{Plankton}
+The fishes Alexa and Boris are going to start a plankton farm at the bottom of the sea. To prevent
+the plankton from escaping, they want to build rectangular enclosures surrounded by fences.
+Each enclosure must have an area of at least $A \text{ cm}^2$ so that the plankton has enough space to grow.
+
+The fence for a given enclosure is set up along its entire perimeter in the form of four pre-built pieces:
+a pair of equally long horizontal pieces and a pair of equally long vertical pieces. Alexa and Boris have
+already purchased several pairs of fence pieces, where the pieces in each pair are of equal length.
+They now want to build as many enclosures with an area of at least $A \text{ cm}^2$ as possible. Can
+you help them calculate how many enclosures they can build simultaneously with their fence pieces?
+
+
+\section*{Input}
+The first line of input contains the integer $A$ ($1 \leq A \leq 10^9$), the minimum area that each enclosure must have.
+
+The next line contains an integer $N$ ($1 \leq N \leq 100,000$), the number of pairs of fence pieces that
+Alexa and Boris have already purchased.
+
+The last line contains $N$ integers $l_1, l_2, \dots, l_N$ ($1 \leq l_i \leq 10^9$), where $l_i$ is the length
+of the pieces in the $i$-th pair they bought, measured in centimeters.
+
+\section*{Output}
+Print an integer: the largest number of enclosures that Alexa and Boris can build using their fence pieces.
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $20$       & The group consists of a single subtask, the one on our poster (\url{https://www.progolymp.se/2023/affisch.pdf}). \\ \hline
+  $2$    & $12$       & $N \le 300$ \\ \hline
+  $3$    & $28$       & $N \le 2000$ \\ \hline
+  $4$    & $29$       & $A \le 2000$ \\ \hline
+  $5$    & $11$       & No additional constraints. \\ \hline
+\end{tabular}
+
+\section*{Explanation of sample}
+In the first example case, a maximum of 2 enclosures can be built.
+For example, one can choose the pairs of fence pieces with lengths of $5$ cm and $13$ cm
+(with an area of $5 \text{ cm} \times 13 \text{ cm} = 65 \text{ cm}^2$) and the pairs with
+lengths of $8$ cm and $21$ cm (with an area of $8 \text{ cm} \times 21 \text{ cm} = 168 \text{ cm}^2$),
+both of which are at least $40 \text{ cm}^2$.
+
+In the second example case, all pairs of fence pieces have the same length.
+However, with this length, the enclosure has an area of $100 \text{ cm}^2$, which is just slightly too small.
+
+In the third case, Alexa and Boris are satisfied with an area of $100 \text{ cm}^2$, so all pairs of fence
+pieces can be used to build a total of $5$ enclosures.

@@ -1,0 +1,42 @@
+\problemname{Squash}
+
+Göran has started playing squash with his friends. He is very dedicated and plays $N$ matches per day.
+Göran's goal is, of course, to win as many matches and lose as few matches as possible.
+His \emph{satisfaction} after a day of playing squash is equal to the number of matches he won minus the number of matches he lost.
+
+In addition to getting better at squash and winning more matches, Göran has an extra trick to increase
+his satisfaction: he claims that he only played \emph{seriously} during $K$ different series of
+consecutive matches. Only these matches count in the calculation of his satisfaction. Göran always chooses
+these $K$ match series to maximize his satisfaction.
+
+A match series always consists of all matches between the $i$-th and the $j$-th match for some chosen
+$i$ and $j$, but Göran can let one (or all!) match series be empty (e.g., maybe he took a very serious
+water break instead). The consecutive match series he chooses must not overlap, i.e., each match played
+can be part of at most one chosen match series.
+
+Given the match history for a day, what will Göran's satisfaction be if he chooses the match series optimally?
+
+
+\section*{Input}
+The first line of input contains the integer $N$ and $K$ ($1 \leq K \leq N \leq 1\,000$), the number
+of matches an the number of serious matches.
+
+The following line contains a string with $N$ characters, the results of the matches that Göran played.
+The $i$:th of these characters is \texttt{V} if Göran won the $i$:th match, and \texttt{F} if he lost it.
+
+\section*{Output}
+Print an integer: the maximum satisfaction that Göran can achieve.
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $10$      & $K = 1$ \\ \hline
+  $2$    & $20$      & $K = 2$ \\ \hline
+  $3$    & $30$      & $K = 3$ \\ \hline
+  $4$    & $40$      & No additional constraints. \\ \hline
+\end{tabular}

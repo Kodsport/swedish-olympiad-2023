@@ -1,0 +1,49 @@
+\problemname{The Cat Empire}
+A continent consists of $N$ different city-states. Exactly $N - 1$ pairs of city-states are
+directly connected by a trade route, in such a way that it is possible to travel between all
+pairs of city-states along a sequence of trade routes.
+
+After centuries of living in harmony and peace, there are now strong tensions between the
+largest city-state, \emph{Katen}, and a rival kingdom, \emph{Kattago}. Katen plans to quickly
+conquer the other city-states to unite them in their struggle against Kattago.
+
+Katen is about to embark on its first campaign to conquer several city-states to form a union.
+The union must consist of a \emph{connected} group of city-states and always includes Katen.
+This means that it should be possible to travel between every city-state in the union using the
+trade routes without visiting a city-state outside the union. To simplify their logistics during
+the campaign, they want the number of \emph{frontier states} in the union to be as small as possible.
+A frontier state is a city-state that is directly connected to exactly one other city-state within the
+union. \textbf{Katen, however, is never counted as a frontier state.}
+
+For each number of city-states $1, 2, \dots, N-1$ that Katen can conquer during a campaign, can you calculate
+the minimum number of frontier states in the resulting union?
+
+\section*{Input}
+The first line of input contains the integer $N$ ($2 \leq N \leq 100,000$), the number of city-states on the continent.
+
+The next $N - 1$ lines describe the trade routes.
+Let all city-states be numbered $0$, $1$, $\dots$, $N - 1$, where Katen is city-state $0$.
+Each line contains two integers $a$ and $b$ ($0 \leq a, b < N$, $a \neq b$), the names of
+two city-states directly connected by a trade route.
+
+\section*{Output}
+On a single line, print the smallest number of frontier states in a union with $1$, $2$, $\dots$, $N - 1$ \textbf{conquered} city-states.
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $21$      & All city-states, except Katen, are connected by at most $2$ trade routes. \\ \hline
+  $2$    & $28$      & $N \le 1000$ \\ \hline
+  $3$    & $51$      & No additional constraints. \\ \hline
+\end{tabular}
+
+
+\section*{Explanation of sample}
+In the first example, Katen can conquer, for example, city-states $1$ and $3$ in a campaign.
+Then, only city-state $3$ is a frontier state, because city-state $1$ is directly connected to both Katen and city-state $3$.
+However, once all $3$ city-states are conquered, both city-states $2$ and $3$ become frontier states.

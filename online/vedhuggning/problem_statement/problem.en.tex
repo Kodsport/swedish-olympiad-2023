@@ -1,0 +1,44 @@
+\problemname{Cutting Wood}
+
+The year 2022 has been marked by a series of sensational news topics, one of which is the very
+high electricity prices in southern Sweden. For Leah, who lives in a villa in Skåne, this unfortunately
+means that her bitcoin mining is currently not quite paying off due to electricity costs. However,
+something trivial as this will not stop her. Energy is ultimately just energy, and electricity can
+just as well be obtained by burning wood!
+
+Leah has a forest with $N$ trees that she plans to cut down to make firewood. The $i$-th of these trees
+grows at a rate of $v_i$ nanometers per second and currently has a length of $l_i$ nanometers. After $t_i$ seconds,
+the tree also becomes too old and stops growing.
+
+Leah needs firewood from trees whose total length is $S$ nanometers to be able to power her bitcoin mining
+for a year, but she is unsure if the trees can grow to that length quickly enough. Can you calculate
+how many seconds it will take before the lengths of Leah's trees have at least a total of $S$ nanometers?
+
+
+\section*{Input}
+The first line of input contains the integers $N$ ($1 \leq N \leq 200,000$), the number of trees
+in Leah's forest, and $S$ ($1 \leq S \leq 10^9$), the total length of trees Leah needs.
+
+The following $N$ lines describe her trees.
+The $i$-th line contains the three integers $l_i$ ($0 \leq l_i \leq 10^9$), $v_i$ ($0 \leq v_i \leq 10^9$),
+and $t_i$ ($0 \leq t_i \leq 10^9$), as described earlier.
+
+It is guaranteed that the forest will have sufficient length for Leah at some point.
+
+\section*{Output}
+Print the smallest integer $k$, such that after $k$ whole seconds, Leah's forest has sufficient total length.
+
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $16$      & $N = 1$ \\ \hline
+  $2$    & $17$      & $N \le 1000$, $S \le 1000$ \\ \hline
+  $3$    & $17$      & $N \le 1000$ \\ \hline
+  $4$    & $50$      & No additional constraints. \\ \hline
+\end{tabular}
