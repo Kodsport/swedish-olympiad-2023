@@ -1,0 +1,57 @@
+\problemname{The Sawmill}
+
+Alma has a lot of planks that she wants to saw into pieces. Therefore, she has gone to a state-of-the-art
+sawmill that automatically cuts and sorts the planks. Each plank can be represented by an infinitely long
+$x$-axis, and the sawmill will cut the plank at the $N+1$ positions $$x_1, x_2, \dots, x_N, v$$
+where $v$ is a number chosen by the user. Then, all finitely long pieces are sorted and output by the sawmill.
+Alma wants to know the numbers $x_1, x_2, \dots, x_N$, but it seems that no one knows what the inside of the
+sawmill looks like. So instead, she plans to figure out the numbers by feeding in some planks with well-chosen values of $v$.
+
+There are $N$ secret integers $x_1 < x_2 < \dots < x_N$ between $1$ and $10^9$. Note that all these numbers
+are different. Your goal is to find these numbers. You can send planks to the sawmill. The sawmill takes
+an integer $v$ as input ($1 \leq v \leq 10^9$), and does the following:
+
+\begin{enumerate}
+  \item Create the list $L = [x_1, x_2, \dots, x_N, v]$.
+  \item Sort $L$.
+  \item Create the list $D$, where $D_i = L_{i+1}-L_i$ for all $i = 1, 2, \dots, N$.
+  \item Sort $D$, and return the $N$ integers in $D$.
+\end{enumerate}
+
+You may send at most $N$ planks, except for subtask 4, where you can send $N+1$ planks.
+
+\section*{Interaction}
+Your program should first read two integers $N$ and $T$ ($1 \leq N \leq 1000$, $1 \leq T \leq 5$).
+$N$ is the number of secret numbers you need to find, and $T$ is the test group number.
+The reason $T$ is given as input is to make it easier to earn partial points.
+
+Then, you can start sending planks. Print a line with ``\verb|? v|'' to send a plank with the
+number $v$ to the sawmill. The number $v$ must satisfy $1 \leq v \leq 10^9$. Then, your program
+should read $N$ integers on one line, the numbers $D_1, D_2, \dots, D_N$. Note that $D_1$ can
+be zero if $v$ was equal to one of the numbers $x_i$.
+
+When you have found the numbers $x_1, x_2, \dots, x_N$, you should print a line in the form 
+$$! \; x_1 \; x_2 \; x_3 \; \dots \; x_N$$
+Then, your program should terminate and not print anything more.
+
+\textbf{Make sure to flush the output after each query}, otherwise, you may get \textit{Time Limit Exceeded}.
+In C++, this can be done with, for example, \texttt{cout << flush} or \texttt{fflush(stdout)};
+in Python with \texttt{stdout.flush()};
+and in Java with \texttt{System.out.flush()}.
+
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$   & $15$       & $N = 1$\\ \hline
+  $2$   & $15$       & $N = 2$  \\ \hline
+  $3$   & $11$       & $x_i \leq N+1$ \\ \hline
+  $4$   & $37$       & $N \leq 100$, $x_i \leq 10^4$, you may send at most $N+1$ planks. \\ \hline
+  $5$   & $22$       & No additional constraints. \\ \hline
+\end{tabular}
+
