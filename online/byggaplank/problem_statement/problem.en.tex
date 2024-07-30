@@ -1,0 +1,49 @@
+\problemname{Fence Building}
+Gustav loves his neighbors and has therefore built a fence consisting of $N$ boards. The boards are all $1 \text{dm}$ wide,
+but can be of different heights.
+
+To help the neighborhood flourish, Gustav now wants to hang a rectangular notice board on this fence. Gustav feels
+that the notice board he hangs up must be perfect and therefore needs your help!
+
+Specifically, Gustav wants the notice board to be as large as possible (i.e., have the largest possible area). The
+notice board also needs to hang securely, which means that there can be at most $K$ boards behind the notice board
+that do not reach all the way up to its upper edge. For the notice board to hang at all, it must, of course, have
+at least one board behind it that reaches all the way up to its upper edge.
+
+\section*{Input}
+The first line contains two integers $N$ ($1 \leq N \leq 50\,000$) and $K$ ($0 \leq K \leq 20$), the number
+of boards that make up the fence and the number of boards that can be missing behind the notice board.
+
+The second line contains $N$ integers $h_{1}, h_{2}, \dots, h_{N}$ ($1 \leq h_{i} \leq 10^{9}$) where $h_i$
+is the height of the $i$-th board from the left in decimeters.
+
+\section*{Output}
+Print an integer: the largest possilbe area of a rectangular notice board, in $\text{dm}^{2}$.
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $9$        & $N \le 100, K = 1$\\ \hline 
+  $2$    & $22$       & $h_{1} < h_{2} < \ldots < h_{N}$ \\ \hline
+  $3$    & $25$       & $K = 0$ \\ \hline
+  $4$    & $16$       & $N \le 2000 $ \\ \hline
+  $5$    & $28$       & No additional constraints. \\ \hline
+\end{tabular}
+
+\section*{Explanation of samples}
+In the first sample, no board behind the notice board can be below the upper edge of the board.
+By putting up a board with a height of $4 \text{dm}$ in front of the three middle boards, the board
+will have an area of $12 \text{dm}^2$, which is the best largest possible board.
+
+In the second sample, Gustav's best option is to put up a board along the entire fence with a height
+of $4 \text{dm}$. The boards with heights of $1 \text{dm}$ and $2 \text{dm}$ are indeed below the
+upper edge of the notice board, but this is acceptable since $K = 2$.
+
+In the third example, it does not matter how many boards are below the upper edge of the notice board.
+Instead, the requirement that the board must have at least one board behind it that reaches all the way
+up comes into play, so its height still cannot exceed $9 \text{dm}$.

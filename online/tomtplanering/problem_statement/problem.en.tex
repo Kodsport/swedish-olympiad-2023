@@ -1,0 +1,70 @@
+\problemname{Santa Planning Building}
+According to the UN, the world's population reached 8 billion people in November 2022. One person who clearly
+notices this is Santa Claus. He has to deliver presents to several billion children.
+
+Unfortunately, Santa will not have time to deliver presents to all the children this year. Instead, he needs
+to choose a group of children to receive presents. To make it fair, he plans to give presents to exactly half
+of all the children, while the other half will go without. This way, the two groups will contain exactly the
+same number of children, and no group will be envious of the other. ”Perfectly balanced”, as Santa often says.
+
+You are responsible for planning which houses Santa should visit. There are $N$ houses numbered from $1$ to $N$,
+where house number $i$ has coordinates $(x_i, y_i)$. Traveling between two points $(x_i, y_i)$ and $(x_j, y_j)$
+takes $|x_i - x_j| + |y_i - y_j|$ seconds\footnote{$|a|$ is the mathematical notation for the \emph{absolute value}
+of the number $a$, defined as $a$ if $a \ge 0$ and $-a$ if $a < 0$.}.
+Your task is to find an ordered list of $N/2$ different houses ($N$ is always even), such that the total time to
+visit the houses in that order is as small as possible. Santa starts his journey at the first house in your list
+and finishes it at the last house in your list.
+
+\section*{Input}
+The input consists of $10$ test cases.
+
+The first line contains an integer $T$ ($0 \leq T \leq 10$), the number of the test case ($0$ is the sample case below).
+
+The second line contains an integer $N$ ($1 \leq N \leq 10^5$), the number of houses. $N$ is guaranteed to be even.
+
+The following $N$ lines each contain two integers $x_i$ and $y_i$ ($0 \leq x_i, y_i \leq 10^6$), the coordinates of the
+$i$-th house. No two houses are located at the same coordinates.
+
+\section*{Output}
+Print $\frac{N}{2}$ space-separated integers, the numbers of the houses to be visited in order.
+
+\section*{Points}
+Your program will be tested on $10$ test cases and scored based on how it compares to the judges' solution.
+
+Let $P_1$ be the total distance Santa needs to travel in your solution, and let $P_2$ be the corresponding
+distance for the judges' solution. You will then receive $\min(10 \cdot \frac{P_2}{P_1}, 10)$ points for the test case.
+You can never receive more than $10$ points for a test case, even if your solution is better than the judges' solution.
+However, the judge might show a higher score per test case in the submission details interface so that you can see exactly
+how good your solution is.
+
+Your score for a submission is the sum of the scores for the test cases, and your total score is the score of your best
+submission. Thus, it is not possible to combine test cases from different submissions; instead, you must submit a
+single program that maximizes your score on all test cases simultaneously.
+
+The example test case will always give $0$ points.
+
+\section*{Testcases}
+Here are descriptions of the $10$ test cases that occur. In all test cases, the coordinates are guaranteed to have been
+generated uniformly at random between $0$ and $10^6$, unless otherwise specified.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$       & $N = 10^5$                                 & $y_i = 0$ for all $i$  \\ \hline
+  $2$       & $N = 10^5$                                 & $0 \leq y_i \leq 20$ for all $i$   \\ \hline
+  $3$       & $N = 10$                                   &    \\ \hline
+  $4$       & $N = 40$                                   &   \\ \hline
+  $5$       & $N = 200$                                   &    \\ \hline
+  $6$       & $N = 800$                                   &    \\ \hline
+  $7$       & $N = 7000$                                   &    \\ \hline
+  $8$       & $N = 40000$                                   &   \\ \hline
+  $9$       & $N = 80000$                                   &    \\ \hline
+  $10$      & $N = 10^5$                                   &    \\ \hline
+\end{tabular}
+
+\section*{Explanation of sample 1}
+In the example case, the example solution achieves a total distance of $40$ because the distance between
+house $2$ and house $4$ is $5$, and the distance between house $4$ and house $1$ is $35$. There are several
+ways to achieve a better answer, for example by visiting the houses in the order \verb|4 2 1|. Then the total
+distance becomes $35$ instead.
