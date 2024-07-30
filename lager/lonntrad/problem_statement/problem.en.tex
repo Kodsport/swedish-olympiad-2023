@@ -1,0 +1,56 @@
+\problemname{Maple Tree}
+As a cryptoarborist, you study secret trees.
+Today, you have been out in the forest and encountered an exciting specimen with $N$ nodes
+and $N-1$ edges of varying lengths, all with positive lengths.
+Additionally, it is known that each node has at most $3$ edges.
+
+It is not easy to determine the structure of the tree --
+which nodes are connected to each other --
+but you have obtained a device that you believe can help you.
+The device compares distances in the tree.
+Let $d(x, y)$ denote the sum of the edge lengths on the path between nodes $x$ and $y$.
+With one use of the device, given three nodes $A, B, C$ (where $A \neq B$), you can compare whether $d(A, C)$
+is less than or greater than $d(B, C)$.
+
+Using the device at most $20,000$ times, can you find which edges exist in the tree?
+You do not need to find the length of the edges.
+
+\section*{Interaction}
+Your program should first read an integer $N$ ($3 \leq N \leq 1000$), the number of nodes in the tree.
+
+Then you can start performing measurements with your device, up to $20,000$ times.
+For each measurement, you should print a line in the format \texttt{? A B C} ($1 \leq A, B, C \leq N$, $A \neq B$),
+and then read a line which will contain either the character \texttt{A} (if $d(A, C) < d(B, C)$) or \texttt{B} (if $d(A, C) > d(B, C)$).
+It is guaranteed that $d(A, C) \neq d(B, C)$ for all $A \neq B$.
+
+Finally, you should print a line with the character \texttt{!}, followed by $N-1$ lines, each containing the edges of the tree.
+Each line should contain two integers $a, b$ ($1 \leq a, b \leq N$), the names of the nodes the edge connects.
+
+It is guaranteed that the tree in each test case is predetermined and does not change adaptively in response to your measurements.
+
+To simplify testing of your program, we provide a tool that you can download at the bottom of this page.
+See the comment at the top of the file for a description of how it can be used.
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$   & $10$       & $N \le 30$\\ \hline
+  $2$   & $15$       & $N \le 175$  \\ \hline
+  $3$   & $40$       & $N \le 350$ \\ \hline
+  $4$   & $10$       & The tree is a line. \\ \hline
+  $5$   & $25$       & No additional constraints. \\ \hline
+\end{tabular}
+
+
+\section*{Explanation of sample}
+In the example interaction, a maple tree with $5$ nodes is studied.
+Using the measuring device, it is determined that the length of the path between node $1$ and $3$ is shorter
+than that between $2$ and $3$, and that the length of the path between $1$ and $5$ is longer than that between $4$ and $5$.
+Based on that information, the guess is made that the tree has the four edges $(1, 3)$, $(2, 3)$, $(4, 3)$, and $(4, 5)$.
+In reality, more measurements would need to be performed to determine the structure of the tree with certainty.
+

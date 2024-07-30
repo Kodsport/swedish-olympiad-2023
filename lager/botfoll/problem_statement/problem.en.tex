@@ -1,0 +1,46 @@
+\problemname{Bootfall}
+
+After the latest World Cup, some countries are considering withdrawing from FIFA and forming a new sport: bootfall. 
+In bootfall, two teams with $N$ players each compete. A player can be either a defender or an attacker, 
+and before each match, the team gets to decide which role each player will have.
+
+You are the coach of a team with $N$ players, where the $i$-th player has an attack level $a_i$ and a defense level $d_i$. 
+The team's attack strength $A$ is the sum of all $a_i$ of the players who are attackers, 
+and the team's defense strength $D$ is the sum of $d_i$ of those who are defenders. 
+If the team faces another team with attack strength $A'$ and defense strength $D'$, 
+your team will score $\max(0, A-D')$ goals, while the opposing team will score $\max(0, A'-D)$ goals.
+
+Your team will face $Q$ other teams, where the $i$-th team has attack strength $A_i$ and defense strength $D_i$. 
+Your task is to decide for each match who should defend and who should attack to achieve the best possible
+result (ideally, you want to win, then draw, and preferably not lose).
+
+
+\section*{Input}
+The first line contains the integer $N$ ($1 \leq N \leq 400$), the number of players on your team.
+
+The following $N$ lines contain two integers $a_i$ and $d_i$ ($0 \leq a_i, d_i \leq 400$), the attack
+strength and defense strength of player $i$.
+
+The next line contains an integer $Q$ ($1 \leq Q \leq 3 \cdot 10^5$), the number of matches.
+
+Then follow $Q$ lines, each containing two integers $A_i$ and $D_i$ ($0 \leq A_i, D_i \leq 160000$),
+which means that your team faces a team with attack strength $A_i$ and defense strength $D_i$.
+
+\section*{Output}
+Print three integers $w$, $d$, $l$ on a single line: the number of matches you will win, tie, and lose,
+if you optimally choose who will defend and attack each game.
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$   & $11$       & $A_i = 0$ for all $1 \leq i \leq Q$\\ \hline
+  $2$   & $16$       & $N \leq 5$, $Q  \leq 1000$ \\ \hline
+  $3$   & $20$       & $D_i = 0$ for all $1 \leq i \leq Q$ \\ \hline
+  $4$   & $24$       & $N, a_i, d_i \leq 30$, $Q \leq 1000$ \\ \hline
+  $5$   & $29$       & No additional constraints. \\ \hline
+\end{tabular}

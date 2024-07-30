@@ -1,0 +1,63 @@
+\problemname{The Generous Traveler}
+Your rich friend Erika lives in a country with $N$ villages where the $i$:th village has $A_i$ inhabitants.
+The villages are connected with $N-1$ roads such that it is possible to travel from any village to any other
+village using these roads.
+
+After a whole day of work, Erika is exhausted and needs to go on vacation, so she plans to visit some of
+the country's villages. As with all rich people, there is nothing your friend likes more than giving away money!
+Therefore, she plans to take a big bag of coins and give away as much money as she can in each village
+she visits (including the one she starts in).
+
+However, there is a problem: if an inhabitant of a village receives less money than another inhabitant in
+the same village, they become very angry, and Erika's life is threatened. To avoid this, she decides to
+give all inhabitants as much money as she can so that everyone $\textit{in the same village}$ gets the
+same amount, even if it means no one gets any money.
+
+Now, Erika wonders how much money she will have left at the end of such a trip. She asks you $Q$ questions
+of the form: Given that the trip starts at village $u$ with $x$ coins, and ends at village $v$, how much
+money will be left at the end of the trip?
+
+Note that the trip always follows the simple path between two villages, i.e., the unique shortest path.
+Erika only gives out whole coins, so she always gives a non-negative integer amount of money to each villager.
+
+\section*{Input}
+The first line contains the two integers $N$ ($1 \leq N \leq 2 \cdot 10^5$) and $Q$ ($1 \leq Q \leq 10^5$).
+
+Then follow $N-1$ lines, where the $i$-th line contains two integers $a_i$ and $b_i$ ($1 \leq a_i, b_i \leq N$).
+This means that there is a road between villages $a_i$ and $b_i$.
+
+The next line contains $N$ integers $A_1, A_2, \dots, A_N$ ($1 \leq A_i \leq 10^9$), each describing the number
+of inhabitants in village $i$.
+
+Finally, there are $Q$ lines, one per query.
+The $i$-th line consists of integers $u_i$, $v_i$, $x_i$ ($1 \leq u_i, v_i \leq N$, $1 \leq x_i \leq 10^9$),
+where $u_i$ is the starting village, $v_i$ is the ending village, and $x_i$ is the number of coins Erika
+starts with in the $i$-th query.
+
+\section*{Output}
+For each query, print the answer on its own line.
+
+\section*{Points}
+Your solution will be tested on several test case groups.
+To get the points for a group, it must pass all the test cases in the group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$   & $10$       & $N,Q \leq 2000$\\ \hline
+  $2$   & $20$       & There is a path between village $i$ and village $i+1$ for all $1 \leq i \leq N-1$, $A_i \leq 100$. \\ \hline
+  $3$   & $25$       & There is a path between village $i$ and village $i+1$ for all $1 \leq i \leq N-1$. \\ \hline
+  $4$   & $25$       & All trips end at village 1. Formally, $v_i=1$ for all $1 \leq i \leq Q$. \\ \hline
+  $5$   & $20$       & No additional constraints. \\ \hline
+\end{tabular}
+
+
+\section*{Explanation of sample}
+In the first test case, the first journey occurs between village $8$ and village $10$, and Erika starts with $31$ kronor.
+Already in the first village (with $20$ inhabitants), she gives away $1$ krona to each person, and has $11$ left.
+The journey then continues to village $7$, with $10$ inhabitants. Here too, Erika gives away one krona to each person, and now only has one krona left.
+Finally, Erika reaches village $10$, with $20$ inhabitants. Unfortunately, Erika can't afford to give any money to the population here, so she ends up with $1$ krona left.
+
+The second test case is an example of a test case that can appear in test case groups 1, 2, and 3.
+
