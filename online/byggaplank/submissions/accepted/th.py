@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python3
 
 """ Time O(N**2), still pretty fast in Python. """
 
