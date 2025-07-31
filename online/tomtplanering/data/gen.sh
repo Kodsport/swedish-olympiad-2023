@@ -22,14 +22,14 @@ testcase() {
 
 testcase 1 gen n=100000 maxy=0
 testcase 2 gen n=100000 maxy=20
-testcase 3 gen n=10 
-testcase 4 gen n=40 
-testcase 5 gen n=200 
-testcase 6 gen n=800 
-testcase 7 gen n=7000 
+testcase 3 gen n=10
+testcase 4 gen n=40
+testcase 5 gen n=200
+testcase 6 gen n=800
+testcase 7 gen n=7000
 testcase 8 gen n=40000
 testcase 9 gen n=80000
-testcase 10 gen n=100000 
+testcase 10 gen n=100000
 
 
 # Clamp final scores to 100
