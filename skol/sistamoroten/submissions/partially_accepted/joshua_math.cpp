@@ -1,34 +1,18 @@
 // Gets around 80 if you use gcc
-
 #include <bits/stdc++.h>
 using namespace std;
 
 typedef long long ll;
+const ll inf = 1e18;
 
-const int inf = int(2e9);
-typedef vector<int> vi;
+#define rep(i, b) for(ll i = 0; i < (b); i++)
+#define repp(i, a, b) for(ll i = a; i < (b); i++)
+#define repe(i,arr) for (auto& i : arr)
+#define all(x) begin(x), end(x)
+#define sz(x) ((ll)(x).size())
+typedef pair<ll, ll> p2;
+typedef vector<ll> vi;
 typedef vector<vi> vvi;
-typedef pair<int, int> p2;
-
-template <typename T> inline void read(T& a) { cin >> a; }
-template <typename T> inline void read(T& a, T& b) { cin >> a >> b; }
-template <typename T> inline void read(T& a, T& b, T& c) { cin >> a >> b >> c; }
-#define dread(type, a) type a; read(a)
-#define dread2(type, a, b) dread(type, a); dread(type, b)
-#define dread3(type, a, b, c) dread2(type, a, b); dread(type, c)
-#define readvector(type, name, size) vector<type> name(size); rep(i,size) {dread(type,temp); name[i]=temp;}
-
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define repe(i, container) for (auto& i : container)
-#define per(i, high) for (int i = high-1; i >= 0; i--)
-#define perr(i, low, high) for (int i = high-1; i >= low; i--)
-
-#define all(a) a.begin(),a.end()
-#define rall(a) a.rbegin(),a.rend()
-#define setcontains(set, x) (set.find(x) != set.end())
-auto Start = chrono::high_resolution_clock::now();
-#define elapsedmillis() (chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - Start).count())
 
 vector<long double> cache;
 inline long double fact(int k)
@@ -42,9 +26,8 @@ long double choose(int n, int k)
     return fact(n) - fact(k) - fact(n - k);
 }
 
-int32_t main()
+int main()
 {
-
     int n, m, k;
     cin >> n >> m >> k;
 
@@ -64,10 +47,10 @@ int32_t main()
         v.push_back(ans);
     }
 
-    sort(rall(v));
+    sort(v.rbegin(), v.rend());
 
     double ans = 0;
     rep(i, k) ans += v[i];
     cout << setprecision(15) << ans << endl;
-
+    return 0;
 }
