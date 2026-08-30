@@ -19,56 +19,35 @@ avg_dist = int(cmdlinearg('d'))
 dev = int(cmdlinearg('dev'))
 
 
-# Each letter creates a clique between all the nodes with it
+MAX_CLIQUE = int(cmdlinearg('maxclique', 4))
+EXTRA_CLIQUES = int(cmdlinearg('extra', 3))
 
-# Stolen from https://github.com/cheran-senthil/PyRival/blob/master/pyrival/data_structures/DisjointSetUnion.py
-class UF:
-    def __init__(self, n):
-        self.parent = list(range(n))
+stairs = []
 
-    def find(self, a):
-        acopy = a
-        while a != self.parent[a]:
-            a = self.parent[a]
-        while acopy != a:
-            self.parent[acopy], acopy = a, self.parent[acopy]
-        return a
+order = list(range(n))
+random.shuffle(order)
+connected, rest = order[:1], order[1:]
+while rest:
+    k = random.randint(1, min(MAX_CLIQUE - 1, len(rest)))
+    joining, rest = rest[:k], rest[k:]
+    stairs.append([random.choice(connected)] + joining)
+    connected += joining
 
-    def union(self, a, b):
-        self.parent[self.find(b)] = self.find(a)
+for _ in range(random.randint(0, EXTRA_CLIQUES)):
+    if len(stairs) == 26: break
+    stairs.append(random.sample(range(n), random.randint(2, min(MAX_CLIQUE, n))))
 
-uf = UF(n)
+assert len(stairs) <= 26, "more than 26 stairwells needed"
 
-letters = [chr(i) for i in range(ord("A"), ord("Z")+1)]
-letterIdx = [0] * n
+names = random.sample([chr(i) for i in range(ord("A"), ord("Z") + 1)], len(stairs))
 
-edges = []
-for i in range(n): edges.append([])
-
-num_components = n
-out = ""
-num_components = n
-while num_components>1:
-    a,b=random.randint(0,n-1),random.randint(0,n-1)
-    if a==b: continue
-    if letterIdx[a]==letterIdx[b]:
-        edges[a].append(letters[letterIdx[a]])
-        edges[b].append(letters[letterIdx[b]])
-        letterIdx[a]+=1
-        letterIdx[b]+=1
-    elif letterIdx[a]<letterIdx[b]:
-        edges[a].append(letters[letterIdx[a]])
-        letterIdx[a]+=1
-    else:
-        edges[b].append(letters[letterIdx[b]])
-        letterIdx[b]+=1
-
-    if uf.find(a)!=uf.find(b):
-        uf.union(a,b)
-        num_components-=1
-
+edges = [[] for _ in range(n)]
+for name, areas in zip(names, stairs):
+    for a in areas:
+        edges[a].append(name)
 
 print(n)
 for i in range(n):
     d = random.randint(avg_dist-dev, avg_dist+dev)
+    random.shuffle(edges[i])
     print(d, "".join(edges[i]))

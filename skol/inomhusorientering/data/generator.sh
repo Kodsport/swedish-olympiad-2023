@@ -35,7 +35,7 @@ tc tree1 gen_tree n=10 d=20 dev=10
 tc tree2 gen_tree n=4 d=70 dev=10
 tc tree3 gen_tree n=7 d=50 dev=30
 tc rand1 gen_rand n=12 d=20 dev=13
-tc rand2 gen_rand n=6 d=60 dev=13
+tc rand2 gen_rand n=6 d=60 dev=13 maxclique=2 extra=1
 tc rand3 gen_rand n=5 d=40 dev=35
 tc rand4 gen_rand n=10 d=2 dev=1
 tc rand5 gen_rand n=11 d=95 dev=3
