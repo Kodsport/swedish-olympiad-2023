@@ -69,6 +69,7 @@ void solve() {
 
         if (dist[F[i + 1]][S[i + 1][0]] == 10000) {
             cerr << "no path between " << i << " and " << i + 1 << endl;
+            exit(43);
         }
     }
     cout << res << endl;

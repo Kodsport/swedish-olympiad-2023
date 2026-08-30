@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-PPATH=$(realpath ..)
-
-. ../../testdata_tools/gen.sh
+. ../../../testdata_tools/gen.sh
 
 use_solution js.cpp
 
@@ -17,8 +15,8 @@ sample 2
 
 group g1 20
 limits onlya=1
-tc_manual t1
 tc 1
+tg_manual ../manual_tests/g1
 tc only_a1 gen_a n=3  d=3 dev=1
 tc only_a2 gen_a n=10 d=50 dev=20
 tc only_a3 gen_a n=15 d=1 dev=0
@@ -29,10 +27,7 @@ tc only_a5 gen_a n=5  d=70 dev=10
 group g2 80
 include_group g1
 tc 2
-tc_manual t2
-tc_manual t3
-tc_manual t4
-tc_manual t5
+tg_manual ../manual_tests/g2
 tc complete1 gen_complete n=5 d=50 dev=20
 tc complete2 gen_complete n=10 d=10 dev=2
 tc complete3 gen_complete n=15 d=90 dev=7

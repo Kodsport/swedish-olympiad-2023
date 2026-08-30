@@ -1,5 +1,4 @@
 \problemname{Indoor Orientation}
-\noindent
 A rapidly growing sport is \emph{indoor orienteering}, where the largest competitions attract
 thousands of participants running around places like a campus. Through the organizers' carefully
 planned barriers, it becomes a labyrinthine challenge to navigate between control points. Often,
@@ -20,33 +19,35 @@ The first line contains the integer $N$ ($3\le N \le 15$), the number of areas.
 The next $N$ lines each describe one area.
 Each line starts with the floor that the area is located at (an integer between $1$ and $100$), 
 followed by a string with at least one letter, each letter being chosen from \texttt{A-Z},
-which describes the stairwells the floor is connected to.
+which describes the stairwells the area is connected to.
 
 
 \section*{Output}
-Print an integers: the minimal time required to visit all the $N$ areas in the order given in the input, 
+Print an integer: the minimal time required to visit all the $N$ areas in the order given in the input, 
 starting in area $1$ and ending in area $N$.
 
 
 \section*{Scoring}
-Your solution will be tested on a set of test groups, each worth a number of points. Each test group contains
-a set of test cases. To get the points for a test group you need to solve all test cases in the test group.
+Your solution will be tested on a set of test groups.
+To earn points for a group, you must pass all test cases in that group.
 
 \noindent
 \begin{tabular}{| l | l | p{12cm} |}
   \hline
   \textbf{Group} & \textbf{Points} & \textbf{Constraints} \\ \hline
-  $1$    & $20$      & All strings area a single A. \\ \hline
+  $1$    & $20$      & All strings are a single \texttt{A}. \\ \hline
   $2$    & $80$      & No additional constraints. \\ \hline
 \end{tabular}
 
-\section*{Explanation of samples}
+\section*{Explanation of Samples}
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{orient.pdf}
   \caption{
     Cross-section of the building in example 2.
     The large numbers indicate floor numbers, and the small ones indicate the numbering of the areas. One possible shortest path through the entire course is:\\
+    AAD -- EEE -- CBAA -- DEE -- EEDD -- DAAB -- CFF\\
+    Note that the control points must be visited in order.
   }
 \end{figure}
-In the second example, there is a path with 24 steps: AAD -- EEE -- CBAA -- DEE -- EEDD -- DAAB -- CFF (the letters indicate which staircase was used at each step).
+In the second example, there is a path with 24 steps (the letters indicate which staircase was used at each step).

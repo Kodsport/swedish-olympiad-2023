@@ -19,7 +19,7 @@ Detta följs av en rad för varje område.
 En rad innehåller först våningen som området befinner sig på (ett heltal mellan $1$ och $100$) följt av en sträng som innehåller ett eller flera tecken, valda bland \texttt{A-Z}, och som anger vilket eller vilka trapphus området är kopplat till.
 
 \section*{Utdata}
-Skriva ut ett enda tal: den minimala tiden det tar att besöka de $N$ områdena i precis den ordning de angavs i indata, med starten i område $1$ och målet i område $N$. 
+Skriv ut ett enda tal: den minimala tiden det tar att besöka de $N$ områdena i precis den ordning de angavs i indata, med starten i område $1$ och målet i område $N$. 
 
 \section*{Poängsättning}
 Din lösning kommer att testas på en mängd testfallsgrupper.
@@ -29,7 +29,7 @@ För att få poäng för en grupp så måste du klara alla testfall i gruppen.
 \begin{tabular}{| l | l | p{12cm} |}
   \hline
   \textbf{Grupp} & \textbf{Poäng} & \textbf{Gränser} \\ \hline
-  $1$    & $20$      & Alla strängar kommer vara A. \\ \hline
+  $1$    & $20$      & Alla strängar kommer vara \texttt{A}. \\ \hline
   $2$    & $80$      & Inga ytterligare begränsningar. \\ \hline
 \end{tabular}
 
@@ -40,6 +40,8 @@ För att få poäng för en grupp så måste du klara alla testfall i gruppen.
   \caption{
     Genomskärning av byggnaden i exempel 2.
     De stora siffrorna visar våningsnummer, de små numreringen av områdena. En möjlig kortaste väg genom hela banan är:\\
+    AAD -- EEE -- CBAA -- DEE -- EEDD -- DAAB -- CFF\\
+    Notera att kontrollerna måste tas i ordning.
   }
 \end{figure}
-I det andra exemplet finns en väg med 24 steg: AAD -- EEE -- CBAA -- DEE -- EEDD -- DAAB -- CFF (bokstäverna indikerar vilken trappa som användes i varje steg).
+I det andra exemplet finns en väg med 24 steg (bokstäverna indikerar vilken trappa som användes i varje steg).
