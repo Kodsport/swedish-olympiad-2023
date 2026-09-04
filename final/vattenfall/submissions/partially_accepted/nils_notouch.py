@@ -18,4 +18,8 @@ for _, x in blocks:
         water.remove(x)
         water.add(x-1)
         water.add(x+1)
+if -1 in water:
+    water.remove(-1)
+if c in water:
+    water.remove(c)
 print(len(water))

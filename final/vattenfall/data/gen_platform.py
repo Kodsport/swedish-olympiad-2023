@@ -25,7 +25,7 @@ assert(k<=n)
 print(r,c)
 print(k,n)
 
-row = random.randint(0,r-1)
+row = random.randint(1,r-1)
 col = random.randint(0,int(c/2))
 for i in range(k):
     print(col+i)

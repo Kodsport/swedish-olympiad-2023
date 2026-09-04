@@ -36,7 +36,7 @@ for i in range(k):
 seenpoints = set()
 for i in range(n):
     while True:
-        pr = random.randint(0,r-1)
+        pr = random.randint(1,r-1)
         pc = random.randint(0,c-1)
         if (pr,pc) not in seen:
             seen.add((pr,pc))

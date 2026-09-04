@@ -19,8 +19,12 @@ r = int(cmdlinearg('r'))
 c = int(cmdlinearg('c'))
 n = int(cmdlinearg('n'))
 k = int(cmdlinearg('k'))
-lo = c/2+random.randint(0,int(k*2.5))
-assert(n<=c)
+
+lo = c//2+random.randint(0,int(k*2.5))
+lo = max(0, min(lo, c-1-2*(n-1)))
+
+whi = min(c-1, lo+k*3)
+wlo = min(lo, whi-k+1)
 
 print(r,c)
 print(k,n)
@@ -28,16 +32,13 @@ print(k,n)
 seen = set()
 for i in range(k):
     while True:
-        p = random.randint(lo,lo+k*3)
+        p = random.randint(wlo,whi)
         if p not in seen:
             seen.add(p)
             print(p)
             break
 
-
-
-dirs=[[0,1],[0,-1],[1,0],[-1,0],[1,1],[1,-1],[-1,1],[-1,-1],[0,0]]
-p = [0, int(lo)]
+p = [1, int(lo)]
 for i in range(n):
     print(p[0],p[1])
     p[0]+=2

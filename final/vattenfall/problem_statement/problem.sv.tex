@@ -3,16 +3,18 @@ Alexander gillar vatten. Därför är det inte så konstigt att han är förtjus
 Tänk bara, vatten som forsar i all oändlighet!
 
 Han har hittat en bergvägg som han tror kommer bli det perfekta vattenfallet efter att han har tillfört lite vatten.
-Bergväggen kan modelleras som ett $R \times C$ stort rutnät, där $N$ rutor har en klippa som sticker ut. Alexander tänker hälla ut vatten ovanifrån så att det flödar
-ner vatten i $K$ stycken kolumner.
+Bergväggen kan modelleras som ett $R \times C$ stort rutnät, där $N$ rutor har en klippa som sticker ut.
+Raderna är numrerade från $0$ till $R-1$ från botten till toppen, och kolumnerna är numrerade från $0$ till $C-1$ från vänster till höger.
+På kolumn $-1$ och $C$ finns en vägg som vattnet inte kan passera igenom.
+Alexander tänker hälla ut vatten ovanifrån så att det flödar ner vatten i $K$ stycken kolumner.
 
 Vattnet sprider sig i rutnätet enligt följande regler: om rutan under vattnet är tom sprider det sig dit. Om det finns en klippa i vägen
-sprider det sig istället till höger och vänster. Om det finns en klippa ivägen till höger eller vänster sprider det sig inte i den riktningen.
-Detta gäller även för vattnet som hälls ovanifrån, d.v.s. om vatten hälls i kolumn $i$ och den översta raden har en klippa på kolumn $i$, är det som om vatten även hälls ovanifrån i kolumnerna $i - 1$ och $i + 1$, förutsatt att dessa kolumner ligger inom rutnätet.
+sprider det sig istället till höger och vänster. Om det finns en klippa i vägen till höger eller vänster sprider det sig inte i den riktningen.
+Detta gäller även för vattnet som hälls ovanifrån, d.v.s. om vatten hälls i kolumn $i$ och den översta raden har en klippa i kolumn $i$, är det som om vatten även hälls ovanifrån i kolumnerna $i - 1$ och $i + 1$, förutsatt att dessa kolumner ligger inom rutnätet.
 
-Alexander vill dock inte orsaka en
-översvämning, för då kommer allt vatten att så stilla till slut. Vatten som står stilla är självklart tråkigare än vatten som forsar.
-Därför vill han ha din hjälp att skriva ett program som räknar ut hur många kolumner som har vatten i sig i nedersta raden av klippan.
+Alexander vill dock inte orsaka en översvämning, för då kommer allt vatten att stå stilla till slut.
+Vatten som står stilla är självklart tråkigare än vatten som forsar.
+Därför vill han ha din hjälp att skriva ett program som räknar ut hur många kolumner som har vatten i sig i nedersta raden av rutnätet.
 
 \begin{figure}[!h]
   \centering
@@ -22,13 +24,14 @@ Därför vill han ha din hjälp att skriva ett program som räknar ut hur många
 \end{figure}
 
 \section*{Indata}
-Den första raden innehåller två heltal $R, C$ ($1 \le R, C \le 10^9$), antalet rader respektive kolumner som berget består av.
-Den andra innehåller två hetal $K, N$ ($1 \le K, N \le 10^5$), antalet kolumner med vatten i och antalet klippor som sticker ut ur berget.
+Den första raden innehåller två heltal $R, C$ ($2 \le R \le 10^9$, $1 \leq C \leq 10^9$), antalet rader respektive kolumner som berget består av.
 
-Därefter följer $K$ rader, där den $i$:te rader innehåller en siffra $V_i$ ($0 \le V_i \le C-1$), som betyder att det strömmar ner vatten längs kolumn $V_i$ från ovanför rutnätet.
+Den andra raden innehåller två heltal $K, N$ ($1 \le K, N \le 10^5$), antalet kolumner med vatten i och antalet klippor som sticker ut ur berget.
+
+Därefter följer $K$ rader, där den $i$:te raden innehåller heltalet $V_i$ ($0 \le V_i \le C-1$), som betyder att det strömmar ner vatten längs kolumn $V_i$ från ovanför rutnätet.
 Det är garanterat att alla $V_i$ är unika.
 
-Därefter följer $N$ rader, där den $i$:te rader innehåller två heltal $A_i$ ($1 \le A_i \le R-1$) och $B_i$ ($0 \le B_i \le C-1$), raden och kolumnen där den $i$:te klippan finns. 
+Därefter följer $N$ rader, där den $i$:te raden innehåller två heltal $A_i$ ($1 \le A_i \le R-1$) och $B_i$ ($0 \le B_i \le C-1$), raden och kolumnen där den $i$:te klippan finns.
 Även dessa är unika.
 
 \section*{Utdata}

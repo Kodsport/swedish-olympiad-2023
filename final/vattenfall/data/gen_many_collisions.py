@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# This generator is kind of buggy
+
 import sys
 import random
 import math
@@ -19,9 +21,7 @@ r = int(cmdlinearg('r'))
 c = int(cmdlinearg('c'))
 n = int(cmdlinearg('n'))
 k = int(cmdlinearg('k'))
-noaxis = int(cmdlinearg('noaxis',0))
-nodiag = int(cmdlinearg('nodiag',0))
-lo = c/2+random.randint(0,int(k*2.5))
+lo = c//2+random.randint(0,int(k*2.5))
 assert(n<=c)
 
 print(r,c)
@@ -37,19 +37,10 @@ for i in range(k):
             break
 
 
-points = (i for i in seen)
-
 from heapq import *
 
 q = list((random.randint(0,int(1e5)), i) for i in seen)
 heapify(q)
-
-
-dirs=[[0,0]]
-if noaxis:
-    dirs.extend([[0,1],[0,-1],[1,0],[-1,0]])
-if nodiag:
-    dirs.extend([[1,1],[1,-1],[-1,1],[-1,-1]])
 
 currow = r-4
 placed = 0
@@ -69,19 +60,13 @@ while placed < n and currow>=4 and len(q):
         else:
             lowest[c] = currow
             row=currow-2
-        works = True
-        for dir in dirs:
-            if (row+dir[0],col+dir[1]) in seen:
-                works = False
-                break
-        
-        if works:
-            seen.add((row,col))
-            placed+=1
-            print(row,col)
-            heappush(q, (random.randint(0,int(1e5)),col+1))
-            heappush(q, (random.randint(0,int(1e5)),col-1))
-            break
+
+        seen.add((row,col))
+        placed+=1
+        print(row,col)
+        heappush(q, (random.randint(0,int(1e5)),col+1))
+        heappush(q, (random.randint(0,int(1e5)),col-1))
+        break
     
     currow -=4
 

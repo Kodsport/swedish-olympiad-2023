@@ -1,7 +1,11 @@
 uuid: 211cb88a-8777-4f81-b88b-37113e5737a7
 author: Ivar Källström, Joshua Andersson
 source: Programmeringsolympiadens final 2023
+rights_owner: Programmeringsolympiaden
 license: cc by-sa
 type: scoring
 grading:
   show_test_data_groups: true
+
+limits:
+  time_multiplier: 3

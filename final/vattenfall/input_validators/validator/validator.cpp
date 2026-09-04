@@ -1,16 +1,28 @@
 #include "validator.h"
-#include <bits/stdc++.h>
+
+const int MAX_SIDELEN = 1e9;
+const int MAX_K = 1e5;
+const int MAX_N = 1e5;
+
+using ll = long long;
 
 void run() {
-    int maxR = Arg("r", 1000000000);
-    int maxC = Arg("c", 1000000000);
-    int maxN = Arg("n", 100000);
-    int maxK = Arg("k", 100000);
     bool nodiag = Arg("nodiag",0);
     bool noaxis = Arg("noaxis",0);
     
-    int r = Int(1, maxR); Space(); int c = Int(1, maxC); Endl();
-    int k = Int(1, maxK); Space(); int n = Int(1, maxN); Endl();
+    int r = Int(2, MAX_SIDELEN);
+    Space();
+    int c = Int(1, MAX_SIDELEN);
+    Endl();
+
+    ll num_cells = (ll)r * c;
+    ll max_cells = Arg("max_cells", (ll)MAX_SIDELEN * MAX_SIDELEN);
+    assert(num_cells <= max_cells);
+
+    int k = Int(1, Arg("k", MAX_K));
+    Space();
+    int n = Int(1, Arg("n", MAX_N));
+    Endl();
     
     set<int> seen;
     for (int i = 0; i < k; i++)
@@ -20,14 +32,31 @@ void run() {
     }
     assert(seen.size()==k);
 
-    set<pair<int,int>> seenpoints;
+    vector<pair<int,int>> seenpoints;
     for (int i = 0; i < n; i++)
     {
-        int pr = Int(0, r-1); Space(); int pc = Int(0,c-1); Endl();
-        seenpoints.emplace(pr,pc);
+        int pr = Int(1, r-1); Space(); int pc = Int(0,c-1); Endl();
+        seenpoints.emplace_back(pr, pc);
     }
-    assert(seenpoints.size()==n);
+    AssertUnique(seenpoints);
 
-
-    Eof();
+    ranges::sort(seenpoints);
+    vector<pair<int,int>> axis_directions = {{-1,0},{1,0},{0,-1},{0,1}};
+    vector<pair<int,int>> diag_directions = {{-1,-1},{-1,1},{1,-1},{1,1}};
+    for (auto [pr, pc] : seenpoints) {
+        if (noaxis) {
+            for (auto [dr, dc] : axis_directions) {
+                if (ranges::binary_search(seenpoints, make_pair(pr + dr, pc + dc))) {
+                    assert(false);
+                }
+            }
+        }
+        if (nodiag) {
+            for (auto [dr, dc] : diag_directions) {
+                if (ranges::binary_search(seenpoints, make_pair(pr + dr, pc + dc))) {
+                    assert(false);
+                }
+            }
+        }
+    }
 }
