@@ -1,6 +1,7 @@
 uuid: 0c687f70-ba1d-4b01-bab0-6ad02210415e
+author: Adrian Beker, Paula Vidas, Daniel Paleka
 source: Programmeringsolympiadens KATT 2023
-rights_owner: Croatian Olympiad in Informatics
+rights_owner: Croatian Olympiad in Informatics # COI 2020 (HIO 2020, final round, 17 July 2020), task Pastiri
 license: permission
 type: scoring
 grading:

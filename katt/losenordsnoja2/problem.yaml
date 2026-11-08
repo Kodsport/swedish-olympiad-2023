@@ -1,6 +1,7 @@
 uuid: 008aac9b-bf9a-4b59-b5c0-3cac92cfa000
+author: Paula Vidas
 source: Programmeringsolympiadens KATT 2023
-rights_owner: Croatian Olympiad in Informatics
+rights_owner: Croatian Olympiad in Informatics # COI 2020 (HIO 2020, final round, 17 July 2020), task Zagrade
 license: permission
 type: scoring
 grading:

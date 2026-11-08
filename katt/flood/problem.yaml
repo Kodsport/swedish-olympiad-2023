@@ -1,6 +1,7 @@
 uuid: 0c28a3b9-c39f-49e2-b573-0ecc636b39c9
+author: Tonko Sabolčec, Marin Kišić
 source: Programmeringsolympiadens KATT 2023
-rights_owner: Croatian Olympiad in Informatics
+rights_owner: Croatian Olympiad in Informatics # COI 2020 (HIO 2020, final round, 17 July 2020), task Paint
 license: permission
 type: scoring
 grading:
