@@ -13,6 +13,7 @@ def cmdlinearg(name, default=None):
         sys.exit(1)
     return default
 
+random.seed(int(cmdlinearg('seed', sys.argv[-1])))
 idx = int(cmdlinearg('idx'))
 no_4 = int(cmdlinearg("no4", False))
 num_add = int(cmdlinearg("num_add"))
@@ -42,5 +43,5 @@ else:
     tc = cases[idx]
 
 for i in range(len(tc)-no_4):
-    tc[i] += random.randint(1,num_add)*4
+    tc[i] += random.randint(0,num_add)*4
 print(" ".join(str(i) for i in tc))
