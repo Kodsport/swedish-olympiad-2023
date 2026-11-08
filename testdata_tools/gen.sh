@@ -57,6 +57,7 @@ declare -A latestdir
 declare -A nicenames
 declare -A groups
 declare -A sample_symlink_name
+declare -A manual_source
 declare -a cleanup
 
 _get_ext () {
@@ -269,21 +270,27 @@ grader_flags: min" > "$CURGROUP_DIR/testdata.yaml"
   _update_scores
 }
 
+# Arguments: caller name, testdata.yaml key, flags
+_set_flags () {
+  local yaml=testdata.yaml
+  if [[ $USE_SCORING == 1 ]]; then
+    yaml="$CURGROUP_DIR/testdata.yaml"
+  fi
+  # Problemtools silently keeps only the last occurence of duplicate keys in YAML
+  if grep -q "^$2:" "$yaml" 2>/dev/null; then
+    _error "$1 called twice for the same group; pass all flags in a single call"
+    return 0
+  fi
+  echo "$2: ${@:3}" >> "$yaml"
+}
+
 # Arguments: parameters sent to input validator
 limits () {
-  if [[ $USE_SCORING == 1 ]]; then
-    echo "input_validator_flags: $@" >> "$CURGROUP_DIR/testdata.yaml"
-  else
-    echo "input_validator_flags: $@" >> testdata.yaml
-  fi
+  _set_flags limits input_validator_flags "$@"
 }
 
 output_validator_flags () {
-  if [[ $USE_SCORING == 1 ]]; then
-    echo "output_validator_flags: $@" >> "$CURGROUP_DIR/testdata.yaml"
-  else
-    echo "output_validator_flags: $@" >> testdata.yaml
-  fi
+  _set_flags output_validator_flags output_validator_flags "$@"
 }
 
 _check_missing_samples () {
@@ -431,11 +438,15 @@ tc () {
 
 # Arguments: ../manual-tests/testcasename.in
 tc_manual () {
-  local name="$2"
-  if [[ $# == 1 ]]; then
-      name=$(_base "$1")
+  local name=$(_base "$1")
+  local src=$(realpath "$1")
+  if [[ ${cases[$name]} != "" && ${manual_source[$name]} == "$src" ]]; then
+    # Treat tc_manual with the same path the same as reusing via "tc name"
+    tc "$name"
+  else
+    manual_source[$name]="$src"
+    tc "$name" cat "$1"
   fi
-  tc $(_base "$1") cat "$1"
 }
 
 # Arguments: ../manual-tests/test_group/
@@ -518,7 +529,7 @@ _cleanup_programs () {
 
   if [[ $HAS_ERROR = 1 ]]; then
     echo
-    echo "There were errors, see above."
+    echo -e "${RED}There were errors, see above.${NOCOL}"
     exit 1
   fi
 }
